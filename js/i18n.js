@@ -104,7 +104,7 @@
     'aw.f3': 'The fight', 'aw.f3p': 'everyone in the same arena', 'aw.f4p': 'only those who went down know',
     'aw.next': 'Next Awakening: to be announced.', 'aw.cap': 'The Awakening trailer (10 s).',
 
-    'dl.kicker': 'Downloads', 'dl.title': 'Go down with your own light', 'dl.soon': 'Coming soon', 'dl.yours': 'Your system',
+    'dl.kicker': 'Downloads', 'dl.title': 'Go down with your own light', 'dl.soon': 'Coming soon', 'dl.iosmeta': 'iPhone and iPad', 'dl.yours': 'Your system',
     'dl.note': '<b>Multiplayer is in closed playtest.</b> Anyone can play offline. Online access, for now, is only for playtesters — want in? Write to us.',
 
     'ct.title': 'Send a raven',
