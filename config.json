@@ -1,0 +1,10 @@
+{
+  "contato": {
+    "email": "",
+    "discord": ""
+  },
+  "downloads": {
+    "windows": { "url": "", "versao": "", "tamanho": "" },
+    "android": { "url": "", "versao": "", "tamanho": "" }
+  }
+}
