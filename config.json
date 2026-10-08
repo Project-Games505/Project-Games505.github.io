@@ -1,10 +1,18 @@
 {
-  "contato": {
-    "email": "",
-    "discord": ""
-  },
-  "downloads": {
-    "windows": { "url": "", "versao": "", "tamanho": "" },
-    "android": { "url": "", "versao": "", "tamanho": "" }
-  }
+    "contato":  {
+                    "email":  "",
+                    "discord":  ""
+                },
+    "downloads":  {
+                      "windows":  {
+                                      "url":  "https://github.com/Project-Games505/Project-Games505.github.io/releases/latest/download/mmorpg3d-windows.zip",
+                                      "versao":  "v0.5.0",
+                                      "tamanho":  "202 MB"
+                                  },
+                      "android":  {
+                                      "url":  "https://github.com/Project-Games505/Project-Games505.github.io/releases/latest/download/mmorpg3d-android.apk",
+                                      "versao":  "v0.5.0",
+                                      "tamanho":  "211 MB"
+                                  }
+                  }
 }
