@@ -113,7 +113,8 @@
     'ct.lucas': 'networking, world, backend and interface', 'ct.dinho': 'combat, enemies, quests, economy and story',
 
     'ft.credits': 'Made in Unity with our own server. Third-party assets in the public domain (CC0): <a href="https://kaylousberg.itch.io/" rel="noopener">KayKit</a>, <a href="https://kenney.nl/" rel="noopener">Kenney</a>, <a href="https://ambientcg.com/" rel="noopener">ambientCG</a> and the track <i>Medieval: Harvest Season</i> (RandomMind).',
-    'ft.top': 'Back to top'
+    'ft.top': 'Back to top',
+    'ft.delete': 'Delete account'
   };
 
   // Frases montadas pelo main.js (os dois idiomas aqui)

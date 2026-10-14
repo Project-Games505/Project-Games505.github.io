@@ -16,6 +16,11 @@ publicar, copie o conteúdo desta pasta para a raiz da `main` do repo público.
 | E-mail de contato | `config.json` | `contato.email` — vazio mostra "E-mail do jogo em breve" |
 | Discord | `config.json` | `contato.discord` — URL do convite; vazio mostra "em breve" |
 | Downloads | `config.json` | `downloads.windows` / `downloads.android`: `url`, `versao`, `tamanho` — sem `url` o botão fica "Em breve" (ou "Pedir acesso" quando há e-mail) |
+| Formulário de exclusão de conta | `config.json` | `conta.exclusaoUrl` — endereço **https** público do `excluir-conta.html` servido pelo AccountService (ADR-50). Vazio: `excluir-conta.html` daqui mostra só o pedido por e-mail |
+
+**Exclusão de conta (Google Play):** o link a cadastrar na Play Console ("Exclusão de conta → URL") é
+`https://project-games505.github.io/excluir-conta.html`. Ele explica o caminho pelo jogo e pela web e leva ao
+formulário do AccountService quando `conta.exclusaoUrl` estiver preenchido.
 
 Os botões de download podem apontar para um asset de Release do repo público (ex.:
 `https://github.com/Project-Games505/Project-Games505.github.io/releases/download/v0.6.0/mmorpg3d.apk`).

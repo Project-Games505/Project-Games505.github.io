@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excluir conta — MMORPG 3D</title>
+<meta name="description" content="Como excluir a sua conta do MMORPG 3D, pelo jogo ou pela web, e o que é apagado.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --fundo: #0d0c14; --texto: #e9e2d0; --suave: #b9b09a; --destaque: #c7a6ff; --link: #f0cf8a; --linha: #e9e2d033; }
+  body { margin: 0 auto; max-width: 46rem; padding: 24px 16px 64px; background: var(--fundo); color: var(--texto);
+         font: 1.05rem/1.65 Georgia, serif; }
+  h1 { color: var(--destaque); letter-spacing: .03em; margin-bottom: .2em; }
+  h2 { margin-top: 2em; font-size: 1.2rem; }
+  a { color: var(--link); }
+  .sub { color: var(--suave); margin-top: 0; }
+  .caixa { border: 1px solid var(--linha); border-radius: 8px; padding: .8em 1.1em; }
+  .botao { display: inline-block; padding: .6em 1.1em; border-radius: 6px; background: #b91c1c; color: #fff;
+           text-decoration: none; font-weight: 700; }
+  [hidden] { display: none !important; }
+  footer { margin-top: 3em; color: var(--suave); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Excluir a sua conta</h1>
+  <p class="sub">MMORPG 3D · Project-Games505</p>
+
+  <p>Você pode pedir a exclusão da sua conta a qualquer momento, sem custo. Há dois caminhos, com o mesmo resultado.</p>
+
+  <h2>1. Pelo jogo</h2>
+  <ol>
+    <li>Abra o jogo e entre com a sua conta (<b>Jogar conectado</b>).</li>
+    <li>Toque em <b>Configurações</b> e, na parte <b>Conta</b>, em <b>Excluir conta</b>.</li>
+    <li>Digite <b>EXCLUIR</b> (ou o nome do seu herói) e a sua senha, e confirme.</li>
+  </ol>
+
+  <h2>2. Pela web, sem o jogo instalado</h2>
+  <div class="caixa">
+    <p id="com-formulario" hidden><a class="botao" id="link-formulario" href="#" rel="noopener">Abrir o formulário de exclusão</a><br>
+      Ele pede o mesmo login e a mesma senha do jogo. A senha só é conferida, não fica guardada.</p>
+    <p id="sem-formulario">Escreva para <a id="email-contato" href="mailto:privacidade@projectgames505.example">privacidade@projectgames505.example</a>
+      a partir do e-mail cadastrado na conta, dizendo o seu login. Respondemos em até 15 dias.</p>
+  </div>
+
+  <h2>O que acontece depois do pedido</h2>
+  <ul>
+    <li><b>Na hora:</b> todos os aparelhos saem da conta; seus heróis somem do ranking e não entram mais no mundo.</li>
+    <li><b>14 dias para desistir:</b> entrar no jogo com a sua senha antes da data informada cancela o pedido.</li>
+    <li><b>Depois do prazo, apagamos de vez:</b> heróis, progresso, itens, lista de amigos e de bloqueados, sessões,
+      e-mail, login e senha.</li>
+    <li><b>O que fica, sem identificar você:</b> registros que a lei manda guardar (por exemplo, punições de moderação
+      e comprovantes de compra, se existirem) ficam ligados só a um código interno, sem e-mail, login nem nome de herói.
+      O diagnóstico anônimo do jogo nunca teve dado seu. Os registros técnicos do servidor somem sozinhos em até 14 dias.</li>
+  </ul>
+
+  <h2 lang="en">In English</h2>
+  <div lang="en">
+    <p>You can delete your account at any time, free of charge.</p>
+    <ul>
+      <li><b>In the game:</b> sign in, open <b>Settings → Account → Delete account</b>, type <b>DELETE</b> (or your hero's
+        name) and your password.</li>
+      <li><b>On the web:</b> use the deletion form linked above (same username and password as the game), or e-mail us
+        from the address registered on the account.</li>
+      <li>Every device is signed out right away. After 14 days your heroes, progress, items, friends and block lists,
+        sessions, e-mail, username and password are permanently erased. Signing in to the game before that date cancels
+        the request. Records the law requires us to keep (moderation sanctions, purchase receipts if any) stay linked
+        only to an internal code with no personal data.</li>
+    </ul>
+  </div>
+</main>
+<footer><a href="/">MMORPG 3D</a> · Project-Games505</footer>
+<script>
+  // O endereço do formulário e o e-mail vêm do config.json (mexer sem tocar em código, como o resto do site).
+  // Sem endereço configurado, a página mostra só o caminho pelo e-mail.
+  fetch('config.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (c) {
+    var url = c && c.conta && c.conta.exclusaoUrl;
+    if (url && /^https:\/\//.test(url)) {
+      document.getElementById('link-formulario').href = url;
+      document.getElementById('com-formulario').hidden = false;
+    }
+    var email = c && c.contato && c.contato.email;
+    if (email) {
+      var a = document.getElementById('email-contato');
+      a.href = 'mailto:' + email;
+      a.textContent = email;
+    }
+  }).catch(function () { /* sem config: fica o texto padrão */ });
+</script>
+</body>
+</html>
