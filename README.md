@@ -47,6 +47,8 @@ Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos
 
 **Padrão:** o tema é a Sombra (escolha salva em `localStorage` vale depois). **Trailer:** volume inicial 30 %, entra com fade de ~1,2 s e o volume escolhido pela pessoa fica salvo (`volumeTrailer`).
 
+**Cache:** `index.html` chama `css/style.css`, `js/i18n.js` e `js/main.js` com `?v=AAAAMMDDx`. Ao mudar qualquer um desses três, troque o `v` (o Pages deixa o navegador guardar os arquivos por ~10 min e a página nova ficava com script velho).
+
 ## Textos e idiomas
 
 - O pt-BR está no próprio `index.html` (atributos `data-i18n`). O inglês está em `js/i18n.js` (`EN`), com as
