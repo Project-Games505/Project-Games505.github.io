@@ -432,12 +432,17 @@
     var ul = el('ul', 'vt-topicos');
     topicos.forEach(function (tp) { ul.appendChild(el('li', null, tp)); });
     corpo.appendChild(ul);
-    var onde = en && en.o ? en.o : c.onde;
-    if (onde) {
-      var como = el('p', 'vt-onde');
-      como.appendChild(el('strong', null, m('vtWhere') + ' '));
-      como.appendChild(document.createTextNode(onde));
-      corpo.appendChild(como);
+    var onde = en && en.o ? en.o : c.onde, quando = en && en.w ? en.w : c.quando;
+    if (onde || quando) {
+      var acesso = el('div', 'vt-onde');
+      [[m('vtWhere'), onde], [m('vtWhen'), quando]].forEach(function (par) {
+        if (!par[1]) return;
+        var linha = el('p');
+        linha.appendChild(el('strong', null, par[0] + ' '));
+        linha.appendChild(document.createTextNode(par[1]));
+        acesso.appendChild(linha);
+      });
+      corpo.appendChild(acesso);
     }
     card.appendChild(corpo);
     return card;

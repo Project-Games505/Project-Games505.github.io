@@ -33,7 +33,7 @@ Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos
 
 - `data/vitrine.json` e `data/novidades.json` são **gerados, não se editam à mão**: `python tools/gerar-vitrine.py` (da raiz do
   repositório) lê `docs/MINIGUIAS/*.md` e `docs/CHANGELOG.md`. `--check` só confere se os JSON commitados estão em dia.
-- **Card novo ou texto de card:** edite o miniguia (bloco `<!-- vitrine -->` logo depois do título: `gancho`, `onde` (como achar ou começar; obrigatório se completo), 3 `topicos`,
+- **Card novo ou texto de card:** edite o miniguia (bloco `<!-- vitrine -->` logo depois do título: `gancho`, `onde` (como achar ou começar) e `quando` (nível ou requisito), os dois obrigatórios se completo, 3 `topicos`,
   `foto` ou `foto-falta`, `estado: completo | em breve`) e rode o gerador. O título `# Miniguia:` fica na 1ª linha: o
   `MiniguiasTests` depende disso. A ordem dos cards está em `ORDEM`, no gerador.
 - **Foto:** arquivo existente em `img/vitrine/`; sem foto, `foto-falta` descreve a cena e a landing mostra "foto: …".

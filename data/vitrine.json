@@ -10,6 +10,7 @@
         "A escolha é por herói, e a única troca zera a reputação"
       ],
       "onde": "Fale com Sir Corwin (Aurora) ou Vesna (Nocturna), no Acampamento da Estepe, a partir do nível 20.",
+      "quando": "A partir do nível 20.",
       "foto": null,
       "fotoFalta": "Sir Corwin e Vesna lado a lado no Acampamento da Estepe, com o Teleportador ao fundo",
       "fotoNota": null,
@@ -25,6 +26,7 @@
         "Só quem jurou a Aurora entra na própria capital"
       ],
       "onde": "Jure a Aurora no nível 20: só quem jurou entra na própria capital.",
+      "quando": "Depois de jurar, a partir do nível 20.",
       "foto": "aurora-salao-do-trono.webp",
       "fotoFalta": null,
       "fotoNota": null,
@@ -40,6 +42,7 @@
         "Tapete violeta, colunas com lanternas lunares e o Poço Lunar do Regente"
       ],
       "onde": "Jure a Nocturna no nível 20: só quem jurou entra na própria capital.",
+      "quando": "Depois de jurar, a partir do nível 20.",
       "foto": null,
       "fotoFalta": "salão do trono de Nocturna com a Senhora Morgaine e o Regente Velado (precisa de ponto de câmera feito no Editor)",
       "fotoNota": null,
@@ -55,6 +58,7 @@
         "A corte da cidade baixa tem bênção, casa e recebe doação de material"
       ],
       "onde": "Depois do juramento, na sua capital: a corte fica na cidade baixa, e o pátio dos contratos pede ser Honrado.",
+      "quando": "Depois do juramento (nível 20): o pátio pede ser Honrado, a porta do salão Reverenciado e a do trono Exaltado.",
       "foto": "aurora-casal-real.webp",
       "fotoFalta": null,
       "fotoNota": null,
@@ -70,6 +74,7 @@
         "A esquiva perfeita enche o medidor da ultimate"
       ],
       "onde": "Treine na Ilha do Mestre de Armas, no começo do jogo.",
+      "quando": "Desde o primeiro passo, no tutorial.",
       "foto": "heroi-retrato.webp",
       "fotoFalta": null,
       "fotoNota": "ilustrativa: retrato do Arqueiro, não mostra combate",
@@ -85,6 +90,7 @@
         "Em grupo, derrubar o chefe vale para todos que lutaram"
       ],
       "onde": "Comece pelo Guardião de Ossos, no tutorial; os outros ficam na Gruta, no Subterrâneo, na Estepe, no Labirinto e nas áreas de caça.",
+      "quando": "O Guardião de Ossos já no tutorial; a Gruta libera no nível 15; o Guardião do Lago é nível 70.",
       "foto": null,
       "fotoFalta": "os três guardiões (Ossos, Gruta e Lago) lado a lado, ou um deles em plena luta",
       "fotoNota": null,
@@ -100,6 +106,7 @@
         "O tutorial acontece numa ilha própria"
       ],
       "onde": "A Gruta das Raízes abre por um portal, no fim do Bosque; a Provação, com a Guardiã das Provações, na Vila do Poço.",
+      "quando": "A Gruta libera no nível 15; as Provações aparecem nos níveis 50 e 100.",
       "foto": null,
       "fotoFalta": "o portal da Gruta das Raízes, ou a arena solo da Provação",
       "fotoNota": null,
@@ -115,6 +122,7 @@
         "É opcional e paga uma vez por herói"
       ],
       "onde": "Termine a cadeia da Oda no Refúgio das Corujas; a Capitã da Guarda libera a Gruta, no fim do Bosque.",
+      "quando": "A Capitã da Guarda libera a Gruta no nível 15.",
       "foto": "gruta-pilares.webp",
       "fotoFalta": null,
       "fotoNota": null,
@@ -130,6 +138,7 @@
         "Derrubá-lo começa a missão principal"
       ],
       "onde": "Fica no fim da Gruta das Raízes, depois da ala do guardião.",
+      "quando": "A Gruta libera no nível 15, e o Guardião é nível 18.",
       "foto": null,
       "fotoFalta": "Guardião de pedra na arena da Gruta, lançando uma rocha",
       "fotoNota": null,
@@ -145,6 +154,7 @@
         "No Bosque: Clareira dos Ossos, Acampamento das Caçadoras e Túmulo das Corujas"
       ],
       "onde": "Procure as placas com nome e nível na entrada das regiões; o Varek, na Estepe, indica a Pedreira.",
+      "quando": "Cada placa de entrada mostra o nível da área: veja antes de entrar.",
       "foto": null,
       "fotoFalta": "placa de entrada de uma área de caça (por exemplo a Clareira dos Ossos) com o bando à vista",
       "fotoNota": null,
@@ -160,6 +170,7 @@
         "A Lúmen presa ou libertada muda a luz que você carrega"
       ],
       "onde": "A entrada é pela boca do poço; leve luz.",
+      "quando": "Pensado para os níveis 60 a 100.",
       "foto": null,
       "fotoFalta": "Subterrâneo no escuro, só com a luz do herói (corrigir o material magenta dos altares antes de fotografar)",
       "fotoNota": null,
@@ -175,6 +186,7 @@
         "Volta depois de um tempo e dá loot de chefe"
       ],
       "onde": "Fica no fundo norte do Subterrâneo.",
+      "quando": "O chefe é nível 70.",
       "foto": null,
       "fotoFalta": "o Guardião do Lago na água parada (hoje aparece magenta no build; corrigir o material antes de fotografar)",
       "fotoNota": null,
@@ -190,6 +202,7 @@
         "Vencer solta o XP guardado e abre mais andares do Poço sem Fundo"
       ],
       "onde": "Fale com a Guardiã das Provações, na praça da Vila do Poço, ao lado do Teleportador.",
+      "quando": "O nível para no 50 e no 100 até você vencer a Provação.",
       "foto": null,
       "fotoFalta": "arena da Provação com o Guardião e a barra de \"XP guardado\" na tela",
       "fotoNota": null,
@@ -205,6 +218,7 @@
         "No fim do tutorial você batiza o herói e ele vira o da sua conta"
       ],
       "onde": "É o fim do tutorial, na Ilha do Mestre de Armas: o primeiro passo do jogo.",
+      "quando": "Desde o início: é o fim do tutorial.",
       "foto": null,
       "fotoFalta": "arena do Guardião de Ossos na ilha do tutorial (já existe site/img/ilha-boss.webp, fora da pasta vitrine)",
       "fotoNota": null,
@@ -220,6 +234,7 @@
         "Cada ponto volta depois de um tempo, e as regiões mais longe pedem mais nível de Coleta"
       ],
       "onde": "Chegue perto de um arbusto de erva ou de uma pedra de minério pelo mapa e segure \"colher\" (tecla E no PC).",
+      "quando": "Desde o começo. Os materiais pedem nível de Coleta 1, 5 e 25, conforme o tier.",
       "foto": null,
       "fotoFalta": "herói colhendo uma erva num campo, com a barra de \"Segure: colher\" enchendo",
       "fotoNota": null,
@@ -235,6 +250,7 @@
         "O caderno do Hortelão paga em ouro cada página que você cumpre"
       ],
       "onde": "Na Vila do Poço, atrás do Teleportador, fale com o Hortelão.",
+      "quando": "Desde o começo. Mais parcelas abrem nos níveis de Coleta 5, 10, 25 e 50.",
       "foto": "horta.webp",
       "fotoFalta": null,
       "fotoNota": "provisória (herói de costas e Hortelão com o modelo da Capitã)",
@@ -250,6 +266,7 @@
         "Aba Minhas para cancelar e retirar o que comprou ou vendeu"
       ],
       "onde": "Fale com o Escrivão do Mercado, ao lado de qualquer Teleportador.",
+      "quando": "Em qualquer hub com Teleportador. Online: o multiplayer está em playtest fechado.",
       "foto": null,
       "fotoFalta": "tela do mercado aberta no Escrivão, com as ofertas listadas",
       "fotoNota": null,
@@ -265,6 +282,7 @@
         "Tocar numa constelação investe um ponto nela"
       ],
       "onde": "Abra o painel de atributos e toque no botão Céu.",
+      "quando": "Quando você tiver pontos de atributo para investir.",
       "foto": null,
       "fotoFalta": "tela do Céu com as cinco constelações e algumas estrelas acesas",
       "fotoNota": null,
@@ -280,6 +298,7 @@
         "Cada guilda é uma cadeia de missões com título no fim"
       ],
       "onde": "Fale com os mestres no Acampamento da Estepe, ao lado do Teleportador.",
+      "quando": "Abertas a qualquer reino; os alvos das missões começam por volta do nível 20.",
       "foto": null,
       "fotoFalta": "os três mestres de guilda no Acampamento da Estepe",
       "fotoNota": null,
@@ -295,6 +314,7 @@
         "Bloquear tira a pessoa da lista e corta sussurro e pedido"
       ],
       "onde": "Toque num herói e escolha Adicionar amigo, ou abra Menu > Amigos.",
+      "quando": "Online: o multiplayer está em playtest fechado.",
       "foto": "vila-praca.webp",
       "fotoFalta": null,
       "fotoNota": "ilustrativa: a praça da Vila do Poço",
@@ -310,6 +330,7 @@
         "Vitórias valem conquistas e um título"
       ],
       "onde": "Toque num herói, abra o menu dele e escolha Desafiar pra duelo.",
+      "quando": "Em qualquer nível e em qualquer lugar do mundo aberto. Online: playtest fechado.",
       "foto": null,
       "fotoFalta": "dois heróis dentro do círculo do duelo, com a contagem na tela",
       "fotoNota": null,
@@ -325,6 +346,7 @@
         "Quem está revivendo e apanha perde o progresso"
       ],
       "onde": "Jogue em grupo: o aliado caído é levantado por quem chega perto e toca em Reviver.",
+      "quando": "Só em grupo, online (playtest fechado).",
       "foto": null,
       "fotoFalta": "aliado revivendo outro herói caído, com a barra de progresso",
       "fotoNota": null,
@@ -340,6 +362,7 @@
         "Os andares do Poço abrem com as Provações"
       ],
       "onde": null,
+      "quando": null,
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
@@ -355,6 +378,7 @@
         "Ainda não têm luta própria"
       ],
       "onde": null,
+      "quando": null,
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
@@ -370,6 +394,7 @@
         "Antes dela, escolha o seu lado no juramento"
       ],
       "onde": null,
+      "quando": null,
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
@@ -385,6 +410,7 @@
         "A Gruta e a Provação já mostram como funciona uma cópia só sua"
       ],
       "onde": null,
+      "quando": null,
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
