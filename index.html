@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-modo="luz">
+<html lang="pt-BR" data-modo="sombra">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +37,7 @@
     <span>MMORPG <b>3D</b></span>
   </a>
   <nav class="menu" id="menu" aria-label="Seções">
+    <a href="#vitrine" data-i18n="nav.vitrine">O que tem</a>
     <a href="#historia" data-i18n="nav.story">História</a>
     <a href="#reinos" data-i18n="nav.kingdoms">Reinos</a>
     <a href="#jogo" data-i18n="nav.game">Jogabilidade</a>
@@ -113,6 +114,17 @@
       </div>
     </div>
     <p class="status-nota" id="st-nota" data-i18n="status.note">O multiplayer está em playtest fechado. O jogo inteiro funciona offline, sem conta.</p>
+  </div>
+</section>
+
+<!-- ===================== O QUE TEM NO JOGO (cards de site/data/vitrine.json, gerado dos miniguias) ===================== -->
+<section class="secao luz" id="vitrine" aria-labelledby="vt-titulo">
+  <div class="caixa">
+    <p class="capitulo-num" data-i18n="vt.kicker">Vitrine</p>
+    <h2 id="vt-titulo" data-i18n="vt.title">O que tem no jogo</h2>
+    <p class="lead" data-i18n="vt.lead">O que já dá para jogar hoje, em poucas linhas. O que ainda não está pronto aparece como “em breve”: a gente não vende o que não existe.</p>
+    <div class="vt-grade" id="vt-grade" aria-live="polite"></div>
+    <p class="vt-erro" id="vt-erro" hidden></p>
   </div>
 </section>
 
@@ -355,7 +367,7 @@
         <ol>
           <li data-i18n="t7.a">No nível 20, jure a Aurora ou a Nocturna.</li>
           <li data-i18n="t7.b">Contratos diários sobem a reputação e abrem portas da capital.</li>
-          <li data-i18n="t7.c">Fortalezas trocam de dono na guerra de território semanal.</li>
+          <li data-i18n="t7.c">A guerra de reinos pelas fortalezas ainda não começou: vem aí.</li>
         </ol>
       </details>
       <details class="tutorial">
@@ -367,6 +379,17 @@
         </ol>
       </details>
     </div>
+  </div>
+</section>
+
+<!-- ===================== NOVIDADES (site/data/novidades.json, gerado do CHANGELOG) ===================== -->
+<section class="secao luz alt" id="novidades" aria-labelledby="nv-titulo">
+  <div class="caixa">
+    <p class="capitulo-num" data-i18n="nv.kicker">Novidades</p>
+    <h2 id="nv-titulo" data-i18n="nv.title">O que mudou</h2>
+    <p class="lead" data-i18n="nv.lead">As mudanças mais recentes, direto das notas de versão do jogo.</p>
+    <ol class="nv-lista" id="nv-lista"></ol>
+    <p class="vt-erro" id="nv-erro" hidden></p>
   </div>
 </section>
 

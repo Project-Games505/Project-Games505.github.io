@@ -257,10 +257,12 @@ kbd {
 .ossos-fundo svg { width: min(1100px, 130%); height: auto; }
 .escuro-lanterna {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: radial-gradient(circle 190px at var(--x) var(--y), rgba(13, 12, 20, 0) 0, rgba(13, 12, 20, .35) 55%, rgba(5, 5, 10, .93) 100%);
+  background: radial-gradient(circle var(--raio-luz, 190px) at var(--x) var(--y), rgba(13, 12, 20, 0) 0, rgba(13, 12, 20, .35) 55%, rgba(5, 5, 10, var(--breu, .93)) 100%);
   transition: opacity 1s;
 }
 .cap-dorme.acesa .escuro-lanterna { opacity: 0; }
+/* celular: luz maior e escuro menos fechado, para dar para ler o texto enquanto ela passeia */
+@media (hover: none) { .cap-dorme { --raio-luz: 250px; --breu: .8; } }
 .cap-dorme-txt { position: static; }
 .frase-ossos {
   font: 700 clamp(1.7rem, 4.6vw, 2.9rem)/1.2 var(--serifa-titulo); color: var(--violeta-brilho);
@@ -393,6 +395,41 @@ body::after {
 .tut-num { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--destaque); color: var(--fundo); font-size: .95rem; }
 .tutorial ol { margin: 0; padding: 0 22px 20px 70px; color: var(--texto-suave); font-size: 1.05rem; }
 .tutorial li { margin-bottom: 6px; }
+
+/* ---------- O que tem no jogo e Novidades ---------- */
+.secao.alt { background: var(--fundo-2); }
+.vt-grade { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 36px; }
+@media (min-width: 640px) { .vt-grade { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .vt-grade { grid-template-columns: repeat(3, 1fr); } }
+.vt-sub { grid-column: 1 / -1; margin: 18px 0 0; color: var(--destaque); }
+.vt-card { display: flex; flex-direction: column; background: var(--cartao); border: 1px solid var(--borda); border-radius: var(--raio); box-shadow: var(--sombra-cartao); overflow: hidden; }
+.vt-foto { margin: 0; position: relative; }
+.vt-foto img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+.vt-falta { aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px 18px; background: var(--fundo-2); border-bottom: 1px dashed var(--borda); color: var(--texto-suave); font-size: .95rem; line-height: 1.35; }
+.vt-corpo { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.vt-corpo h3 { margin: 0; font-size: 1.15rem; }
+.vt-gancho { margin: 0; font-style: italic; }
+.vt-topicos { margin: 4px 0 0; padding-left: 1.1em; color: var(--texto-suave); font-size: 1rem; }
+.vt-topicos li { margin-bottom: 4px; }
+/* "Como chegar": fica no pé do card, separado dos tópicos */
+.vt-onde { margin: auto 0 0; padding-top: 10px; border-top: 1px solid var(--borda); font-size: .98rem; color: var(--texto); }
+.vt-onde strong { color: var(--destaque); }
+.vt-selo { align-self: flex-start; font: 600 .72rem/1 var(--serifa-titulo); letter-spacing: .12em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; background: var(--destaque); color: var(--fundo); }
+.vt-foto .vt-selo { position: absolute; left: 10px; top: 10px; }
+.vt-selo-breve { background: transparent; color: var(--destaque); border: 1px solid var(--destaque); }
+.vt-breve { border-style: dashed; box-shadow: none; }
+/* tema Sombra: cards com brilho de lanterna (borda violeta, luz suave) e leve subida ao passar o mouse ou focar */
+.vt-card { transition: transform .25s, box-shadow .25s, border-color .25s; }
+:root[data-modo="sombra"] .vt-card { border-color: #3a3150; background: linear-gradient(180deg, #25213a, var(--cartao)); box-shadow: 0 10px 30px rgba(0,0,0,.5), 0 0 0 1px rgba(155,107,255,.08); }
+:root[data-modo="sombra"] .vt-breve { border-color: #5b4b8a; box-shadow: none; }
+:root[data-modo="sombra"] .nv-item { background: linear-gradient(90deg, rgba(155,107,255,.10), var(--cartao) 45%); }
+@media (hover: hover) { .vt-card:hover { transform: translateY(-3px); } :root[data-modo="sombra"] .vt-card:hover { border-color: var(--violeta); box-shadow: 0 14px 38px rgba(0,0,0,.55), 0 0 26px rgba(155,107,255,.28); } }
+.vt-card:focus-within { border-color: var(--destaque); }
+.vt-erro { margin-top: 24px; color: var(--texto-suave); }
+.nv-lista { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 14px; max-width: 760px; }
+.nv-item { background: var(--cartao); border: 1px solid var(--borda); border-left: 4px solid var(--destaque); border-radius: var(--raio); padding: 14px 18px; }
+.nv-item h3 { margin: 0 0 4px; font-size: 1.1rem; }
+.nv-item p { margin: 0; color: var(--texto-suave); }
 
 /* ---------- Despertar ---------- */
 .despertar { background: radial-gradient(ellipse at 70% 30%, #2a1f45 0, var(--noite) 60%); }

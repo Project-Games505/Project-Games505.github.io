@@ -7,7 +7,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var m = function (k) { return I18N.msg(k); };
-  var estado = { status: null, config: null, precoPago: 0, recusas: 0, classe: 'cavaleiro', acesa: false };
+  var estado = { status: null, config: null, vitrine: null, novidades: null, precoPago: 0, recusas: 0, classe: 'cavaleiro', acesa: false };
 
   function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
@@ -35,7 +35,7 @@
       var novo = document.documentElement.dataset.modo === 'sombra' ? 'luz' : 'sombra';
       aplicarTema(novo); guardar('tema', novo);
     });
-    aplicarTema(document.documentElement.dataset.modo || 'luz');
+    aplicarTema(document.documentElement.dataset.modo || 'sombra');
     I18N.onChange(function () { aplicarTema(document.documentElement.dataset.modo); });
 
     // Lanterna global (tema Sombra, mouse)
@@ -148,20 +148,43 @@
         pendente = false;
       });
     }
-    sec.addEventListener('pointermove', function (e) { mover(e.clientX, e.clientY); }, { passive: true });
-    sec.addEventListener('pointerdown', function (e) { mover(e.clientX, e.clientY); }, { passive: true });
-    // sem mouse: a lanterna vagueia sozinha devagar
+    // mouse e caneta: a luz segue o ponteiro
+    function soPonteiro(e) { if (e.pointerType !== 'touch') mover(e.clientX, e.clientY); }
+    sec.addEventListener('pointermove', soPonteiro, { passive: true });
+    sec.addEventListener('pointerdown', soPonteiro, { passive: true });
+    // celular (sem hover): ninguém precisa tocar. A luz acompanha a rolagem, vagueia sozinha e, se o dedo encostar
+    // ou arrastar, ela vai até ele suavemente e depois volta a vaguear. A rolagem nunca é bloqueada (listeners passivos).
     if (!reduzido && !window.matchMedia('(hover: hover)').matches) {
-      var t0 = performance.now();
-      (function vagar(t) {
-        if (!estado.acesa && !sec.dataset.tocou) {
-          var r = sec.getBoundingClientRect(), s = (t - t0) / 1000;
-          sec.style.setProperty('--x', (r.width * (0.5 + 0.32 * Math.sin(s * 0.5))) + 'px');
-          sec.style.setProperty('--y', (r.height * (0.45 + 0.28 * Math.sin(s * 0.37 + 1))) + 'px');
+      var t0 = performance.now(), atual = null, dedo = null, dedoAte = 0, visivel = false, rodando = false;
+      function dedoEm(e) {
+        var r = sec.getBoundingClientRect(), tc = e.touches[0];
+        if (!tc) return;
+        dedo = { x: tc.clientX - r.left, y: tc.clientY - r.top }; dedoAte = performance.now() + 2600;
+      }
+      sec.addEventListener('touchstart', dedoEm, { passive: true });
+      sec.addEventListener('touchmove', dedoEm, { passive: true });
+      function quadro(agora) {
+        if (!visivel) { rodando = false; return; }
+        if (!estado.acesa) {
+          var r = sec.getBoundingClientRect(), s = (agora - t0) / 1000, vh = window.innerHeight;
+          // progresso da seção pela tela (0 entrando por baixo, 1 saindo por cima): a luz desce com a rolagem
+          var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+          var alvo = {
+            x: r.width * (0.5 + 0.3 * Math.sin(s * 0.5)),
+            y: Math.max(0, -r.top) + vh * (0.3 + 0.14 * Math.sin(s * 0.37 + 1)) + (p - 0.5) * vh * 0.2
+          };
+          if (dedo && agora < dedoAte) alvo = dedo; else dedo = null;
+          if (!atual) atual = { x: alvo.x, y: alvo.y };
+          atual.x += (alvo.x - atual.x) * 0.1; atual.y += (alvo.y - atual.y) * 0.1;
+          sec.style.setProperty('--x', atual.x + 'px'); sec.style.setProperty('--y', atual.y + 'px');
         }
-        requestAnimationFrame(vagar);
-      })(t0);
-      sec.addEventListener('touchstart', function () { sec.dataset.tocou = '1'; }, { passive: true });
+        requestAnimationFrame(quadro);
+      }
+      function ligar() { if (!rodando) { rodando = true; requestAnimationFrame(quadro); } }
+      // só gasta bateria com a seção na tela
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; if (visivel) ligar(); }).observe(sec);
+      } else { visivel = true; ligar(); }
     }
 
     var btnLuz = $('#btn-acender');
@@ -230,6 +253,36 @@
     mapa.addEventListener('touchmove', function (e) { var t = e.touches[0]; limpar(t.clientX, t.clientY); }, { passive: true });
     I18N.onChange(texto);
     texto();
+  }
+
+  /* ---------- Trailer: volume confortável (começa baixo, sobe suave e lembra o que a pessoa escolheu) ---------- */
+  function iniciarVideo() {
+    var v = $('#video-despertar');
+    if (!v) return;
+    var padrao = 0.3, salvo = null;
+    try { salvo = parseFloat(localStorage.getItem('volumeTrailer')); } catch (e) {}
+    var alvo = (salvo >= 0 && salvo <= 1) ? salvo : padrao;
+    v.volume = alvo;
+    var meu = null, primeira = true;   // meu = último volume que o próprio script escreveu (volumechange chega depois, assíncrono)
+    function escrever(x) { meu = x; v.volume = x; }
+    v.addEventListener('play', function () {
+      if (!primeira) return;
+      primeira = false;
+      if (reduzido) return;
+      // entrada suave: do silêncio até o volume escolhido em ~1,2 s
+      var meta = alvo, t0 = Date.now();
+      escrever(0);
+      var timer = setInterval(function () {
+        var k = Math.min(1, (Date.now() - t0) / 1200);
+        escrever(meta * k);
+        if (k >= 1) clearInterval(timer);
+      }, 50);
+    });
+    v.addEventListener('volumechange', function () {
+      if (meu !== null && Math.abs(v.volume - meu) < 0.001) return;   // foi o fade, não a pessoa
+      meu = null; alvo = v.volume;
+      if (!v.muted) guardar('volumeTrailer', String(alvo));
+    });
   }
 
   /* ---------- Despertar: a página treme uma vez ao chegar ---------- */
@@ -337,6 +390,99 @@
     carregarJson('config.json').then(function (c) { estado.config = c; }, function () { estado.config = null; }).then(desenharConfig);
   }
 
+  /* ---------- O que tem no jogo e Novidades (data/vitrine.json e data/novidades.json, gerados por tools/gerar-vitrine.py) ---------- */
+  function el(tag, classe, texto) {
+    var e = document.createElement(tag);
+    if (classe) e.className = classe;
+    if (texto != null) e.textContent = texto;
+    return e;
+  }
+  // Textos só com textContent: o conteúdo vem de arquivo de dados, nunca vira HTML.
+  function cartaoVitrine(c) {
+    // o pt-BR vem do próprio JSON; o inglês está em i18n.js (por id) e ainda é rascunho (I18N.enRevisado)
+    var en = I18N.lang === 'en' ? I18N.vitrineEn(c.id) : null;
+    var titulo = en ? en.t : c.titulo, gancho = en ? en.g : c.gancho, topicos = en ? en.p : c.topicos;
+    var emBreve = c.estado === 'em breve';
+    var card = el('article', 'vt-card' + (emBreve ? ' vt-breve' : ''));
+    card.setAttribute('data-id', c.id);
+    if (c.foto) {
+      var fig = el('figure', 'vt-foto');
+      var img = el('img');
+      img.src = 'img/vitrine/' + c.foto; img.alt = titulo; img.loading = 'lazy'; img.width = 1280; img.height = 720;
+      fig.appendChild(img);
+      if (c.fotoNota) {
+        var rotulo = c.fotoNota.indexOf('provis') === 0 ? m('vtProvisional') : (c.fotoNota.indexOf('ilustr') === 0 ? m('vtIllustrative') : '');
+        var nota = el('figcaption', 'vt-selo', rotulo);
+        if (nota.textContent) fig.appendChild(nota);
+      }
+      card.appendChild(fig);
+    } else if (!emBreve && c.fotoFalta) {
+      // foto que ainda não existe: descreve a cena, nunca inventa imagem
+      var falta = el('div', 'vt-falta');
+      var txt = el('span');
+      txt.appendChild(el('strong', null, m('vtPhoto') + ' '));
+      txt.appendChild(document.createTextNode(en && en.f ? en.f : c.fotoFalta));
+      falta.appendChild(txt);
+      card.appendChild(falta);
+    }
+    var corpo = el('div', 'vt-corpo');
+    if (emBreve) corpo.appendChild(el('span', 'vt-selo vt-selo-breve', m('vtSoon')));
+    corpo.appendChild(el('h3', null, titulo));
+    corpo.appendChild(el('p', 'vt-gancho', gancho));
+    var ul = el('ul', 'vt-topicos');
+    topicos.forEach(function (tp) { ul.appendChild(el('li', null, tp)); });
+    corpo.appendChild(ul);
+    var onde = en && en.o ? en.o : c.onde;
+    if (onde) {
+      var como = el('p', 'vt-onde');
+      como.appendChild(el('strong', null, m('vtWhere') + ' '));
+      como.appendChild(document.createTextNode(onde));
+      corpo.appendChild(como);
+    }
+    card.appendChild(corpo);
+    return card;
+  }
+  function desenharVitrine() {
+    var grade = $('#vt-grade');
+    if (!grade || !estado.vitrine) return;
+    grade.textContent = '';
+    var jaTemSub = false;
+    estado.vitrine.forEach(function (c) {
+      if (c.estado === 'em breve' && !jaTemSub) {
+        jaTemSub = true;
+        grade.appendChild(el('h3', 'vt-sub', m('vtSub')));
+      }
+      grade.appendChild(cartaoVitrine(c));
+    });
+  }
+  function desenharNovidades() {
+    var lista = $('#nv-lista');
+    if (!lista || !estado.novidades) return;
+    lista.textContent = '';
+    estado.novidades.forEach(function (n) {
+      var li = el('li', 'nv-item');
+      li.appendChild(el('h3', null, n.titulo));
+      if (n.resumo) li.appendChild(el('p', null, n.resumo));
+      lista.appendChild(li);
+    });
+  }
+  function secaoIndisponivel(secao, erro) {
+    // sem os dados a seção inteira some (e o texto avisa para quem ainda ler o link direto)
+    var s = $(secao), e = $(erro);
+    if (e) { e.textContent = m('vtError'); e.hidden = false; }
+    if (s && !s.querySelector('.vt-card, .nv-item')) s.hidden = true;
+  }
+  function iniciarVitrine() {
+    I18N.onChange(desenharVitrine);
+    carregarJson('data/vitrine.json')
+      .then(function (d) { estado.vitrine = d.cards || []; desenharVitrine(); },
+            function () { secaoIndisponivel('#vitrine', '#vt-erro'); });
+    I18N.onChange(desenharNovidades);
+    carregarJson('data/novidades.json')
+      .then(function (d) { estado.novidades = d.novidades || []; desenharNovidades(); },
+            function () { secaoIndisponivel('#novidades', '#nv-erro'); });
+  }
+
   /* ---------- Início ---------- */
   I18N.init();
   iniciarTema();
@@ -349,6 +495,8 @@
   iniciarReinos();
   iniciarMapa();
   iniciarDespertar();
+  iniciarVideo();
   iniciarStatus();
   iniciarConfig();
+  iniciarVitrine();
 })();

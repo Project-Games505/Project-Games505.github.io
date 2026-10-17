@@ -1,0 +1,394 @@
+{
+  "cards": [
+    {
+      "id": "juramento",
+      "titulo": "O juramento do nível 20",
+      "gancho": "No nível 20 você escolhe um lado, e a capa ganha a cor do reino.",
+      "topicos": [
+        "Dois emissários esperam no Acampamento da Estepe, ao lado do Teleportador",
+        "Nada é jurado sem confirmar: a pergunta aparece antes",
+        "A escolha é por herói, e a única troca zera a reputação"
+      ],
+      "onde": "Fale com Sir Corwin (Aurora) ou Vesna (Nocturna), no Acampamento da Estepe, a partir do nível 20.",
+      "foto": null,
+      "fotoFalta": "Sir Corwin e Vesna lado a lado no Acampamento da Estepe, com o Teleportador ao fundo",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "capital-aurora",
+      "titulo": "A capital de Aurora",
+      "gancho": "Uma capital de verdade, com salão do trono e o casal real esperando de pé.",
+      "topicos": [
+        "O Rei Aldric e a Rainha Solenne esperam diante dos dois tronos de sol",
+        "Tapete azul, colunas com tochas, estandartes e a mesa de guerra",
+        "Só quem jurou a Aurora entra na própria capital"
+      ],
+      "onde": "Jure a Aurora no nível 20: só quem jurou entra na própria capital.",
+      "foto": "aurora-salao-do-trono.webp",
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "capital-nocturna",
+      "titulo": "A capital de Nocturna",
+      "gancho": "No subterrâneo há uma cidade velada, e quem manda nela está de véu.",
+      "topicos": [
+        "A Senhora Morgaine espera diante do trono de lua crescente",
+        "O Regente Velado, de véu e olhos brilhando, fica ao lado dela",
+        "Tapete violeta, colunas com lanternas lunares e o Poço Lunar do Regente"
+      ],
+      "onde": "Jure a Nocturna no nível 20: só quem jurou entra na própria capital.",
+      "foto": null,
+      "fotoFalta": "salão do trono de Nocturna com a Senhora Morgaine e o Regente Velado (precisa de ponto de câmera feito no Editor)",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "reputacao-e-portoes",
+      "titulo": "Reputação e portões",
+      "gancho": "Quanto mais você serve ao reino, mais portas se abrem, do pátio até o trono.",
+      "topicos": [
+        "Contratos diários do reino pagam reputação",
+        "A porta do salão e a do trono só abrem com a reputação certa",
+        "A corte da cidade baixa tem bênção, casa e recebe doação de material"
+      ],
+      "onde": "Depois do juramento, na sua capital: a corte fica na cidade baixa, e o pátio dos contratos pede ser Honrado.",
+      "foto": "aurora-casal-real.webp",
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "combate",
+      "titulo": "O combate",
+      "gancho": "Esquive no último instante e a ultimate carrega mais rápido.",
+      "topicos": [
+        "Combo de três golpes com espada e arco",
+        "Cada arma tem o seu recurso: Fúria, Foco ou Mana",
+        "A esquiva perfeita enche o medidor da ultimate"
+      ],
+      "onde": "Treine na Ilha do Mestre de Armas, no começo do jogo.",
+      "foto": "heroi-retrato.webp",
+      "fotoFalta": null,
+      "fotoNota": "ilustrativa: retrato do Arqueiro, não mostra combate",
+      "estado": "completo"
+    },
+    {
+      "id": "chefoes",
+      "titulo": "Os chefões",
+      "gancho": "Do tutorial ao fundo do Subterrâneo, cada lugar importante tem um chefe esperando.",
+      "topicos": [
+        "Guardiões do tutorial, da Gruta e do Subterrâneo; Chefe Saqueador na Estepe e Golem de Pedra no Labirinto",
+        "Cada área de caça tem um chefe de elite no fundo",
+        "Em grupo, derrubar o chefe vale para todos que lutaram"
+      ],
+      "onde": "Comece pelo Guardião de Ossos, no tutorial; os outros ficam na Gruta, no Subterrâneo, na Estepe, no Labirinto e nas áreas de caça.",
+      "foto": null,
+      "fotoFalta": "os três guardiões (Ossos, Gruta e Lago) lado a lado, ou um deles em plena luta",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "instancias",
+      "titulo": "As instâncias",
+      "gancho": "Algumas aventuras abrem uma cópia só sua, longe do resto do mundo.",
+      "topicos": [
+        "A Gruta das Raízes abre pelo portal, sozinho ou com o grupo, e cada visita é uma cópia nova",
+        "A arena da Provação é solo: cada jogador tem a sua",
+        "O tutorial acontece numa ilha própria"
+      ],
+      "onde": "A Gruta das Raízes abre por um portal, no fim do Bosque; a Provação, com a Guardiã das Provações, na Vila do Poço.",
+      "foto": null,
+      "fotoFalta": "o portal da Gruta das Raízes, ou a arena solo da Provação",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "gruta-das-raizes",
+      "titulo": "A Gruta das Raízes e o quebra-cabeça",
+      "gancho": "Gire os pilares de runa até a combinação bater e o baú se abre.",
+      "topicos": [
+        "Salas com bandos e armadilhas de espinhos que tremem antes do golpe",
+        "Três pilares que giram e uma inscrição na pedra com a combinação",
+        "É opcional e paga uma vez por herói"
+      ],
+      "onde": "Termine a cadeia da Oda no Refúgio das Corujas; a Capitã da Guarda libera a Gruta, no fim do Bosque.",
+      "foto": "gruta-pilares.webp",
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "guardiao-da-gruta",
+      "titulo": "O Guardião da Gruta",
+      "gancho": "No fundo da Gruta, um guardião de pedra atira rochas e protege a tranca.",
+      "topicos": [
+        "Investida, pedra arremessada e fases na luta",
+        "A porta da arena abre depois de derrubar os guardiões da ala",
+        "Derrubá-lo começa a missão principal"
+      ],
+      "onde": "Fica no fim da Gruta das Raízes, depois da ala do guardião.",
+      "foto": null,
+      "fotoFalta": "Guardião de pedra na arena da Gruta, lançando uma rocha",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "areas-de-caca",
+      "titulo": "As áreas de caça",
+      "gancho": "Cada região tem seus lugares de caça, com placa na entrada e um chefe no fundo.",
+      "topicos": [
+        "Placa com o nome e o nível na entrada",
+        "Um chefe com afixos de elite no fundo, o pico da caça da região",
+        "No Bosque: Clareira dos Ossos, Acampamento das Caçadoras e Túmulo das Corujas"
+      ],
+      "onde": "Procure as placas com nome e nível na entrada das regiões; o Varek, na Estepe, indica a Pedreira.",
+      "foto": null,
+      "fotoFalta": "placa de entrada de uma área de caça (por exemplo a Clareira dos Ossos) com o bando à vista",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "subterraneo",
+      "titulo": "O Subterrâneo",
+      "gancho": "Lá embaixo é breu: só enxerga quem leva a própria luz.",
+      "topicos": [
+        "Tocha comum e Lanterna da Lua: a luz é a sua visão",
+        "Inimigo fora da luz some da tela e do radar",
+        "A Lúmen presa ou libertada muda a luz que você carrega"
+      ],
+      "onde": "A entrada é pela boca do poço; leve luz.",
+      "foto": null,
+      "fotoFalta": "Subterrâneo no escuro, só com a luz do herói (corrigir o material magenta dos altares antes de fotografar)",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "guardiao-do-lago",
+      "titulo": "O Guardião do Lago Escuro",
+      "gancho": "No fundo do Subterrâneo, um dos Antigos canta na água parada e chama bichos que só existem na luz da lua.",
+      "topicos": [
+        "Sonhados que só aparecem para quem leva a Lanterna",
+        "Derrubá-lo sobe a Lanterna da Lua de todo o grupo que lutou",
+        "Volta depois de um tempo e dá loot de chefe"
+      ],
+      "onde": "Fica no fundo norte do Subterrâneo.",
+      "foto": null,
+      "fotoFalta": "o Guardião do Lago na água parada (hoje aparece magenta no build; corrigir o material antes de fotografar)",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "provacoes",
+      "titulo": "As Provações",
+      "gancho": "O nível trava até você vencer a Provação, e cair lá não custa nada.",
+      "topicos": [
+        "O XP continua entrando e fica guardado enquanto isso",
+        "Arena só sua, com tentativas à vontade",
+        "Vencer solta o XP guardado e abre mais andares do Poço sem Fundo"
+      ],
+      "onde": "Fale com a Guardiã das Provações, na praça da Vila do Poço, ao lado do Teleportador.",
+      "foto": null,
+      "fotoFalta": "arena da Provação com o Guardião e a barra de \"XP guardado\" na tela",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "guardiao-de-ossos",
+      "titulo": "O Guardião de Ossos",
+      "gancho": "O primeiro chefe espera na ilha do tutorial, com cena e música.",
+      "topicos": [
+        "Arena na ilha do Mestre de Armas, onde o jogo ensina tudo",
+        "Cutscene e música própria",
+        "No fim do tutorial você batiza o herói e ele vira o da sua conta"
+      ],
+      "onde": "É o fim do tutorial, na Ilha do Mestre de Armas: o primeiro passo do jogo.",
+      "foto": null,
+      "fotoFalta": "arena do Guardião de Ossos na ilha do tutorial (já existe site/img/ilha-boss.webp, fora da pasta vitrine)",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "coleta",
+      "titulo": "Colher ervas e minérios",
+      "gancho": "Chegue perto de uma erva ou de uma pedra, segure, e o material vai direto pra mochila.",
+      "topicos": [
+        "Sem precisar lutar: basta chegar perto e segurar o botão",
+        "Quem chega primeiro leva o material; o grupo por perto ganha experiência de Coleta",
+        "Cada ponto volta depois de um tempo, e as regiões mais longe pedem mais nível de Coleta"
+      ],
+      "onde": "Chegue perto de um arbusto de erva ou de uma pedra de minério pelo mapa e segure \"colher\" (tecla E no PC).",
+      "foto": null,
+      "fotoFalta": "herói colhendo uma erva num campo, com a barra de \"Segure: colher\" enchendo",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "horta",
+      "titulo": "A Horta da vila",
+      "gancho": "A vila tem uma horta só sua, que cresce até com o jogo fechado.",
+      "topicos": [
+        "Plante a semente que o seu nível de Coleta permite e volte para colher",
+        "Cada marco de Coleta abre mais uma parcela",
+        "O caderno do Hortelão paga em ouro cada página que você cumpre"
+      ],
+      "onde": "Na Vila do Poço, atrás do Teleportador, fale com o Hortelão.",
+      "foto": "horta.webp",
+      "fotoFalta": null,
+      "fotoNota": "provisória (herói de costas e Hortelão com o modelo da Capitã)",
+      "estado": "completo"
+    },
+    {
+      "id": "mercado",
+      "titulo": "O mercado entre heróis",
+      "gancho": "Compre e venda entre heróis tocando na tela, no Escrivão ao lado do Teleportador.",
+      "topicos": [
+        "Aba Comprar com as ofertas mais baratas primeiro",
+        "Aba Vender mostra o que você recebe, já descontada a taxa",
+        "Aba Minhas para cancelar e retirar o que comprou ou vendeu"
+      ],
+      "onde": "Fale com o Escrivão do Mercado, ao lado de qualquer Teleportador.",
+      "foto": null,
+      "fotoFalta": "tela do mercado aberta no Escrivão, com as ofertas listadas",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "constelacoes",
+      "titulo": "As constelações",
+      "gancho": "Seus atributos viram constelações: cada ponto investido acende uma estrela.",
+      "topicos": [
+        "Botão Céu no painel de atributos",
+        "O Touro, A Raposa, A Coruja, A Montanha e A Lanterna",
+        "Tocar numa constelação investe um ponto nela"
+      ],
+      "onde": "Abra o painel de atributos e toque no botão Céu.",
+      "foto": null,
+      "fotoFalta": "tela do Céu com as cinco constelações e algumas estrelas acesas",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "guildas",
+      "titulo": "As guildas",
+      "gancho": "Três guildas aceitam qualquer um, e cada uma termina com um título.",
+      "topicos": [
+        "Irmandade da Lâmina, Mão Velada e Círculo Arcano",
+        "Os mestres ficam no Acampamento da Estepe, ao lado do Teleportador",
+        "Cada guilda é uma cadeia de missões com título no fim"
+      ],
+      "onde": "Fale com os mestres no Acampamento da Estepe, ao lado do Teleportador.",
+      "foto": null,
+      "fotoFalta": "os três mestres de guilda no Acampamento da Estepe",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "amigos-e-sussurro",
+      "titulo": "Amigos e sussurro",
+      "gancho": "Adicione amigos, veja quem está no jogo e sussurre só pra ele.",
+      "topicos": [
+        "A lista mostra quem está no jogo agora e em que região",
+        "/s Nome mensagem sussurra, /r responde a quem sussurrou por último",
+        "Bloquear tira a pessoa da lista e corta sussurro e pedido"
+      ],
+      "onde": "Toque num herói e escolha Adicionar amigo, ou abra Menu > Amigos.",
+      "foto": "vila-praca.webp",
+      "fotoFalta": null,
+      "fotoNota": "ilustrativa: a praça da Vila do Poço",
+      "estado": "completo"
+    },
+    {
+      "id": "duelo",
+      "titulo": "O duelo",
+      "gancho": "Desafie outro herói pra um duelo em que ninguém perde nada.",
+      "topicos": [
+        "Um círculo no chão e uma contagem regressiva",
+        "Ninguém morre: no fim todo mundo volta com a vida que tinha",
+        "Vitórias valem conquistas e um título"
+      ],
+      "onde": "Toque num herói, abra o menu dele e escolha Desafiar pra duelo.",
+      "foto": null,
+      "fotoFalta": "dois heróis dentro do círculo do duelo, com a contagem na tela",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "reviver-em-grupo",
+      "titulo": "Reviver em grupo",
+      "gancho": "Caiu jogando em grupo? Um amigo te levanta ali mesmo.",
+      "topicos": [
+        "O aliado chega perto, toca em Reviver e segura",
+        "A tela de morte mostra quanto tempo o grupo ainda tem",
+        "Quem está revivendo e apanha perde o progresso"
+      ],
+      "onde": "Jogue em grupo: o aliado caído é levantado por quem chega perto e toca em Reviver.",
+      "foto": null,
+      "fotoFalta": "aliado revivendo outro herói caído, com a barra de progresso",
+      "fotoNota": null,
+      "estado": "completo"
+    },
+    {
+      "id": "chefe-do-poco",
+      "titulo": "O chefe do Poço sem Fundo",
+      "gancho": "O Poço sem Fundo vai ganhar um chefe à altura.",
+      "topicos": [
+        "Hoje só existe o modelo e o nível",
+        "Ainda não há luta",
+        "Os andares do Poço abrem com as Provações"
+      ],
+      "onde": null,
+      "foto": null,
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "em breve"
+    },
+    {
+      "id": "chefes-de-regiao",
+      "titulo": "Os chefes das regiões",
+      "gancho": "Os chefes das regiões já têm cara e nível; a luta vem aí.",
+      "topicos": [
+        "Rei-Múmia, Colosso de Gelo, Senhor das Cinzas, Titã de Magma e Lich",
+        "Hoje só existem como modelo e nível",
+        "Ainda não têm luta própria"
+      ],
+      "onde": null,
+      "foto": null,
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "em breve"
+    },
+    {
+      "id": "guerra-de-reinos",
+      "titulo": "A guerra de reinos",
+      "gancho": "Aurora e Nocturna vão disputar fortalezas, mas a guerra ainda não começou.",
+      "topicos": [
+        "Hoje só existe a base no código",
+        "Ainda não há guerra para jogar",
+        "Antes dela, escolha o seu lado no juramento"
+      ],
+      "onde": null,
+      "foto": null,
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "em breve"
+    },
+    {
+      "id": "mini-instancias",
+      "titulo": "As mini-instâncias",
+      "gancho": "Masmorras curtas, para jogar em poucos minutos, estão no plano.",
+      "topicos": [
+        "Hoje só existe o plano aprovado",
+        "Ainda não há masmorra curta para jogar",
+        "A Gruta e a Provação já mostram como funciona uma cópia só sua"
+      ],
+      "onde": null,
+      "foto": null,
+      "fotoFalta": null,
+      "fotoNota": null,
+      "estado": "em breve"
+    }
+  ]
+}
