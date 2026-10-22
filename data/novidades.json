@@ -1,6 +1,10 @@
 {
   "novidades": [
     {
+      "titulo": "Os últimos livros do mundo, e as Técnicas ensinam de verdade",
+      "resumo": "Os cinco livros que faltavam já podem ser achados: a Técnica da Espada no Fortim da Geada, a do Arco no Oásis, a do Cajado na Necrópole, Os…"
+    },
+    {
       "titulo": "Capitais sem buraco nas paredes e com os brasões dos reinos",
       "resumo": "Os cantos das muralhas das capitais fecharam e as portas entre as alas viraram passagens na própria muralha"
     },
@@ -27,10 +31,6 @@
     {
       "titulo": "A Senhora Morgaine e o Regente Velado no salão do trono de Nocturna",
       "resumo": "O salão do trono de Nocturna ficou do tamanho do de Aurora e ganhou a corte: a Senhora Morgaine espera diante do trono de lua crescente e o…"
-    },
-    {
-      "titulo": "A besta agora vai nas duas mãos",
-      "resumo": "Quem empunha a besta segura com as duas mãos, atravessada no corpo: a coronha na mão da arma e a outra mão apoiando a frente, parado ou and…"
     }
   ]
 }
