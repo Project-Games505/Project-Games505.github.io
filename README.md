@@ -1,6 +1,6 @@
 # Site do MMORPG 3D
 
-Landing page pública (pt-BR e EN): status do servidor, história sem spoiler, reinos, classes, o que tem no jogo, tutoriais, novidades,
+Landing page pública (pt-BR e EN): status do servidor, história sem spoiler, reinos, classes, o que tem no jogo, tutoriais, ranking do playtest, novidades,
 o Despertar, downloads e contato. Plano e decisões em [../docs/PLANO_LANDING_PAGE.md](../docs/PLANO_LANDING_PAGE.md).
 
 HTML + CSS + JS puro, sem build. Publicado pelo GitHub Pages no repo público
@@ -48,6 +48,14 @@ Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos
 **Padrão:** o tema é a Sombra (escolha salva em `localStorage` vale depois). **Trailer:** volume inicial 30 %, entra com fade de ~1,2 s e o volume escolhido pela pessoa fica salvo (`volumeTrailer`).
 
 **Cache:** `index.html` chama `css/style.css`, `js/i18n.js` e `js/main.js` com `?v=AAAAMMDDx`. Ao mudar qualquer um desses três, troque o `v` (o Pages deixa o navegador guardar os arquivos por ~10 min e a página nova ficava com script velho).
+
+## Ranking do playtest
+
+- `data/ranking.json` é **gerado, não se edita à mão**: `.\tools\gerar-ranking-site.ps1 [-Api <AccountService>] [-ServiceKey <chave>] [-Top 20]`
+  lê `GET /leaderboard/site` (X-Service-Key) e grava só nome do herói, classe, nível e Ascendido — sem login, e-mail, conta nem
+  contas de teste (ADR-55). O site não chama a API (ela fica na tailnet); publique o site depois de gerar.
+- JSON vazio mostra "Ninguém no ranking ainda"; sem o arquivo, "O ranking não carregou agora". Textos em `MSG.pt/en` (`rk*`) e `EN` (`rk.*`).
+- Mapa completo (offline × online × site × contas de teste): [../docs/RANKING.md](../docs/RANKING.md).
 
 ## Textos e idiomas
 

@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261017c">
+<link rel="stylesheet" href="css/style.css?v=20261024r">
 <script>
   // tema e idioma antes do primeiro desenho (evita piscar)
   (function () {
@@ -42,6 +42,7 @@
     <a href="#reinos" data-i18n="nav.kingdoms">Reinos</a>
     <a href="#jogo" data-i18n="nav.game">Jogabilidade</a>
     <a href="#tutoriais" data-i18n="nav.tutorials">Tutoriais</a>
+    <a href="#ranking" data-i18n="nav.ranking">Ranking</a>
     <a href="#despertar" data-i18n="nav.awakening">O Despertar</a>
     <a href="#baixar" data-i18n="nav.download">Baixar</a>
     <a href="#contato" data-i18n="nav.contact">Contato</a>
@@ -393,6 +394,23 @@
   </div>
 </section>
 
+<!-- ===================== RANKING DO PLAYTEST (site/data/ranking.json, gerado por tools/gerar-ranking-site.ps1) ===================== -->
+<section class="secao luz" id="ranking" aria-labelledby="rk-titulo">
+  <div class="caixa">
+    <p class="capitulo-num" data-i18n="rk.kicker">Playtest</p>
+    <h2 id="rk-titulo" data-i18n="rk.title">Ranking do playtest</h2>
+    <p class="lead" data-i18n="rk.lead">Os heróis mais fortes do servidor de teste, por nível. Mesmo ranking do jogo, sem contas de teste do time.</p>
+    <div class="rk-moldura">
+      <table class="rk-tabela" id="rk-tabela" hidden>
+        <thead><tr><th scope="col">#</th><th scope="col" data-i18n="rk.hero">Herói</th><th scope="col" data-i18n="rk.class">Classe</th><th scope="col" data-i18n="rk.level">Nível</th></tr></thead>
+        <tbody id="rk-corpo"></tbody>
+      </table>
+      <p class="rk-vazio" id="rk-vazio" hidden></p>
+    </div>
+    <p class="rk-nota" id="rk-nota"></p>
+  </div>
+</section>
+
 <!-- ===================== O DESPERTAR (SOMBRA) ===================== -->
 <section class="secao sombra despertar" id="despertar" aria-labelledby="desp-titulo">
   <div class="caixa duas-colunas">
@@ -499,7 +517,7 @@
   </defs>
 </svg>
 
-<script src="js/i18n.js?v=20261017c"></script>
-<script src="js/main.js?v=20261017c"></script>
+<script src="js/i18n.js?v=20261024r"></script>
+<script src="js/main.js?v=20261024r"></script>
 </body>
 </html>

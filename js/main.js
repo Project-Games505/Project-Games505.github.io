@@ -471,6 +471,43 @@
       lista.appendChild(li);
     });
   }
+  /* ---------- Ranking do playtest (data/ranking.json, gerado por tools/gerar-ranking-site.ps1) ---------- */
+  var CLASSES_RK = ['cavaleiro', 'patrulheiro', 'mago', 'barbaro', 'ladino'];
+  function desenharRanking() {
+    var corpo = $('#rk-corpo'), tabela = $('#rk-tabela'), vazio = $('#rk-vazio'), nota = $('#rk-nota');
+    if (!corpo) return;
+    var r = estado.ranking;
+    corpo.textContent = '';
+    if (r === 'erro') {
+      tabela.hidden = true; vazio.hidden = false; vazio.textContent = m('rkError'); nota.textContent = '';
+      return;
+    }
+    if (!r) return;
+    var linhas = r.entries || [];
+    tabela.hidden = linhas.length === 0;
+    vazio.hidden = linhas.length !== 0;
+    if (!linhas.length) vazio.textContent = m('rkEmpty');
+    var nomes = m('classes');
+    linhas.forEach(function (e) {
+      var tr = document.createElement('tr');
+      tr.appendChild(el('td', 'rk-pos', String(e.rank)));
+      var nome = el('td', 'rk-nome', e.displayName);
+      if (e.ascended) nome.appendChild(el('span', 'rk-selo', m('rkAscended')));
+      tr.appendChild(nome);
+      var chave = CLASSES_RK[e.characterClass];
+      tr.appendChild(el('td', 'rk-classe', chave && nomes[chave] ? nomes[chave][0] : m('rkNoClass')));
+      tr.appendChild(el('td', 'rk-nivel', String(e.level)));
+      corpo.appendChild(tr);
+    });
+    var d = r.generatedAt ? new Date(r.generatedAt) : NaN;
+    nota.textContent = isNaN(d) ? '' : m('rkUpdated') + d.toLocaleString(I18N.lang === 'en' ? 'en-GB' : 'pt-BR', { dateStyle: 'medium', timeStyle: 'short' }) + ' · ' + (r.totalCount || 0) + m('rkTotal');
+  }
+  function iniciarRanking() {
+    I18N.onChange(desenharRanking);
+    carregarJson('data/ranking.json')
+      .then(function (d) { estado.ranking = d || {}; desenharRanking(); },
+            function () { estado.ranking = 'erro'; desenharRanking(); });
+  }
   function secaoIndisponivel(secao, erro) {
     // sem os dados a seção inteira some (e o texto avisa para quem ainda ler o link direto)
     var s = $(secao), e = $(erro);
@@ -504,4 +541,5 @@
   iniciarStatus();
   iniciarConfig();
   iniciarVitrine();
+  iniciarRanking();
 })();

@@ -427,6 +427,18 @@ body::after {
 @media (hover: hover) { .vt-card:hover { transform: translateY(-3px); } :root[data-modo="sombra"] .vt-card:hover { border-color: var(--violeta); box-shadow: 0 14px 38px rgba(0,0,0,.55), 0 0 26px rgba(155,107,255,.28); } }
 .vt-card:focus-within { border-color: var(--destaque); }
 .vt-erro { margin-top: 24px; color: var(--texto-suave); }
+/* Ranking do playtest */
+.rk-moldura { margin-top: 28px; max-width: 760px; overflow-x: auto; }
+.rk-tabela { width: 100%; border-collapse: collapse; background: var(--cartao); border: 1px solid var(--borda); border-radius: var(--raio); overflow: hidden; }
+.rk-tabela th, .rk-tabela td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--borda); }
+.rk-tabela th { font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--texto-suave); }
+.rk-tabela tbody tr:last-child td { border-bottom: 0; }
+.rk-tabela tbody tr:nth-child(-n+3) .rk-pos { color: var(--destaque); font-weight: 700; }
+.rk-pos, .rk-nivel { width: 4.5em; font-variant-numeric: tabular-nums; }
+.rk-nome { overflow-wrap: anywhere; }
+.rk-selo { margin-left: 8px; padding: 1px 8px; border-radius: 999px; font-size: .75rem; border: 1px solid var(--destaque); color: var(--destaque); }
+.rk-vazio { margin: 0; padding: 18px; background: var(--cartao); border: 1px dashed var(--borda); border-radius: var(--raio); color: var(--texto-suave); }
+.rk-nota { margin-top: 10px; font-size: .9rem; color: var(--texto-suave); }
 .nv-lista { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 14px; max-width: 760px; }
 .nv-item { background: var(--cartao); border: 1px solid var(--borda); border-left: 4px solid var(--destaque); border-radius: var(--raio); padding: 14px 18px; }
 .nv-item h3 { margin: 0 0 4px; font-size: 1.1rem; }

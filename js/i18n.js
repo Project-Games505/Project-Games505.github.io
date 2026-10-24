@@ -100,6 +100,10 @@
 
     'vt.kicker': 'Showcase', 'vt.title': 'What’s inside the game',
     'vt.lead': 'What is ready to play today, in a few lines. What is not ready yet says “coming soon” — we do not sell what does not exist.',
+    'nav.ranking': 'Leaderboard',
+    'rk.kicker': 'Playtest', 'rk.title': 'Playtest leaderboard',
+    'rk.lead': 'The strongest heroes on the test server, by level. Same leaderboard as in the game, without the team’s test accounts.',
+    'rk.hero': 'Hero', 'rk.class': 'Class', 'rk.level': 'Level',
     'nv.kicker': 'News', 'nv.title': 'What’s new',
     'nv.lead': 'The latest changes, straight from the game’s change log (written in Portuguese).',
 
@@ -131,6 +135,8 @@
       seloPlaytest: 'Playtest fechado · modo offline liberado', seloOnline: 'Servidor online', seloOffline: 'Servidor em manutenção',
       seloUnknown: 'Sem notícia do servidor', updated: 'Atualizado em ',
       playersHidden: 'só no playtest',
+      rkEmpty: 'Ninguém no ranking ainda. Seja o primeiro herói do playtest.', rkError: 'O ranking não carregou agora. Tente de novo mais tarde.',
+      rkUpdated: 'Atualizado em ', rkTotal: ' heróis no total.', rkAscended: 'Ascendido', rkNoClass: '—',
       refusals: ['Não diga. Dizer é o que acorda.', 'A tarja não sai. Nem deve.', 'Quem leu esse nome não voltou para contar.', 'Só no fim da história. Lá embaixo.'],
       grimoire1: 'Preço pago: 1 ano da sua vida.', grimoireN: 'Preço pago: {n} anos da sua vida. O Grimório agradece.',
       grimoireClose: 'Fechar o Grimório', grimoireOpen: 'Abrir o Grimório',
@@ -153,6 +159,8 @@
       seloPlaytest: 'Closed playtest · offline mode open', seloOnline: 'Server online', seloOffline: 'Server under maintenance',
       seloUnknown: 'No word from the server', updated: 'Updated ',
       playersHidden: 'playtest only',
+      rkEmpty: 'No one on the leaderboard yet. Be the first playtest hero.', rkError: 'The leaderboard did not load right now. Try again later.',
+      rkUpdated: 'Updated ', rkTotal: ' heroes in total.', rkAscended: 'Ascended', rkNoClass: '—',
       refusals: ['Do not say it. Saying it is what wakes it.', 'The bar will not come off. Nor should it.', 'Whoever read that name never came back to tell.', 'Only at the end of the story. Down there.'],
       grimoire1: 'Price paid: 1 year of your life.', grimoireN: 'Price paid: {n} years of your life. The Grimoire thanks you.',
       grimoireClose: 'Close the Grimoire', grimoireOpen: 'Open the Grimoire',

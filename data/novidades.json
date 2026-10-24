@@ -1,36 +1,36 @@
 {
   "novidades": [
     {
-      "titulo": "Os últimos livros do mundo, e as Técnicas ensinam de verdade",
-      "resumo": "Os cinco livros que faltavam já podem ser achados: a Técnica da Espada no Fortim da Geada, a do Arco no Oásis, a do Cajado na Necrópole, Os…"
+      "titulo": "Ranking organizado: Mundo, Amigos e Neste aparelho",
+      "resumo": "O ranking agora tem abas: Mundo com todos os jogadores do playtest, Amigos com você e quem é seu amigo, e, no modo offline, Neste aparelho…"
     },
     {
-      "titulo": "Capitais sem buraco nas paredes e com os brasões dos reinos",
-      "resumo": "Os cantos das muralhas das capitais fecharam e as portas entre as alas viraram passagens na própria muralha"
+      "titulo": "Maestria da arma sem teto e com dano de verdade",
+      "resumo": "A maestria da arma não para mais no 10: ela sobe até o nível do seu herói, e cada nível agora aumenta o dano dos seus golpes de verdade (+1…"
     },
     {
-      "titulo": "Chat no celular: dá pra ver o que você digita",
-      "resumo": "Ao tocar em Chat no celular, a barra de digitação agora sobe acima do teclado e mostra o texto enquanto você escreve (antes o teclado cobri…"
+      "titulo": "O Grimório continua a canção",
+      "resumo": "Depois de Sëha, o Grimório da Gruta escreve mais três capítulos da missão principal: o Rei-Múmia das Dunas e a palavra Olvë no mesmo muro d…"
     },
     {
-      "titulo": "Juramento e Constelações arrumados no PC e no tablet",
-      "resumo": "No PC e no tablet, o título do juramento ao reino agora cabe na faixa do topo e o céu das Constelações ficou legível: o nome e as estrelas…"
+      "titulo": "Lojas, bancada, mercado, baú e Mestre de Armas com cara própria",
+      "resumo": "Cada estação agora tem selo, cor e ícone próprios no topo da janela — frasco verde da Loja, bigorna da Bancada, balança azul do Mercado, ba…"
     },
     {
-      "titulo": "Joystick na mesma escala do resto da tela",
-      "resumo": "O joystick de andar agora segue a mesma escala dos botões e da HUD e respeita o entalhe da câmera e as bordas arredondadas do celular"
+      "titulo": "Drop raro brilha e toca",
+      "resumo": "Item Raro ou Épico que cai pra você agora solta um feixe de luz na cor da raridade, mostra \"Item Raro!\"/\"Item Épico!\" com o nome no meio da…"
     },
     {
-      "titulo": "O Hortelão ensina a colher e a plantar",
-      "resumo": "Um Hortelão novo, perto da horta da vila, ensina a colher e a plantar: ele guarda um caderno de quatro páginas e paga em ouro cada uma que…"
+      "titulo": "Receitas, encomendas e coleta mais justas",
+      "resumo": "Forjar no grau 2 agora também pede Minério de Cobre, a vila faz 4 encomendas por dia e pede um pouco mais de cada material, e cada erva ou…"
     },
     {
-      "titulo": "Uma horta só sua na Vila do Poço",
-      "resumo": "Atrás do Teleportador da vila agora há uma horta com 4 parcelas: escolha a semente, pague ao Hortelão e volte depois para colher 2 a 4 ervas"
+      "titulo": "Consertar arma de grau 2+ pede osso",
+      "resumo": "Consertar uma arma de grau 2, 3 ou 4 agora custa, além do ouro, 1 osso do mesmo grau dela — o mesmo que a forja usa"
     },
     {
-      "titulo": "A Senhora Morgaine e o Regente Velado no salão do trono de Nocturna",
-      "resumo": "O salão do trono de Nocturna ficou do tamanho do de Aurora e ganhou a corte: a Senhora Morgaine espera diante do trono de lua crescente e o…"
+      "titulo": "Bênção do Trono na capital do seu reino",
+      "resumo": "Entrar no salão da capital do seu reino (Reverenciado) dá +10 % de XP de abate por 1 hora, e a audiência do trono (Exaltado) sobe pra +15 %…"
     }
   ]
 }
