@@ -7,7 +7,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var m = function (k) { return I18N.msg(k); };
-  var estado = { status: null, config: null, vitrine: null, novidades: null, precoPago: 0, recusas: 0, classe: 'cavaleiro', acesa: false };
+  var estado = { status: null, config: null, vitrine: null, novidades: null, wiki: null, vivo: null, precoPago: 0, recusas: 0, classe: 'cavaleiro', acesa: false };
 
   function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
@@ -334,7 +334,7 @@
     function buscar() {
       carregarJson('status.json')
         .then(function (s) { estado.status = s; }, function () { estado.status = null; })
-        .then(desenharStatus);
+        .then(desenharStatus).then(function () { if (!estado.vivo && estado.ranking !== undefined) desenharContador(); });
     }
     I18N.onChange(desenharStatus);
     buscar();
@@ -372,6 +372,14 @@
       btn.href = '#contato'; btn.setAttribute('aria-disabled', 'true');
       txt.textContent = I18N.lang === 'en' ? I18N.enText('ct.soon') : I18N.ptText('ct.soon');
     }
+    // "Minha conta" (/conta/ do AccountService): conta.url; sem ela, a mesma origem do formulário de exclusão.
+    var contaUrl = urlDaConta(c);
+    [['#nav-conta', '#nav-conta'], ['#rodape-conta', '#rodape-conta-link']].forEach(function (par) {
+      var caixa = $(par[0]), link = $(par[1]);
+      if (!caixa || !link) return;
+      caixa.hidden = !contaUrl;
+      if (contaUrl) link.href = contaUrl;
+    });
     if (c.contato && c.contato.discord) {
       var p = $('.contato-discord');
       p.innerHTML = '';
@@ -380,6 +388,14 @@
       p.appendChild(link);
     }
   }
+  function urlDaConta(c) {
+    var conta = c.conta || {};
+    if (typeof conta.url === 'string' && /^https:\/\//.test(conta.url)) return conta.url;
+    if (typeof conta.exclusaoUrl === 'string' && /^https:\/\//.test(conta.exclusaoUrl)) {
+      try { return new URL(conta.exclusaoUrl).origin + '/conta/'; } catch (e) { return ''; }
+    }
+    return '';
+  }
   function iniciarConfig() {
     var meu = sistema();
     if (meu) { var card = $('.download[data-os="' + meu + '"]'); if (card) card.classList.add('recomendado'); }
@@ -387,7 +403,24 @@
       a.addEventListener('click', function (e) { if (a.getAttribute('aria-disabled') === 'true' && a.id === 'btn-email') e.preventDefault(); });
     });
     I18N.onChange(desenharConfig);
-    carregarJson('config.json').then(function (c) { estado.config = c; }, function () { estado.config = null; }).then(desenharConfig);
+    configPronta = carregarJson('config.json').then(function (c) { estado.config = c; }, function () { estado.config = null; });
+    configPronta.then(desenharConfig);
+  }
+
+  /* ---------- API pública do AccountService (config.json → api.url): notícias e wiki do painel ---------- */
+  var configPronta = Promise.resolve();
+  // Endereço https do AccountService público, sem barra no fim. Vazio = o site fica só com os JSON estáticos.
+  function apiUrl() {
+    var u = estado.config && estado.config.api && estado.config.api.url;
+    // https sempre; http só para localhost (teste local com o AccountService em dotnet run).
+    return typeof u === 'string' && /^(https:\/\/|http:\/\/localhost(:\d+)?(\/|$))/.test(u) ? u.replace(/\/+$/, '') : '';
+  }
+  function carregarApi(caminho) {
+    // Sem cache-buster: o AccountService responde com Cache-Control de 1 min, que o navegador pode usar.
+    return fetch(apiUrl() + caminho, { mode: 'cors', credentials: 'omit' }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    });
   }
 
   /* ---------- O que tem no jogo e Novidades (data/vitrine.json e data/novidades.json, gerados por tools/gerar-vitrine.py) ---------- */
@@ -504,9 +537,183 @@
   }
   function iniciarRanking() {
     I18N.onChange(desenharRanking);
-    carregarJson('data/ranking.json')
-      .then(function (d) { estado.ranking = d || {}; desenharRanking(); },
-            function () { estado.ranking = 'erro'; desenharRanking(); });
+    I18N.onChange(desenharFlutuante);
+    // GET /ranking do AccountService quando há api.url (ao vivo, cache de 30 s); sem ela, ou com a API fora, o
+    // data/ranking.json gerado pelo tools/gerar-ranking-site.ps1, como antes. A mesma resposta alimenta a tabela, a
+    // faixa fixa do top 5 e, sem /stats/live, o contador do hero.
+    function doArquivo() { return carregarJson('data/ranking.json'); }
+    configPronta
+      .then(function () { return apiUrl() ? carregarApi('/ranking?top=20').catch(doArquivo) : doArquivo(); })
+      .then(function (d) { estado.ranking = d || {}; }, function () { estado.ranking = 'erro'; })
+      .then(function () { desenharRanking(); desenharFlutuante(); desenharContador(); });
+  }
+
+  /* ---------- Faixa fixa: top 5 sempre à vista + CTA "Baixar o jogo" que acompanha a rolagem ---------- */
+  function desenharFlutuante() {
+    var caixa = $('#fl-ranking'), lista = $('#fl-top5'), lider = $('#fl-lider');
+    var r = estado.ranking;
+    if (!caixa || !r || r === 'erro' || !(r.entries || []).length) { if (caixa) caixa.hidden = true; return; }
+    lista.textContent = '';
+    r.entries.slice(0, 5).forEach(function (e) {
+      var li = el('li');
+      li.appendChild(el('span', 'fl-nome', e.displayName));
+      li.appendChild(el('span', 'fl-nv', (I18N.lang === 'en' ? 'lv ' : 'nv ') + e.level));
+      lista.appendChild(li);
+    });
+    lider.textContent = '1º ' + r.entries[0].displayName;
+    caixa.hidden = false;
+  }
+  function iniciarFlutuante() {
+    var fl = $('#flutuante'), caixa = $('#fl-ranking'), btn = $('#fl-abrir');
+    if (!fl) return;
+    var celular = window.matchMedia('(max-width: 760px)');
+    function aberto() { return celular.matches ? caixa.classList.contains('aberto') : !caixa.classList.contains('recolhido'); }
+    function marcar() { btn.setAttribute('aria-expanded', String(aberto())); }
+    btn.addEventListener('click', function () {
+      if (celular.matches) caixa.classList.toggle('aberto'); else caixa.classList.toggle('recolhido');
+      marcar();
+    });
+    // No celular a lista abre por cima da página: fecha ao tocar num link dela ou fora.
+    $$('#fl-lista a').forEach(function (a) { a.addEventListener('click', function () { caixa.classList.remove('aberto'); marcar(); }); });
+    document.addEventListener('click', function (e) { if (celular.matches && !caixa.contains(e.target)) { caixa.classList.remove('aberto'); marcar(); } });
+    if (celular.addEventListener) celular.addEventListener('change', marcar);
+    marcar();
+    // O CTA flutuante some enquanto um "Baixar" de verdade está na tela (botões do hero ou a seção #baixar).
+    if (!('IntersectionObserver' in window)) return;
+    var vendo = {};
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { vendo[e.target.id || 'hero'] = e.isIntersecting; });
+      fl.classList.toggle('sem-cta', !!(vendo.hero || vendo.baixar));
+    });
+    var acoes = $('.hero-acoes'), baixar = $('#baixar');
+    if (acoes) io.observe(acoes);
+    if (baixar) io.observe(baixar);
+  }
+
+  /* ---------- Contador animado do hero (GET /stats/live; reserva: ranking e status.json) ---------- */
+  function contar(dd, alvo) {
+    var de = Number(dd.getAttribute('data-contar')) || 0;
+    dd.setAttribute('data-contar', String(alvo));
+    var fmt = function (v) { return Math.round(v).toLocaleString(I18N.lang === 'en' ? 'en-GB' : 'pt-BR'); };
+    if (reduzido || de === alvo) { dd.textContent = fmt(alvo); return; }
+    var t0 = null, dur = 1400;
+    function passo(t) {
+      if (t0 === null) t0 = t;
+      var k = Math.min(1, (t - t0) / dur), suave = 1 - Math.pow(1 - k, 3);
+      dd.textContent = fmt(de + (alvo - de) * suave);
+      if (k < 1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+  function desenharContador() {
+    var vivo = estado.vivo, r = estado.ranking && estado.ranking !== 'erro' ? estado.ranking : null, st = estado.status;
+    var valores = {
+      online: vivo ? (vivo.serverOnline && typeof vivo.onlineNow === 'number' ? vivo.onlineNow : null)
+                   : (st && st.estado === 'online' && typeof st.jogadoresOnline === 'number' ? st.jogadoresOnline : null),
+      ativos: vivo && vivo.activeLast24h > 0 ? vivo.activeLast24h : null,
+      herois: vivo ? vivo.heroesTotal : (r ? r.totalCount : null),
+      nivel: vivo ? vivo.highestLevel : (r && r.entries && r.entries.length ? r.entries[0].level : null)
+    };
+    var algum = false;
+    Object.keys(valores).forEach(function (k) {
+      var item = $('#hc-' + k), v = valores[k];
+      if (!item) return;
+      var tem = typeof v === 'number' && v > 0;
+      item.hidden = !tem;
+      if (tem) { algum = true; contar(item.querySelector('dd'), v); }
+    });
+    $('#hero-contador').hidden = !algum;
+  }
+  function iniciarContador() {
+    function buscar() {
+      if (!apiUrl()) { desenharContador(); return; }
+      carregarApi('/stats/live').then(function (v) { estado.vivo = v; }, function () { estado.vivo = null; }).then(desenharContador);
+    }
+    configPronta.then(function () {
+      buscar();
+      setInterval(function () { if (!document.hidden) buscar(); }, 60000);
+    });
+  }
+
+  /* ---------- Vitrine: inclinação com o mouse e parallax da foto ---------- */
+  function iniciarVitrineViva() {
+    var grade = $('#vt-grade');
+    if (!grade || reduzido) return;
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      grade.addEventListener('pointermove', function (e) {
+        var card = e.target.closest && e.target.closest('.vt-card');
+        if (!card) return;
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.classList.add('tilt');
+        card.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
+      });
+      grade.addEventListener('pointerout', function (e) {
+        var card = e.target.closest && e.target.closest('.vt-card');
+        if (card && !card.contains(e.relatedTarget)) { card.classList.remove('tilt'); card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); }
+      });
+    }
+    var pendente = false;
+    function mover() {
+      pendente = false;
+      var meio = window.innerHeight / 2;
+      $$('.vt-foto img', grade).forEach(function (img) {
+        var r = img.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var d = (r.top + r.height / 2 - meio) * -0.05;
+        img.style.setProperty('--parallax', Math.max(-14, Math.min(14, d)).toFixed(1) + 'px');
+      });
+    }
+    window.addEventListener('scroll', function () { if (!pendente) { pendente = true; requestAnimationFrame(mover); } }, { passive: true });
+  }
+
+  /* ---------- Fragmentos do Grimório: quanto mais se lê (rola), mais trechos da história se revelam ---------- */
+  // Sem conta: o progresso fica no aparelho (localStorage). Um fragmento a cada marco de rolagem; o trecho tem link
+  // para a página da wiki correspondente quando a wiki (GET /wiki) carregou.
+  var FRAG_MARCOS = [0.12, 0.26, 0.4, 0.54, 0.68, 0.82];
+  var FRAG_WIKI = ['a-idade-das-asas', 'a-idade-das-asas', 'a-idade-das-asas', 'a-vila-do-poco', 'os-reinos', 'o-despertar'];
+  function iniciarFragmentos() {
+    var barra = $('#fragmentos-barra'), aviso = $('#fragmento-aviso');
+    if (!barra) return;
+    var lidos = [];
+    try { lidos = JSON.parse(localStorage.getItem('fragmentos') || '[]').filter(function (i) { return i >= 0 && i < FRAG_MARCOS.length; }); } catch (e) { lidos = []; }
+    var total = FRAG_MARCOS.length, timer = null;
+    function desenharBarra() { barra.style.width = (lidos.length / total * 100) + '%'; }
+    function mostrar(i) {
+      var completo = lidos.length === total;
+      $('#fragmento-conta').textContent = completo ? m('frDone') : m('frCount').replace('{n}', lidos.length).replace('{t}', total);
+      $('#fragmento-texto').textContent = m('fragments')[i];
+      var link = $('#fragmento-link'), slug = FRAG_WIKI[i];
+      var temWiki = !$('#wiki').hidden && estado.wiki && estado.wiki.some(function (w) { return w.slug === slug; });
+      link.hidden = !temWiki;
+      if (temWiki) {
+        link.href = '#wiki-' + slug;
+        link.onclick = function () { var d = $('#wiki-' + slug); if (d) d.open = true; };
+      }
+      aviso.hidden = false;
+      clearTimeout(timer);
+      timer = setTimeout(function () { aviso.hidden = true; }, completo ? 7000 : 5000);
+    }
+    var pendente = false;
+    function conferir() {
+      pendente = false;
+      var alto = document.documentElement.scrollHeight - window.innerHeight;
+      if (alto <= 0) return;
+      var feito = window.scrollY / alto;
+      for (var i = 0; i < total; i++) {
+        if (feito >= FRAG_MARCOS[i] && lidos.indexOf(i) < 0) {
+          lidos.push(i);
+          guardar('fragmentos', JSON.stringify(lidos));
+          desenharBarra();
+          mostrar(i);
+          break; // um por vez: o próximo sai no próximo quadro de rolagem
+        }
+      }
+    }
+    aviso.addEventListener('click', function (e) { if (e.target.id !== 'fragmento-link') aviso.hidden = true; });
+    window.addEventListener('scroll', function () { if (!pendente) { pendente = true; requestAnimationFrame(conferir); } }, { passive: true });
+    desenharBarra();
   }
   function secaoIndisponivel(secao, erro) {
     // sem os dados a seção inteira some (e o texto avisa para quem ainda ler o link direto)
@@ -520,9 +727,72 @@
       .then(function (d) { estado.vitrine = d.cards || []; desenharVitrine(); },
             function () { secaoIndisponivel('#vitrine', '#vt-erro'); });
     I18N.onChange(desenharNovidades);
-    carregarJson('data/novidades.json')
-      .then(function (d) { estado.novidades = d.novidades || []; desenharNovidades(); },
+    // Notícias publicadas pelo painel (GET /news) quando há api.url; sem ela, ou com a API fora, as notas de versão
+    // geradas do CHANGELOG (data/novidades.json), como antes.
+    function doChangelog() { return carregarJson('data/novidades.json').then(function (d) { return d.novidades || []; }); }
+    configPronta
+      .then(function () {
+        if (!apiUrl()) return doChangelog();
+        return carregarApi('/news?limit=8').then(function (d) {
+          var itens = (d.items || []).map(function (n) { return { titulo: n.title, resumo: n.summary }; });
+          return itens.length ? itens : doChangelog();
+        }, doChangelog);
+      })
+      .then(function (lista) { estado.novidades = lista; desenharNovidades(); },
             function () { secaoIndisponivel('#novidades', '#nv-erro'); });
+  }
+
+  /* ---------- Wiki (GET /wiki e /wiki/{slug}, editada no painel). Sem api.url a seção continua oculta. ---------- */
+  function paragrafos(texto) {
+    return String(texto || '').replace(/\r\n?/g, '\n').split(/\n\s*\n/).map(function (p) { return p.trim(); }).filter(Boolean);
+  }
+  function abrirPaginaWiki(det, slug) {
+    var corpo = det.querySelector('.wk-corpo');
+    if (corpo.getAttribute('data-ok')) return;
+    corpo.textContent = '';
+    corpo.appendChild(el('p', null, m('wkLoading')));
+    carregarApi('/wiki/' + encodeURIComponent(slug)).then(function (pg) {
+      corpo.textContent = '';
+      paragrafos(pg.body).forEach(function (p) { corpo.appendChild(el('p', null, p)); });
+      corpo.setAttribute('data-ok', '1');
+      document.dispatchEvent(new CustomEvent('wiki:lida', { detail: { slug: slug } }));
+    }, function () {
+      corpo.textContent = '';
+      corpo.appendChild(el('p', 'vt-erro', m('wkError')));
+    });
+  }
+  function desenharWiki(itens) {
+    var lista = $('#wk-lista');
+    if (!lista) return;
+    lista.textContent = '';
+    var categoria = null;
+    itens.forEach(function (w) {
+      if (w.category !== categoria && itens.some(function (x) { return x.category !== w.category; })) {
+        categoria = w.category;
+        lista.appendChild(el('p', 'wk-categoria', categoria));
+      }
+      var det = el('details', 'wk-item');
+      det.id = 'wiki-' + w.slug;
+      var sum = el('summary');
+      sum.appendChild(el('h3', null, w.title));
+      sum.appendChild(el('p', null, w.summary));
+      det.appendChild(sum);
+      det.appendChild(el('div', 'wk-corpo'));
+      det.addEventListener('toggle', function () { if (det.open) abrirPaginaWiki(det, w.slug); });
+      lista.appendChild(det);
+    });
+    estado.wiki = itens;
+  }
+  function iniciarWiki() {
+    configPronta.then(function () {
+      if (!apiUrl()) return;
+      carregarApi('/wiki').then(function (d) {
+        var itens = d.items || [];
+        if (!itens.length) return;
+        desenharWiki(itens);
+        $('#wiki').hidden = false;
+      }, function () { /* API fora: a seção segue oculta, o resto do site não depende dela */ });
+    });
   }
 
   /* ---------- Início ---------- */
@@ -541,5 +811,10 @@
   iniciarStatus();
   iniciarConfig();
   iniciarVitrine();
+  iniciarWiki();
   iniciarRanking();
+  iniciarFlutuante();
+  iniciarContador();
+  iniciarVitrineViva();
+  iniciarFragmentos();
 })();

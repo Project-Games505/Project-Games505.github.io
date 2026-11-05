@@ -1,36 +1,36 @@
 {
   "novidades": [
     {
-      "titulo": "Ranking organizado: Mundo, Amigos e Neste aparelho",
-      "resumo": "O ranking agora tem abas: Mundo com todos os jogadores do playtest, Amigos com você e quem é seu amigo, e, no modo offline, Neste aparelho…"
+      "titulo": "Minha conta no navegador",
+      "resumo": "Agora dá para cuidar da sua conta pelo navegador do celular ou do PC, em /conta/ no endereço do jogo: trocar a senha, ligar a verificação e…"
     },
     {
-      "titulo": "Maestria da arma sem teto e com dano de verdade",
-      "resumo": "A maestria da arma não para mais no 10: ela sobe até o nível do seu herói, e cada nível agora aumenta o dano dos seus golpes de verdade (+1…"
+      "titulo": "Configurações com Aplicar e Restaurar padrão",
+      "resumo": "Agora dá para testar gráficos, som, acessibilidade e desempenho antes de confirmar: tudo muda na hora, mas só fica valendo quando você toca…"
     },
     {
-      "titulo": "O Grimório continua a canção",
-      "resumo": "Depois de Sëha, o Grimório da Gruta escreve mais três capítulos da missão principal: o Rei-Múmia das Dunas e a palavra Olvë no mesmo muro d…"
+      "titulo": "Mapa e Diário: abas em dois grupos e aviso de entrega",
+      "resumo": "A aba Missões do Mapa e Diário mostra uma bolinha dourada com o número de missões prontas para entregar"
     },
     {
-      "titulo": "Lojas, bancada, mercado, baú e Mestre de Armas com cara própria",
-      "resumo": "Cada estação agora tem selo, cor e ícone próprios no topo da janela — frasco verde da Loja, bigorna da Bancada, balança azul do Mercado, ba…"
+      "titulo": "Atributos e Ranking mais fáceis de ler",
+      "resumo": "Na janela de Atributos, o título não fica mais escondido atrás dos botões Céu, Relíquias e Talentos, e os botões \"+\" e \"?\" de cada atributo…"
     },
     {
-      "titulo": "Drop raro brilha e toca",
-      "resumo": "Item Raro ou Épico que cai pra você agora solta um feixe de luz na cor da raridade, mostra \"Item Raro!\"/\"Item Épico!\" com o nome no meio da…"
+      "titulo": "Configurações em abas",
+      "resumo": "As Configurações agora têm abas: Geral, Gráficos, Som, Acessibilidade, Controles e Desempenho"
     },
     {
-      "titulo": "Receitas, encomendas e coleta mais justas",
-      "resumo": "Forjar no grau 2 agora também pede Minério de Cobre, a vila faz 4 encomendas por dia e pede um pouco mais de cada material, e cada erva ou…"
+      "titulo": "Menu de atalhos em grupos",
+      "resumo": "O menu de atalhos agora tem quatro grupos lado a lado: Personagem (Atributos, Mochila), Mundo e Diário, Social (Amigos, Ranking) e Sistema…"
     },
     {
-      "titulo": "Consertar arma de grau 2+ pede osso",
-      "resumo": "Consertar uma arma de grau 2, 3 ou 4 agora custa, além do ouro, 1 osso do mesmo grau dela — o mesmo que a forja usa"
+      "titulo": "Praça mais limpa e menu que não cobre a missão",
+      "resumo": "Os nomes no mundo agora aparecem só quando você chega perto, com um fade curto: na praça da Vila os nomes de moradores e lugares não se amo…"
     },
     {
-      "titulo": "Bênção do Trono na capital do seu reino",
-      "resumo": "Entrar no salão da capital do seu reino (Reverenciado) dá +10 % de XP de abate por 1 hora, e a audiência do trono (Exaltado) sobe pra +15 %…"
+      "titulo": "Ronda da Sentinela e Caravana do Mercador",
+      "resumo": "A Vila do Poço ganhou dois eventos com hora marcada: a cada 20 minutos, três feras de elite rondam a cerca e quem ajudar a afastá-las ganha…"
     }
   ]
 }

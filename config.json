@@ -1,5 +1,9 @@
 {
+    "api":  {
+                "url":  "https://152-67-32-199.sslip.io"
+            },
     "conta":  {
+                  "url":  "https://152-67-32-199.sslip.io/conta/",
                   "exclusaoUrl":  ""
               },
     "contato":  {

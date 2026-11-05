@@ -16,6 +16,8 @@ publicar, copie o conteúdo desta pasta para a raiz da `main` do repo público.
 | E-mail de contato | `config.json` | `contato.email` — vazio mostra "E-mail do jogo em breve" |
 | Discord | `config.json` | `contato.discord` — URL do convite; vazio mostra "em breve" |
 | Downloads | `config.json` | `downloads.windows` / `downloads.android`: `url`, `versao`, `tamanho` — sem `url` o botão fica "Em breve" (ou "Pedir acesso" quando há e-mail) |
+| Endereço público do AccountService (notícias e wiki do painel) | `config.json` | `api.url` — **https** do AccountService público (Caddy, ex.: `https://152-67-32-199.sslip.io`). Vazio: as Novidades vêm do `data/novidades.json` e a seção Wiki fica oculta. O AccountService precisa ter a origem do site em `Site:AllowedOrigins` (padrão já é `https://project-games505.github.io`) |
+| Link "Minha conta" (menu e rodapé) | `config.json` | `conta.url` — **https** da área `/conta/` do AccountService público (ex.: `https://152-67-32-199.sslip.io/conta/`). Vazio: usa a mesma origem de `conta.exclusaoUrl` + `/conta/`; sem os dois, o link não aparece |
 | Formulário de exclusão de conta | `config.json` | `conta.exclusaoUrl` — endereço **https** público do `excluir-conta.html` servido pelo AccountService (ADR-50). Vazio: `excluir-conta.html` daqui mostra só o pedido por e-mail |
 
 **Exclusão de conta (Google Play):** o link a cadastrar na Play Console ("Exclusão de conta → URL") é
@@ -48,6 +50,31 @@ Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos
 **Padrão:** o tema é a Sombra (escolha salva em `localStorage` vale depois). **Trailer:** volume inicial 30 %, entra com fade de ~1,2 s e o volume escolhido pela pessoa fica salvo (`volumeTrailer`).
 
 **Cache:** `index.html` chama `css/style.css`, `js/i18n.js` e `js/main.js` com `?v=AAAAMMDDx`. Ao mudar qualquer um desses três, troque o `v` (o Pages deixa o navegador guardar os arquivos por ~10 min e a página nova ficava com script velho).
+
+## Notícias e wiki pelo painel (sem deploy)
+
+- Com `api.url` preenchido, a seção **Novidades** mostra as notícias publicadas no painel admin (**Conteúdo do site → Notícias**,
+  `GET /news`); se não houver nenhuma publicada, ou a API estiver fora, volta para o `data/novidades.json` gerado do CHANGELOG.
+- A seção **Wiki** (`#wiki`) lista as páginas publicadas no painel (`GET /wiki`) e abre o texto no lugar (`GET /wiki/{slug}`).
+  Sem `api.url` (ou com a API fora) ela fica oculta. Conteúdo inicial: `backend/AccountService/Content/WikiSeed.cs`.
+- Texto sempre com `textContent` (nunca HTML). Publicar no painel aparece aqui em até 1 min (cache da API).
+- A vitrine **não** foi para o painel: continua gerada dos miniguias (`tools/gerar-vitrine.py`).
+
+## Ranking sempre à vista, contador e gamificação (Frente 4)
+
+- **Faixa fixa "Top 5 do reino"** (`#flutuante`): no PC, cartão no canto direito desde o topo (o título recolhe/abre); no
+  celular, barra no rodapé da tela que abre o top 5 por cima. Links para `#ranking` e "Entre no top 100" (`#baixar`).
+- **CTA "Baixar o jogo" que acompanha a rolagem**: some enquanto um botão de baixar de verdade está na tela (hero ou `#baixar`).
+- **Fonte do ranking**: com `api.url`, `GET /ranking?top=20` do AccountService (ao vivo, cache 30 s); sem ela ou com a
+  API fora, `data/ranking.json` como antes. A mesma resposta alimenta a tabela `#ranking` e a faixa fixa.
+- **Contador animado no hero** (`#hero-contador`): `GET /stats/live` (online agora, ativos em 24 h, heróis no ranking,
+  nível mais alto — só agregados). Sem API: heróis e nível mais alto saem do ranking e o online do `status.json`
+  (só com `estado: online`). Item sem número fica oculto; "reduzir movimento" mostra o número direto.
+- **Vitrine viva**: o card inclina de leve com o mouse e a foto anda com a rolagem (parallax). Desligado no toque e com
+  "reduzir movimento".
+- **Fragmentos do Grimório**: barrinha de leitura sob o topo; a cada marco de rolagem um trecho da história aparece
+  (`MSG.fragments`, PT/EN, sem spoiler), com "Ler mais na wiki" quando a wiki carregou. Progresso no `localStorage`
+  (`fragmentos`), sem conta.
 
 ## Ranking do playtest
 

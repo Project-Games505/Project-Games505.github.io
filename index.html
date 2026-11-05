@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261024r">
+<link rel="stylesheet" href="css/style.css?v=20261105n">
 <script>
   // tema e idioma antes do primeiro desenho (evita piscar)
   (function () {
@@ -46,6 +46,8 @@
     <a href="#despertar" data-i18n="nav.awakening">O Despertar</a>
     <a href="#baixar" data-i18n="nav.download">Baixar</a>
     <a href="#contato" data-i18n="nav.contact">Contato</a>
+    <!-- Área "Minha conta" no AccountService (config.json → conta.url); sem endereço, o link não aparece -->
+    <a class="nav-conta" id="nav-conta" href="#" rel="noopener" data-i18n="nav.account" hidden>Minha conta</a>
   </nav>
   <div class="controles">
     <button class="btn-icone" id="btn-tema" type="button" aria-pressed="false" data-i18n-attr="aria-label:theme.label" aria-label="Alternar Luz e Sombra">
@@ -82,6 +84,13 @@
       <a class="btn btn-ouro" href="#baixar" data-i18n="hero.cta">Baixar o jogo</a>
       <a class="btn btn-fantasma" href="#despertar" data-i18n="hero.trailer">Ver o trailer</a>
     </div>
+    <!-- Contador ao vivo (GET /stats/live; sem api.url: total e nível mais alto do data/ranking.json). Só aparece com dado. -->
+    <dl class="hero-contador" id="hero-contador" hidden>
+      <div class="hc-item" id="hc-online" hidden><dt data-i18n="hc.online">heróis no mundo agora</dt><dd data-contar="0">0</dd></div>
+      <div class="hc-item" id="hc-ativos" hidden><dt data-i18n="hc.active">aventureiros nas últimas 24 h</dt><dd data-contar="0">0</dd></div>
+      <div class="hc-item" id="hc-herois" hidden><dt data-i18n="hc.heroes">heróis no ranking</dt><dd data-contar="0">0</dd></div>
+      <div class="hc-item" id="hc-nivel" hidden><dt data-i18n="hc.top">nível mais alto do momento</dt><dd data-contar="0">0</dd></div>
+    </dl>
     <a class="selo-status" href="#status" id="selo-status">
       <span class="ponto" aria-hidden="true"></span>
       <span id="selo-status-txt" data-i18n="status.loading">Consultando o servidor…</span>
@@ -383,14 +392,24 @@
   </div>
 </section>
 
-<!-- ===================== NOVIDADES (site/data/novidades.json, gerado do CHANGELOG) ===================== -->
+<!-- ===================== NOVIDADES (GET /news do AccountService, publicadas pelo painel; sem api.url ou fora do ar: site/data/novidades.json, gerado do CHANGELOG) ===================== -->
 <section class="secao luz alt" id="novidades" aria-labelledby="nv-titulo">
   <div class="caixa">
     <p class="capitulo-num" data-i18n="nv.kicker">Novidades</p>
     <h2 id="nv-titulo" data-i18n="nv.title">O que mudou</h2>
-    <p class="lead" data-i18n="nv.lead">As mudanças mais recentes, direto das notas de versão do jogo.</p>
+    <p class="lead" data-i18n="nv.lead">Avisos do time e as mudanças mais recentes do jogo.</p>
     <ol class="nv-lista" id="nv-lista"></ol>
     <p class="vt-erro" id="nv-erro" hidden></p>
+  </div>
+</section>
+
+<!-- ===================== WIKI (GET /wiki do AccountService, editada pelo painel → Conteúdo do site; sem api.url a seção fica oculta) ===================== -->
+<section class="secao luz" id="wiki" aria-labelledby="wk-titulo" hidden>
+  <div class="caixa">
+    <p class="capitulo-num" data-i18n="wk.kicker">Wiki</p>
+    <h2 id="wk-titulo" data-i18n="wk.title">O livro do aventureiro</h2>
+    <p class="lead" data-i18n="wk.lead">O que se conta nas tavernas sobre este mundo. Toque num capítulo para ler.</p>
+    <div class="wk-lista" id="wk-lista"></div>
   </div>
 </section>
 
@@ -486,11 +505,36 @@
 
 </main>
 
+<!-- ===================== FAIXA FIXA: TOP 5 + BAIXAR (GET /ranking; sem api.url: data/ranking.json) ===================== -->
+<aside class="flutuante" id="flutuante" aria-label="Ranking e download" data-i18n-attr="aria-label:fl.label">
+  <div class="fl-ranking" id="fl-ranking" hidden>
+    <button class="fl-ranking-abrir" id="fl-abrir" type="button" aria-expanded="false" aria-controls="fl-lista">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a3 3 0 0 0 4 2.8M19 5h2v2a3 3 0 0 1-4 2.8M12 13v4M8 21h8M9 17h6"/></svg>
+      <span class="fl-titulo" data-i18n="fl.title">Top 5 do reino</span>
+      <span class="fl-lider" id="fl-lider"></span>
+    </button>
+    <div class="fl-corpo" id="fl-lista">
+      <ol class="fl-lista" id="fl-top5"></ol>
+      <a class="fl-mais" href="#ranking" data-i18n="fl.more">Ver o ranking completo</a>
+      <a class="fl-mais fl-entrar" href="#baixar" data-i18n="fl.join">Entre no top 100 →</a>
+    </div>
+  </div>
+  <a class="btn btn-ouro fl-baixar" id="fl-baixar" href="#baixar" data-i18n="hero.cta">Baixar o jogo</a>
+</aside>
+
+<!-- Fragmentos do Grimório: progresso de leitura que revela trechos da história ao rolar (sem conta, guardado no aparelho) -->
+<div class="fragmentos" id="fragmentos" aria-hidden="true"><span class="fragmentos-barra" id="fragmentos-barra"></span></div>
+<div class="fragmento-aviso" id="fragmento-aviso" role="status" aria-live="polite" hidden>
+  <span class="fragmento-conta" id="fragmento-conta"></span>
+  <p class="fragmento-texto" id="fragmento-texto"></p>
+  <a class="fragmento-link" id="fragmento-link" href="#wiki" hidden data-i18n="fr.more">Ler mais na wiki</a>
+</div>
+
 <footer class="rodape">
   <div class="caixa">
     <p class="rodape-marca">MMORPG <b>3D</b> · Project-Games505</p>
     <p data-i18n="ft.credits">Feito em Unity com servidor próprio. Assets de terceiros em domínio público (CC0): <a href="https://kaylousberg.itch.io/" rel="noopener">KayKit</a>, <a href="https://kenney.nl/" rel="noopener">Kenney</a>, <a href="https://ambientcg.com/" rel="noopener">ambientCG</a> e a música <i>Medieval: Harvest Season</i> (RandomMind).</p>
-    <p class="rodape-pe"><span>© 2026 Project-Games505</span> · <span id="rodape-versao">v0.5.0</span> · <a href="#inicio" data-i18n="ft.top">Voltar ao topo</a> · <a href="privacidade.html" data-i18n="ft.privacy">Privacidade</a> · <a href="termos.html" data-i18n="ft.terms">Termos de uso</a> · <a href="excluir-conta.html" data-i18n="ft.delete">Excluir conta</a></p>
+    <p class="rodape-pe"><span>© 2026 Project-Games505</span> · <span id="rodape-versao">v0.5.0</span> · <a href="#inicio" data-i18n="ft.top">Voltar ao topo</a> · <a href="privacidade.html" data-i18n="ft.privacy">Privacidade</a> · <a href="termos.html" data-i18n="ft.terms">Termos de uso</a> · <a href="excluir-conta.html" data-i18n="ft.delete">Excluir conta</a><span id="rodape-conta" hidden> · <a id="rodape-conta-link" href="#" rel="noopener" data-i18n="ft.account">Minha conta</a></span></p>
   </div>
 </footer>
 
@@ -517,7 +561,7 @@
   </defs>
 </svg>
 
-<script src="js/i18n.js?v=20261024r"></script>
-<script src="js/main.js?v=20261024r"></script>
+<script src="js/i18n.js?v=20261105n"></script>
+<script src="js/main.js?v=20261105n"></script>
 </body>
 </html>

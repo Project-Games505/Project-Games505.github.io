@@ -6,7 +6,7 @@
   var EN = {
     'skip': 'Skip to content',
     'nav.story': 'Story', 'nav.kingdoms': 'Kingdoms', 'nav.game': 'Gameplay', 'nav.tutorials': 'Guides', 'nav.vitrine': 'What’s inside',
-    'nav.awakening': 'The Awakening', 'nav.download': 'Download', 'nav.contact': 'Contact', 'nav.open': 'Open menu',
+    'nav.awakening': 'The Awakening', 'nav.download': 'Download', 'nav.contact': 'Contact', 'nav.account': 'My account', 'nav.open': 'Open menu',
     'theme.label': 'Switch between Light and Shadow', 'theme.dark': 'Shadow', 'theme.light': 'Light',
 
     'hero.kicker': 'Online action RPG · PC and Android',
@@ -105,7 +105,12 @@
     'rk.lead': 'The strongest heroes on the test server, by level. Same leaderboard as in the game, without the team’s test accounts.',
     'rk.hero': 'Hero', 'rk.class': 'Class', 'rk.level': 'Level',
     'nv.kicker': 'News', 'nv.title': 'What’s new',
-    'nv.lead': 'The latest changes, straight from the game’s change log (written in Portuguese).',
+    'nv.lead': 'News from the team and the latest changes to the game (written in Portuguese).',
+    'hc.online': 'heroes in the world now', 'hc.active': 'adventurers in the last 24 h', 'hc.heroes': 'heroes on the leaderboard', 'hc.top': 'highest level right now',
+    'fl.label': 'Leaderboard and download', 'fl.title': 'Top 5 of the realm', 'fl.more': 'See the full leaderboard', 'fl.join': 'Join the top 100 →',
+    'fr.more': 'Read more in the wiki',
+    'wk.kicker': 'Wiki', 'wk.title': 'The adventurer’s book',
+    'wk.lead': 'What the taverns tell about this world (written in Portuguese). Tap a chapter to read it.',
 
     'aw.kicker': 'Server event', 'aw.title': 'The Awakening', 'aw.tremor': 'The ground trembles beneath the Village of the Well.',
     'aw.p': 'Every so often, what sleeps stirs. The whole server is warned. Skeletons across the world rise stronger. And the heroes go down together.',
@@ -123,7 +128,7 @@
 
     'ft.credits': 'Made in Unity with our own server. Third-party assets in the public domain (CC0): <a href="https://kaylousberg.itch.io/" rel="noopener">KayKit</a>, <a href="https://kenney.nl/" rel="noopener">Kenney</a>, <a href="https://ambientcg.com/" rel="noopener">ambientCG</a> and the track <i>Medieval: Harvest Season</i> (RandomMind).',
     'ft.top': 'Back to top',
-    'ft.delete': 'Delete account',
+    'ft.delete': 'Delete account', 'ft.account': 'My account',
     'ft.privacy': 'Privacy',
     'ft.terms': 'Terms of use'
   };
@@ -142,6 +147,16 @@
       grimoireClose: 'Fechar o Grimório', grimoireOpen: 'Abrir o Grimório',
       fog: '{n} de {t} regiões reveladas', fogAll: 'Você afastou a névoa. O resto do mundo, só andando.',
       vtSoon: 'Em breve', vtWhere: 'Como chegar:', vtWhen: 'Quando:', vtPhoto: 'foto:', vtProvisional: 'foto provisória', vtIllustrative: 'foto ilustrativa', vtSub: 'Em breve', vtError: 'Não deu para carregar agora.',
+      frCount: 'Fragmento {n} de {t} do Grimório', frDone: 'Grimório completo! O resto da história, só jogando.',
+      fragments: [
+        'Antes dos reinos, o céu tinha donos. Os Senhores do Alto pousavam e a pedra virava vidro.',
+        'Os Antigos não eram mais fortes. Eram mais pacientes: descobriram que tudo o que vive também dorme.',
+        'Cada palavra da canção de ninar cobrou um pedaço de quem a escreveu. A magia deste mundo nunca foi de graça.',
+        'Dorme, e os ossos obedecem. Quem sabe o nome não diz: dizer em voz alta é o que acorda.',
+        'Aurora ergueu uma muralha branca. Nocturna desceu para a caverna. O fogo sumiu; o dízimo ficou.',
+        'De tempos em tempos, a terra treme sob a Vila do Poço. E os heróis descem juntos.'
+      ],
+      wkLoading: 'Abrindo o livro…', wkError: 'Esta página não abriu agora. Tente de novo.',
       download: 'Baixar', soon: 'Em breve', ask: 'Pedir acesso',
       email: 'Escrever para ', emailSubject: 'Contato pelo site — MMORPG 3D',
       next: 'Próximo Despertar: ', nextNone: 'Próximo Despertar: a anunciar.',
@@ -166,6 +181,16 @@
       grimoireClose: 'Close the Grimoire', grimoireOpen: 'Open the Grimoire',
       fog: '{n} of {t} regions revealed', fogAll: 'You pushed the fog away. The rest of the world, only by walking.',
       vtSoon: 'Coming soon', vtWhere: 'How to get there:', vtWhen: 'When:', vtPhoto: 'photo:', vtProvisional: 'provisional photo', vtIllustrative: 'illustrative photo', vtSub: 'Coming soon', vtError: 'Could not load right now.',
+      frCount: 'Grimoire fragment {n} of {t}', frDone: 'Grimoire complete! The rest of the story, only by playing.',
+      fragments: [
+        'Before the kingdoms, the sky had masters. Where the Lords on High landed, stone turned to glass.',
+        'The Ancients were not stronger. They were more patient: they found out that everything that lives also sleeps.',
+        'Every word of the lullaby took a piece of whoever wrote it. Magic in this world was never free.',
+        'It sleeps, and the bones obey. Those who know the name do not say it: saying it aloud is what wakes it.',
+        'Aurora raised a white wall. Nocturna went down into the cave. The fire is gone; the tithe remained.',
+        'Every so often, the ground trembles beneath the Village of the Well. And the heroes go down together.'
+      ],
+      wkLoading: 'Opening the book…', wkError: 'This page did not open right now. Try again.',
       download: 'Download', soon: 'Coming soon', ask: 'Request access',
       email: 'Write to ', emailSubject: 'Contact from the website — MMORPG 3D',
       next: 'Next Awakening: ', nextNone: 'Next Awakening: to be announced.',
