@@ -318,7 +318,7 @@
     $('#rodape-versao').textContent = s.versao || '';
     var nota = $('#st-nota');
     if (s.atualizadoEm) {
-      var d = new Date(s.atualizadoEm);
+      var d = dataLocal(s.atualizadoEm);
       if (!isNaN(d)) {
         var base = I18N.lang === 'en' ? I18N.enText('status.note') : I18N.ptText('status.note');
         nota.textContent = base + ' ' + m('updated') + d.toLocaleDateString(I18N.lang === 'en' ? 'en-GB' : 'pt-BR') + '.';
@@ -341,6 +341,17 @@
     setInterval(function () { if (!document.hidden) buscar(); }, 60000);
   }
 
+  /* "2026-11-05" sozinho o Date lê como meia-noite UTC: no Brasil (UTC-3) a tela mostrava o dia anterior. Data sem
+     hora vira data local; com hora, segue o Date. */
+  function dataLocal(iso) {
+    var p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    return p ? new Date(+p[1], +p[2] - 1, +p[3]) : new Date(iso);
+  }
+  function dataCurta(iso) {
+    var d = dataLocal(iso);
+    return isNaN(d) ? '' : d.toLocaleDateString(I18N.lang === 'en' ? 'en-GB' : 'pt-BR');
+  }
+
   /* ---------- Downloads e contato (config.json) ---------- */
   function sistema() {
     var ua = navigator.userAgent || '';
@@ -357,7 +368,8 @@
       if (info.url) {
         a.href = info.url; a.removeAttribute('aria-disabled'); a.textContent = m('download') + (info.versao ? ' ' + info.versao : '');
         a.setAttribute('download', '');
-        meta.textContent = base + (info.tamanho ? ' · ' + info.tamanho : '');
+        var quando = info.data ? dataCurta(info.data) : '';
+        meta.textContent = base + (info.tamanho ? ' · ' + info.tamanho : '') + (quando ? ' · ' + m('released') + quando : '');
       } else {
         a.href = '#contato'; a.setAttribute('aria-disabled', 'true'); a.removeAttribute('download');
         a.textContent = emailValido(email) ? m('ask') : m('soon');

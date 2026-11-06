@@ -157,7 +157,7 @@
         'De tempos em tempos, a terra treme sob a Vila do Poço. E os heróis descem juntos.'
       ],
       wkLoading: 'Abrindo o livro…', wkError: 'Esta página não abriu agora. Tente de novo.',
-      download: 'Baixar', soon: 'Em breve', ask: 'Pedir acesso',
+      download: 'Baixar', released: 'lançado em ', soon: 'Em breve', ask: 'Pedir acesso',
       email: 'Escrever para ', emailSubject: 'Contato pelo site — MMORPG 3D',
       next: 'Próximo Despertar: ', nextNone: 'Próximo Despertar: a anunciar.',
       lightOn: 'Apagar a lanterna', lightOff: 'Acender a lanterna (mostrar tudo)',
@@ -191,7 +191,7 @@
         'Every so often, the ground trembles beneath the Village of the Well. And the heroes go down together.'
       ],
       wkLoading: 'Opening the book…', wkError: 'This page did not open right now. Try again.',
-      download: 'Download', soon: 'Coming soon', ask: 'Request access',
+      download: 'Download', released: 'released ', soon: 'Coming soon', ask: 'Request access',
       email: 'Write to ', emailSubject: 'Contact from the website — MMORPG 3D',
       next: 'Next Awakening: ', nextNone: 'Next Awakening: to be announced.',
       lightOn: 'Put out the lantern', lightOff: 'Light the lantern (show everything)',
