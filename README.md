@@ -1,7 +1,8 @@
 # Site do MMORPG 3D
 
 Landing page pública (pt-BR e EN): status do servidor, história sem spoiler, reinos, classes, o que tem no jogo, tutoriais, ranking do playtest, novidades,
-o Despertar, downloads e contato. Plano e decisões em [../docs/PLANO_LANDING_PAGE.md](../docs/PLANO_LANDING_PAGE.md).
+o Despertar, downloads e contato. O plano que criou o site foi arquivado (15/11): resumo e decisões em
+[../docs/CORE/PLANOS_CONCLUIDOS.md › Landing page](../docs/CORE/PLANOS_CONCLUIDOS.md#landing-page); as regras que valem estão aqui.
 
 HTML + CSS + JS puro, sem build. Publicado pelo GitHub Pages no repo público
 `Project-Games505/Project-Games505.github.io` → **https://project-games505.github.io/**
@@ -89,7 +90,26 @@ Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos
 - O pt-BR está no próprio `index.html` (atributos `data-i18n`). O inglês está em `js/i18n.js` (`EN`), com as
   mesmas chaves. Frases montadas pelo JS (classes, status, Grimório) ficam em `MSG.pt` / `MSG.en`.
 - Nomes próprios seguem `docs/LIVROS_EN.md` (Aurora, Nocturna e Lúmen não traduzem).
-- **Spoiler:** nunca escrever o nome do que dorme nem que o herói quebra a tranca (tabela no plano).
+- **Spoiler:** nunca escrever o nome do que dorme nem que o herói quebra a tranca (tabela abaixo; o Marcio é o dono
+  do enredo e aprova texto novo de história).
+
+### Regra de ouro de spoiler
+
+| Pode mostrar | Não mostrar (só jogando) |
+|---|---|
+| "Algo dorme sob a Vila do Poço", frase *"dorme, e os ossos obedecem"* | O nome **Vëruthal** (no jogo "o nome que ninguém diz"; só lido no fim da main quest) |
+| Dois reinos rivais (Aurora × Nocturna), Lúmen na lanterna | Quem é o Regente Velado, a verdade do Poço sem Fundo |
+| Que o Guardião da Gruta é uma "tranca" | Que **o jogador** quebra a tranca (a culpa é do herói) |
+| O Despertar existe como evento de servidor | Resultado/recompensas, o chefe final |
+
+### Estrutura da página (rolagem narrativa, Luz ↔ Sombra)
+
+A página alterna seções claras e escuras: **LUZ** (topo com vídeo da Vila, status do servidor ao vivo e "Baixar") →
+Capítulo I, a Idade das Asas (dia vira noite ao rolar) → Capítulo II, a Vila do Poço (acolhedor) → Capítulo III, o
+que dorme (**SOMBRA**: quase preto, nome tapado por ▮▮▮▮▮) → dois reinos lado a lado (Aurora × Nocturna, a escolha
+sem o desfecho) → o que tem no jogo e classes → tutoriais (vitrine) → ranking → o Despertar (contagem/teaser) →
+downloads (detecta o sistema) → contato → rodapé (créditos, licenças, versão, CHANGELOG). Seção nova entra no lugar
+do tom dela (luz ou sombra), sem quebrar a alternância.
 
 ## Imagens
 
