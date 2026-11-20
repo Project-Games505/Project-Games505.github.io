@@ -31,7 +31,7 @@ O multiplayer continua restrito ao playtest pelo servidor; o modo offline é liv
 
 ## Vitrine ("O que tem no jogo") e Novidades
 
-Plano: [../docs/PLANO_VITRINE.md](../docs/PLANO_VITRINE.md); auditoria e ganchos (rascunho para aprovação):
+Plano: [../docs/PLANO_VITRINE.md](../docs/CORE/PLANOS_CONCLUIDOS.md#vitrine-de-funcionalidades); auditoria e ganchos (rascunho para aprovação):
 [../docs/VITRINE_FUNCIONALIDADES.md](../docs/VITRINE_FUNCIONALIDADES.md).
 
 - `data/vitrine.json` e `data/novidades.json` são **gerados, não se editam à mão**: `python tools/gerar-vitrine.py` (da raiz do
