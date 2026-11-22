@@ -967,15 +967,7 @@
     estado.wiki = itens;
   }
   function iniciarWiki() {
-    configPronta.then(function () {
-      if (!apiUrl()) return;
-      carregarApi('/wiki').then(function (d) {
-        var itens = d.items || [];
-        if (!itens.length) return;
-        desenharWiki(itens);
-        $('#aba-wiki').hidden = false;
-      }, function () {});
-    });
+    // Oculta temporariamente enquanto a nova Wiki estruturada está em preparação.
   }
 
   /* ---------- Início ---------- */
