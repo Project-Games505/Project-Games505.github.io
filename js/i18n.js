@@ -12,7 +12,7 @@
     'dev.close': 'Dismiss notice',
 
     'nav.awakening': 'The Awakening', 'nav.vitrine': 'World Guide', 'nav.game': 'Combat',
-    'nav.story': 'Story', 'nav.community': 'Community', 'nav.contact': 'Contact',
+    'nav.story': 'Story', 'nav.community': 'Community', 'nav.wiki': 'Wiki', 'nav.contact': 'Contact',
     'nav.account': 'My account', 'nav.download': 'Download', 'nav.open': 'Open menu',
     'nav.ranking': 'Leaderboard', 'nav.tutorials': 'First steps',
     'theme.label': 'Switch between Light and Shadow', 'theme.dark': 'Shadow', 'theme.light': 'Light',
