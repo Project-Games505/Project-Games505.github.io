@@ -1,112 +1,70 @@
 {
-  "generatedAt": "2026-10-24T16:43:14.0442641+00:00",
-  "totalCount": 15,
+  "generatedAt": "2026-11-22T03:19:33.4993567+00:00",
+  "totalCount": 9,
   "maxLevel": 500,
   "entries": [
     {
       "rank": 1,
-      "displayName": "Zephira",
-      "level": 75,
+      "displayName": "oMago",
+      "level": 35,
       "ascended": false,
       "characterClass": 2
     },
     {
       "rank": 2,
-      "displayName": "Aldric",
-      "level": 40,
-      "ascended": false,
-      "characterClass": 0
-    },
-    {
-      "rank": 3,
-      "displayName": "oMago",
-      "level": 34,
-      "ascended": false,
-      "characterClass": 2
-    },
-    {
-      "rank": 4,
       "displayName": "dinho505",
       "level": 24,
       "ascended": false,
       "characterClass": 2
     },
     {
-      "rank": 5,
+      "rank": 3,
       "displayName": "joven apendiz",
-      "level": 19,
+      "level": 22,
       "ascended": false,
       "characterClass": 2
     },
     {
-      "rank": 6,
+      "rank": 4,
       "displayName": "oTiro",
       "level": 17,
       "ascended": false,
       "characterClass": 1
     },
     {
-      "rank": 7,
-      "displayName": "Brann",
-      "level": 12,
-      "ascended": false,
-      "characterClass": 1
-    },
-    {
-      "rank": 8,
-      "displayName": "SemClasse",
-      "level": 8,
-      "ascended": false,
-      "characterClass": 0
-    },
-    {
-      "rank": 9,
+      "rank": 5,
       "displayName": "dinho01",
       "level": 8,
       "ascended": false,
       "characterClass": 1
     },
     {
-      "rank": 10,
+      "rank": 6,
       "displayName": "oMagooo",
       "level": 8,
       "ascended": false,
       "characterClass": 2
     },
     {
-      "rank": 11,
-      "displayName": "testeonlin01",
-      "level": 8,
+      "rank": 7,
+      "displayName": "ratchet",
+      "level": 7,
       "ascended": false,
       "characterClass": 1
     },
     {
-      "rank": 12,
+      "rank": 8,
+      "displayName": "Magezin",
+      "level": 7,
+      "ascended": false,
+      "characterClass": 2
+    },
+    {
+      "rank": 9,
       "displayName": "Latino",
       "level": 7,
       "ascended": false,
       "characterClass": 4
-    },
-    {
-      "rank": 13,
-      "displayName": "testeee",
-      "level": 5,
-      "ascended": false,
-      "characterClass": 0
-    },
-    {
-      "rank": 14,
-      "displayName": "E2E Hero",
-      "level": 3,
-      "ascended": false,
-      "characterClass": 0
-    },
-    {
-      "rank": 15,
-      "displayName": "Teste164943",
-      "level": 1,
-      "ascended": false,
-      "characterClass": 1
     }
   ]
 }

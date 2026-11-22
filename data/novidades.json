@@ -1,36 +1,36 @@
 {
   "novidades": [
     {
-      "titulo": "Minha conta no navegador",
-      "resumo": "Agora dá para cuidar da sua conta pelo navegador do celular ou do PC, em /conta/ no endereço do jogo: trocar a senha, ligar a verificação e…"
+      "titulo": "Celular mais leve, minério no chão e chefe que volta para casa",
+      "resumo": "No celular o terreno simples vem ligado de fábrica: no Galaxy A34 o jogo passou de 46 para 82 quadros por segundo"
     },
     {
-      "titulo": "Configurações com Aplicar e Restaurar padrão",
-      "resumo": "Agora dá para testar gráficos, som, acessibilidade e desempenho antes de confirmar: tudo muda na hora, mas só fica valendo quando você toca…"
+      "titulo": "Avisos que não passam batido, Caravana com botão e /ajuda",
+      "resumo": "Quando a Ronda da Sentinela ou a Caravana do Mercador começa, agora sobe um aviso no topo da tela, além da linha no chat (que some em 10 s)…"
     },
     {
-      "titulo": "Mapa e Diário: abas em dois grupos e aviso de entrega",
-      "resumo": "A aba Missões do Mapa e Diário mostra uma bolinha dourada com o número de missões prontas para entregar"
+      "titulo": "Chat que não apaga o que você escreveu e herói que não fica deitado à toa",
+      "resumo": "Tocar fora do campo do chat no celular agora só guarda o que você escreveu e solta o personagem: dá pra andar e falar com o NPC na hora, e…"
     },
     {
-      "titulo": "Atributos e Ranking mais fáceis de ler",
-      "resumo": "Na janela de Atributos, o título não fica mais escondido atrás dos botões Céu, Relíquias e Talentos, e os botões \"+\" e \"?\" de cada atributo…"
+      "titulo": "Menina das Velas de volta ao chão",
+      "resumo": "A Menina das Velas, da Vila do Poço, não aparece mais flutuando no telhado de uma casa: ela fica na praça, de frente para o Poço"
     },
     {
-      "titulo": "Configurações em abas",
-      "resumo": "As Configurações agora têm abas: Geral, Gráficos, Som, Acessibilidade, Controles e Desempenho"
+      "titulo": "Bancada mostra o nível que sai e a forja pode caprichar",
+      "resumo": "A Bancada mostra o nível que o item vai ter (\"Grau 2 · nível ~34 · 14% de sair acima\") e o próximo degrau de verdade (\"sobe com você até o…"
     },
     {
-      "titulo": "Menu de atalhos em grupos",
-      "resumo": "O menu de atalhos agora tem quatro grupos lado a lado: Personagem (Atributos, Mochila), Mundo e Diário, Social (Amigos, Ranking) e Sistema…"
+      "titulo": "Nível certo para equipar e o \"E\" que não reabre a conversa",
+      "resumo": "O cartão do item, a mochila e o botão Equipar agora mostram o nível que o servidor exige de verdade: uma peça de Grau 2 pede pelo menos o n…"
     },
     {
-      "titulo": "Praça mais limpa e menu que não cobre a missão",
-      "resumo": "Os nomes no mundo agora aparecem só quando você chega perto, com um fade curto: na praça da Vila os nomes de moradores e lugares não se amo…"
+      "titulo": "Gruta: a porta do chefe pede a Gruta limpa, e os espinhos doem",
+      "resumo": "A porta da arena do Guardião agora mostra \"Selada — restam N\" e só abre quando você limpa todos os salões da Gruta (corredor, as quatro sal…"
     },
     {
-      "titulo": "Ronda da Sentinela e Caravana do Mercador",
-      "resumo": "A Vila do Poço ganhou dois eventos com hora marcada: a cada 20 minutos, três feras de elite rondam a cerca e quem ajudar a afastá-las ganha…"
+      "titulo": "A seta segue o que vale agora, e a missão principal avisa quando libera",
+      "resumo": "A seta de objetivo, o ponto do radar, a bússola e o mapa deixaram de apontar sempre para a missão principal: quem manda é a missão aceita,…"
     }
   ]
 }
