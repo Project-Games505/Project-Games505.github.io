@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MMORPG 3D — Algo dorme sob o Poço</title>
-<meta name="description" content="RPG online de ação para PC e Android. Cinco classes, dois reinos rivais e algo que dorme sob a Vila do Poço. Baixe e descubra o resto jogando.">
+<meta name="description" content="RPG online de ação para PC e Android. Dois reinos rivais, capitais com reputação e portões, e algo que dorme sob a Vila do Poço. Jogue online ou offline.">
 <meta property="og:title" content="MMORPG 3D — Algo dorme sob o Poço">
-<meta property="og:description" content="Cinco classes, dois reinos, um mundo que não devia acordar. PC e Android.">
+<meta property="og:description" content="Dois reinos rivais, combate isométrico e um mundo que não devia acordar. PC e Android.">
 <meta property="og:image" content="img/mundo-vila.webp">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#14121c">
@@ -14,9 +14,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261105n">
+<link rel="stylesheet" href="css/style.css?v=20261123a">
 <script>
-  // tema e idioma antes do primeiro desenho (evita piscar)
+  // tema antes do primeiro desenho (evita piscar)
   (function () {
     try {
       var t = localStorage.getItem('tema');
@@ -31,241 +31,195 @@
 <!-- Lanterna da Lúmen: só aparece no modo Sombra -->
 <div class="lanterna-global" aria-hidden="true"></div>
 
-<header class="topo" id="topo">
-  <a class="marca" href="#inicio" aria-label="MMORPG 3D — início">
-    <svg class="marca-icone" viewBox="0 0 32 32" aria-hidden="true"><use href="#ico-lua"/></svg>
-    <span>MMORPG <b>3D</b></span>
-  </a>
-  <nav class="menu" id="menu" aria-label="Seções">
-    <a href="#vitrine" data-i18n="nav.vitrine">O que tem</a>
-    <a href="#historia" data-i18n="nav.story">História</a>
-    <a href="#reinos" data-i18n="nav.kingdoms">Reinos</a>
-    <a href="#jogo" data-i18n="nav.game">Jogabilidade</a>
-    <a href="#tutoriais" data-i18n="nav.tutorials">Tutoriais</a>
-    <a href="#ranking" data-i18n="nav.ranking">Ranking</a>
-    <a href="#despertar" data-i18n="nav.awakening">O Despertar</a>
-    <a href="#baixar" data-i18n="nav.download">Baixar</a>
-    <a href="#contato" data-i18n="nav.contact">Contato</a>
-    <!-- Área "Minha conta" no AccountService (config.json → conta.url); sem endereço, o link não aparece -->
-    <a class="nav-conta" id="nav-conta" href="#" rel="noopener" data-i18n="nav.account" hidden>Minha conta</a>
-  </nav>
-  <div class="controles">
-    <button class="btn-icone" id="btn-tema" type="button" aria-pressed="false" data-i18n-attr="aria-label:theme.label" aria-label="Alternar Luz e Sombra">
-      <svg class="ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
-      <svg class="ico-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
-      <span class="btn-tema-txt" data-i18n="theme.dark">Sombra</span>
-    </button>
-    <div class="idioma" role="group" aria-label="Idioma / Language">
-      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+<!-- Fragmentos do Grimório: barrinha fina de progresso no topo -->
+<div class="fragmentos" id="fragmentos" aria-hidden="true"><span class="fragmentos-barra" id="fragmentos-barra"></span></div>
+
+<div class="topo-wrap" id="topo-wrap">
+  <!-- Aviso de jogo em desenvolvimento (fechável na sessão) -->
+  <div class="aviso-dev" id="aviso-dev" role="region" aria-label="Aviso de desenvolvimento" data-i18n-attr="aria-label:dev.aria">
+    <div class="caixa aviso-dev-in">
+      <p>
+        <span class="dev-selo" data-i18n="dev.badge">Em desenvolvimento</span>
+        <span data-i18n="dev.banner">O jogo está em construção ativa — bugs, ajustes de balanceamento e manutenções imprevistas podem acontecer.</span>
+        <a href="#aviso-dev-dl" data-i18n="dev.more">Saiba mais</a>
+      </p>
+      <button type="button" class="aviso-dev-fechar" id="btn-fechar-dev" aria-label="Fechar aviso" data-i18n-attr="aria-label:dev.close">✕</button>
     </div>
-    <button class="btn-icone btn-menu" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:nav.open" aria-label="Abrir menu">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
   </div>
-</header>
+
+  <header class="topo" id="topo">
+    <a class="marca" href="#inicio" aria-label="MMORPG 3D — início">
+      <svg class="marca-icone" viewBox="0 0 32 32" aria-hidden="true"><use href="#ico-lua"/></svg>
+      <span>MMORPG <b>3D</b></span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Seções">
+      <a href="#despertar" data-i18n="nav.awakening">O Despertar</a>
+      <a href="#vitrine" data-i18n="nav.vitrine">Guia do Mundo</a>
+      <a href="#jogo" data-i18n="nav.game">Combate</a>
+      <a href="#historia" data-i18n="nav.story">História</a>
+      <a href="#comunidade" data-i18n="nav.community">Comunidade</a>
+      <a href="wiki.html" data-i18n="nav.wiki">Wiki</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
+      <!-- Área "Minha conta" no AccountService (config.json → conta.url); sem endereço, o link não aparece -->
+      <a class="nav-conta" id="nav-conta" href="#" rel="noopener" data-i18n="nav.account" hidden>Minha conta</a>
+    </nav>
+    <div class="controles">
+      <a class="btn btn-ouro btn-topo-dl" href="#baixar" data-i18n="nav.download">Baixar</a>
+      <button class="btn-icone" id="btn-tema" type="button" aria-pressed="false" data-i18n-attr="aria-label:theme.label" aria-label="Alternar Luz e Sombra">
+        <svg class="ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+        <svg class="ico-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <span class="btn-tema-txt" data-i18n="theme.dark">Sombra</span>
+      </button>
+      <div class="idioma" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="btn-icone btn-menu" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:nav.open" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+</div>
 
 <main id="conteudo">
 
-<!-- ===================== HERO (LUZ) ===================== -->
+<!-- ===================== 1. HERO + STATUS AO VIVO INTEGRADO ===================== -->
 <section class="hero" id="inicio">
   <div class="hero-fundo" aria-hidden="true">
     <img src="img/hero-vila.webp" alt="" fetchpriority="high" width="1440" height="765">
   </div>
   <div class="hero-ceu" aria-hidden="true"><span class="hero-lua"></span></div>
   <div class="hero-txt">
-    <p class="sobretitulo" data-i18n="hero.kicker">RPG online de ação · PC e Android</p>
+    <p class="sobretitulo" data-i18n="hero.kicker">RPG online de ação · PC e Android · Em desenvolvimento</p>
     <h1 class="hero-titulo">
       <span data-i18n="hero.title1">Algo dorme</span>
       <span class="hero-titulo-2" data-i18n="hero.title2">sob o Poço.</span>
     </h1>
-    <p class="hero-sub" data-i18n="hero.sub">Cinco classes, dois reinos rivais e uma vila que canta para não acordar o que está lá embaixo. O começo da história está aqui. O resto, só jogando.</p>
+    <p class="hero-sub" data-i18n="hero.sub">Dois reinos rivais, capitais com reputação e portões, combate isométrico e uma vila que canta para não acordar o que está lá embaixo. Jogue online ou offline — o começo está aqui, o resto só jogando.</p>
     <div class="hero-acoes">
       <a class="btn btn-ouro" href="#baixar" data-i18n="hero.cta">Baixar o jogo</a>
       <a class="btn btn-fantasma" href="#despertar" data-i18n="hero.trailer">Ver o trailer</a>
+      <a class="selo-status" href="#status" id="selo-status">
+        <span class="ponto" aria-hidden="true"></span>
+        <span id="selo-status-txt" data-i18n="status.loading">Consultando o servidor…</span>
+      </a>
     </div>
-    <!-- Contador ao vivo (GET /stats/live; sem api.url: total e nível mais alto do data/ranking.json). Só aparece com dado. -->
+
+    <!-- Contador ao vivo (GET /stats/live; reserva: ranking.json e status.json). Só aparece com dado. -->
     <dl class="hero-contador" id="hero-contador" hidden>
       <div class="hc-item" id="hc-online" hidden><dt data-i18n="hc.online">heróis no mundo agora</dt><dd data-contar="0">0</dd></div>
       <div class="hc-item" id="hc-ativos" hidden><dt data-i18n="hc.active">aventureiros nas últimas 24 h</dt><dd data-contar="0">0</dd></div>
       <div class="hc-item" id="hc-herois" hidden><dt data-i18n="hc.heroes">heróis no ranking</dt><dd data-contar="0">0</dd></div>
       <div class="hc-item" id="hc-nivel" hidden><dt data-i18n="hc.top">nível mais alto do momento</dt><dd data-contar="0">0</dd></div>
     </dl>
-    <a class="selo-status" href="#status" id="selo-status">
-      <span class="ponto" aria-hidden="true"></span>
-      <span id="selo-status-txt" data-i18n="status.loading">Consultando o servidor…</span>
-    </a>
-  </div>
-  <a class="rolar" href="#status" data-i18n-attr="aria-label:hero.scroll" aria-label="Descer">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </a>
-</section>
 
-<!-- ===================== STATUS ===================== -->
-<section class="secao luz faixa-status" id="status" aria-labelledby="status-titulo">
-  <div class="caixa">
-    <h2 class="titulo-pequeno" id="status-titulo" data-i18n="status.title">Estado do reino</h2>
-    <div class="status-grade">
-      <div class="status-card">
-        <span class="status-rotulo" data-i18n="status.server">Servidor</span>
-        <strong id="st-servidor">—</strong>
+    <!-- Barra de status integrada ao Hero (substitui a antiga seção separada) -->
+    <div class="status-barra" id="status" aria-labelledby="status-titulo">
+      <h2 class="sr-only" id="status-titulo" data-i18n="status.title">Estado do reino</h2>
+      <div class="status-grade">
+        <div class="status-card">
+          <span class="status-rotulo" data-i18n="status.server">Servidor</span>
+          <strong id="st-servidor">—</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-rotulo" data-i18n="status.players">Heróis online</span>
+          <strong id="st-jogadores">—</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-rotulo" data-i18n="status.version">Versão</span>
+          <strong id="st-versao">—</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-rotulo" data-i18n="status.offline">Modo offline</span>
+          <strong data-i18n="status.offlineOk">Liberado sem conta</strong>
+        </div>
       </div>
-      <div class="status-card">
-        <span class="status-rotulo" data-i18n="status.players">Heróis online</span>
-        <strong id="st-jogadores">—</strong>
-      </div>
-      <div class="status-card">
-        <span class="status-rotulo" data-i18n="status.version">Versão</span>
-        <strong id="st-versao">—</strong>
-      </div>
-      <div class="status-card">
-        <span class="status-rotulo" data-i18n="status.offline">Modo offline</span>
-        <strong data-i18n="status.offlineOk">Liberado para todos</strong>
-      </div>
+      <p class="status-nota" id="st-nota" data-i18n="status.note">Versão em desenvolvimento aberto: o servidor online funciona com conta gratuita e o modo offline é liberado sem conta.</p>
     </div>
-    <p class="status-nota" id="st-nota" data-i18n="status.note">O multiplayer está em playtest fechado. O jogo inteiro funciona offline, sem conta.</p>
   </div>
 </section>
 
-<!-- ===================== O QUE TEM NO JOGO (cards de site/data/vitrine.json, gerado dos miniguias) ===================== -->
+<!-- ===================== 2. O DESPERTAR + TRAILER EM DESTAQUE (SOMBRA) ===================== -->
+<section class="secao sombra despertar" id="despertar" aria-labelledby="desp-titulo">
+  <div class="caixa duas-colunas">
+    <div>
+      <p class="capitulo-num" data-i18n="aw.kicker">Evento de servidor · Trailer</p>
+      <h2 id="desp-titulo" data-i18n="aw.title">O Despertar</h2>
+      <p class="tremor-aviso" id="tremor-aviso" data-i18n="aw.tremor">A terra treme sob a Vila do Poço.</p>
+      <p data-i18n="aw.p">De tempos em tempos, o que dorme se mexe. O servidor inteiro é avisado. Os esqueletos do mundo se levantam mais fortes. E os heróis descem juntos.</p>
+      <ol class="fases">
+        <li><b data-i18n="aw.f1">Tremor</b><span data-i18n="aw.f1p">o aviso corre o mundo</span></li>
+        <li><b data-i18n="aw.f2">Despertar</b><span data-i18n="aw.f2p">os ossos obedecem</span></li>
+        <li><b data-i18n="aw.f3">A luta</b><span data-i18n="aw.f3p">todos na mesma arena</span></li>
+        <li class="fase-oculta"><b>▮▮▮▮▮▮</b><span data-i18n="aw.f4p">só quem desceu sabe</span></li>
+      </ol>
+      <p class="proximo" id="proximo-despertar" data-i18n="aw.next">Próximo Despertar: a anunciar.</p>
+    </div>
+    <figure class="moldura video">
+      <video id="video-despertar" controls preload="metadata" playsinline poster="img/despertar-poster.webp" width="960" height="540" aria-label="Trailer do Despertar">
+        <source src="img/despertar.mp4" type="video/mp4">
+      </video>
+      <figcaption data-i18n="aw.cap">Trailer do Despertar (10 s) · começa em volume suave para não assustar.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 3. GUIA DO MUNDO — O QUE JÁ TEM NO JOGO (site/data/vitrine.json) ===================== -->
 <section class="secao luz" id="vitrine" aria-labelledby="vt-titulo">
   <div class="caixa">
-    <p class="capitulo-num" data-i18n="vt.kicker">Vitrine</p>
-    <h2 id="vt-titulo" data-i18n="vt.title">O que tem no jogo</h2>
-    <p class="lead" data-i18n="vt.lead">O que já dá para jogar hoje, em poucas linhas. O que ainda não está pronto aparece como “em breve”: a gente não vende o que não existe.</p>
+    <div class="cabeca-secao">
+      <div>
+        <p class="capitulo-num" data-i18n="vt.kicker">Guia do Mundo</p>
+        <h2 id="vt-titulo" data-i18n="vt.title">O que já tem no jogo</h2>
+        <p class="lead" data-i18n="vt.lead">Onde ir, qual nível precisa, com quem falar e o passo a passo completo de cada lugar. O que ainda está em construção aparece como “em breve”.</p>
+      </div>
+      <div class="filtros" id="vt-filtros" role="tablist" aria-label="Filtrar o guia do mundo" data-i18n-attr="aria-label:vt.filterAria">
+        <button type="button" role="tab" aria-selected="true" data-cat="destaques" data-i18n="vt.f.highlights">Destaques</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="reinos" data-i18n="vt.f.kingdoms">Capitais &amp; Reinos</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="inicio" data-i18n="vt.f.start">Jornada Inicial</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="masmorras" data-i18n="vt.f.dungeons">Masmorras &amp; Chefes</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="social" data-i18n="vt.f.social">Ofícios &amp; Social</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="breve" data-i18n="vt.f.soon">Em breve</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-cat="todos" data-i18n="vt.f.all">Ver tudo</button>
+      </div>
+    </div>
     <div class="vt-grade" id="vt-grade" aria-live="polite"></div>
     <p class="vt-erro" id="vt-erro" hidden></p>
   </div>
 </section>
 
-<!-- ===================== CAP. I — A IDADE DAS ASAS (LUZ → SOMBRA) ===================== -->
-<section class="secao capitulo cap-asas" id="historia" aria-labelledby="cap1-titulo">
-  <div class="ceu-cap1" aria-hidden="true"></div>
-  <div class="caixa estreita">
-    <p class="capitulo-num" data-i18n="ch1.num">Capítulo I</p>
-    <h2 id="cap1-titulo" data-i18n="ch1.title">A Idade das Asas</h2>
-    <p class="aparece" data-i18n="ch1.p1">Antes dos reinos, o céu tinha donos. Os <b>Senhores do Alto</b> pousavam e a pedra virava vidro. Os povos pagavam tributo em gado, em ouro e, nos anos ruins, em gente.</p>
-    <p class="aparece" data-i18n="ch1.p2">Os <b>Antigos</b> se recusaram a pagar. Não eram mais fortes. Eram mais pacientes. Descobriram que um Senhor do Alto não se mata — o fogo só muda de lugar. Mas tudo o que vive também dorme.</p>
-    <p class="aparece" data-i18n="ch1.p3">Então escreveram uma canção de ninar. Cada palavra, guardada nos <b>Grimórios</b>, cobrou de quem escreveu um pedaço do corpo: anos, a cor dos olhos, a mão. A magia deste mundo nunca foi de graça.</p>
-
-    <!-- Bardo × Livro -->
-    <div class="duas-versoes" id="versoes">
-      <div class="versoes-abas" role="tablist" aria-label="Duas versões da mesma história">
-        <button role="tab" id="aba-bardo" aria-controls="painel-bardo" aria-selected="true" data-i18n="ch1.bardTab">Como canta o bardo</button>
-        <button role="tab" id="aba-livro" aria-controls="painel-livro" aria-selected="false" tabindex="-1" data-i18n="ch1.bookTab">Como conta o livro</button>
-      </div>
-      <div class="versao versao-bardo" role="tabpanel" id="painel-bardo" aria-labelledby="aba-bardo">
-        <p class="versao-fonte" data-i18n="ch1.bardSrc"><i>A Balada dos Mil Antigos</i> — cantada nas tavernas de Aurora</p>
-        <blockquote class="quadra" data-i18n="ch1.bard">Eram mil os velhos bravos,<br>mil escudos, mil canções,<br>e o céu, que ardia em asas,<br>viu cair os seus dragões.<br><br>Ergue o copo aos mil Antigos,<br>que o bardo não sabe mentir!<br>(E quem diz que eram só poucos<br>paga a rodada e vai dormir.)</blockquote>
-      </div>
-      <div class="versao versao-livro" role="tabpanel" id="painel-livro" aria-labelledby="aba-livro" hidden>
-        <p class="versao-fonte" data-i18n="ch1.bookSrc">Dos livros da Vila do Poço</p>
-        <p data-i18n="ch1.book">Os Antigos eram poucos e pacientes, e não mataram dragão nenhum. Fizeram eles dormirem — e pagaram com o próprio corpo.</p>
-        <p class="versao-dica" data-i18n="ch1.bookHint">No jogo, cada balada tem um livro par. Quem junta os dois descobre o que realmente aconteceu.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CAP. II — A VILA DO POÇO (LUZ) ===================== -->
-<section class="secao luz capitulo cap-vila" aria-labelledby="cap2-titulo">
-  <div class="caixa duas-colunas">
-    <div>
-      <p class="capitulo-num" data-i18n="ch2.num">Capítulo II</p>
-      <h2 id="cap2-titulo" data-i18n="ch2.title">A Vila do Poço</h2>
-      <p class="aparece" data-i18n="ch2.p1">Toda história começa numa vila pequena com um poço no meio. As crianças brincam na praça, a Capitã da Guarda conta as lanças, os moradores puxam água como se fosse um dia qualquer.</p>
-      <p class="aparece" data-i18n="ch2.p2">Ninguém lembra quem cavou o poço. Os velhos dizem que ele não foi cavado: foi <i>deixado</i>, como uma porta que alguém esqueceu aberta ao ir embora.</p>
-      <p class="aparece" data-i18n="ch2.p3">E há a <b>Lúmen</b>, uma luz pequena que mora numa lanterna e não gosta do escuro de lá de baixo. Dizem que a lua mandou ela para vigiar alguma coisa.</p>
-      <p class="aparece gancho" data-i18n="ch2.hook">Mas, de uns tempos para cá, os acampamentos ao redor da vila voltaram a se mover à noite…</p>
-    </div>
-    <figure class="moldura">
-      <img src="img/mundo-vila.webp" alt="A Vila do Poço ao entardecer, com casas de madeira e o poço no centro" data-i18n-attr="alt:ch2.imgAlt" loading="lazy" width="1280" height="720">
-      <figcaption data-i18n="ch2.cap">A Vila do Poço, ponto de partida do mundo aberto.</figcaption>
-    </figure>
-  </div>
-
-  <!-- Canção do Poço: verso a verso -->
-  <div class="caixa estreita cancao" aria-labelledby="cancao-titulo">
-    <h3 id="cancao-titulo" class="titulo-pequeno" data-i18n="song.title">A canção de puxar balde</h3>
-    <p class="cancao-intro" data-i18n="song.intro">Uma avó cantava isto enquanto puxava o balde, e parava sempre no mesmo verso.</p>
-    <ol class="versos">
-      <li data-i18n="song.v1">Desce a corda, desce a luz,</li>
-      <li data-i18n="song.v2">desce o nome que ninguém diz;</li>
-      <li data-i18n="song.v3">quem lá embaixo acende a lua</li>
-      <li data-i18n="song.v4">volta sem sombra — e mais feliz.</li>
-      <li class="verso-cortado" aria-label="O resto da canção está apagado" data-i18n-attr="aria-label:song.cutLabel"><span aria-hidden="true">▮▮▮▮ ▮ ▮▮▮▮▮▮, ▮▮▮▮ ▮ ▮▮▮…</span></li>
-    </ol>
-    <p class="cancao-fim" data-i18n="song.end">Ela dizia que a canção acabava ali. Mentia. Quem quiser ouvir o resto, que desça com luz própria.</p>
-  </div>
-</section>
-
-<!-- ===================== CAP. III — O QUE DORME (SOMBRA) ===================== -->
-<section class="secao sombra capitulo cap-dorme" id="o-que-dorme" aria-labelledby="cap3-titulo">
-  <div class="escuro-lanterna" aria-hidden="true"></div>
-  <div class="ossos-fundo" aria-hidden="true">
-    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice"><use href="#ossos"/></svg>
-  </div>
-  <div class="caixa estreita cap-dorme-txt">
-    <p class="capitulo-num" data-i18n="ch3.num">Capítulo III</p>
-    <h2 id="cap3-titulo" data-i18n="ch3.title">O que dorme</h2>
-    <p data-i18n="ch3.p1">Os esqueletos dos acampamentos não andam como mortos comuns. Andam num ritmo, como se alguém os estivesse <i>sonhando</i> em movimento.</p>
-    <p class="frase-ossos" data-i18n="ch3.phrase">“Dorme, e os ossos obedecem.”</p>
-    <p data-i18n="ch3.p2">É o que repete quem sobreviveu. Ninguém sabe o que dorme. Quem sabe não diz o nome — porque dizer em voz alta é o que acorda.</p>
-    <p class="nome-proibido">
-      <span data-i18n="ch3.nameLabel">O nome:</span>
-      <button type="button" class="tarja" id="tarja" aria-describedby="tarja-aviso" data-i18n-attr="aria-label:ch3.nameBtn" aria-label="Nome apagado. Tentar ler">▮▮▮▮▮▮▮▮</button>
-    </p>
-    <p class="tarja-aviso" id="tarja-aviso" aria-live="polite"></p>
-
-    <!-- Grimório: abrir cobra um preço -->
-    <div class="grimorio" id="grimorio">
-      <button type="button" class="btn btn-grimorio" id="btn-grimorio" aria-expanded="false" aria-controls="grimorio-pagina">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5zM4 21.5A2.5 2.5 0 0 0 6.5 24H20"/></svg>
-        <span data-i18n="ch3.grimoire">Abrir o Grimório</span>
-      </button>
-      <p class="grimorio-preco" data-i18n="ch3.price">Toda magia cobra. Esta cobra um ano.</p>
-      <div class="grimorio-pagina" id="grimorio-pagina" hidden>
-        <p data-i18n="ch3.page">No fundo da Gruta das Raízes, um <b>Guardião de pedra</b> vigia um Grimório fechado. Ele não é a ameaça. Ele é a <b>tranca</b>.</p>
-        <p class="grimorio-conta" id="grimorio-conta" aria-live="polite"></p>
-      </div>
-    </div>
-    <p class="cap-dorme-fim" data-i18n="ch3.end">O que acontece quando a tranca cai, os livros não contam. Você vai ter que descer.</p>
-    <button type="button" class="btn-link" id="btn-acender" data-i18n="ch3.light">Acender a lanterna (mostrar tudo)</button>
-  </div>
-</section>
-
-<!-- ===================== DOIS REINOS (LUZ × SOMBRA) ===================== -->
-<section class="reinos" id="reinos" aria-labelledby="reinos-titulo">
-  <h2 class="reinos-titulo" id="reinos-titulo" data-i18n="kg.title">Dois reinos. Um juramento.</h2>
-  <div class="reinos-lados">
-    <article class="reino reino-aurora" tabindex="0">
-      <img src="img/capital-aurora.webp" alt="" loading="lazy" width="1280" height="720">
-      <div class="reino-txt">
-        <p class="reino-lema" data-i18n="kg.auroraTag">A superfície · a Coroa</p>
-        <h3 data-i18n="kg.aurora">Coroa de Aurora</h3>
-        <p data-i18n="kg.auroraP">Os que ficaram em cima ergueram uma muralha branca com bestas de ferro e cobraram o <b>Dízimo do Céu</b> para que ela nunca caísse. O dragão sumiu. O dízimo ficou.</p>
-        <p class="reino-segredo" data-i18n="kg.auroraS">O Rei quer a guerra. Acha que Nocturna esconde alguma coisa.</p>
-      </div>
-    </article>
-    <article class="reino reino-nocturna" tabindex="0">
-      <div class="lanternas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="reino-txt">
-        <p class="reino-lema" data-i18n="kg.noctTag">O subterrâneo · a Cidade Velada</p>
-        <h3 data-i18n="kg.noct">Nocturna</h3>
-        <p data-i18n="kg.noctP">Os que desceram para a caverna gigante fugindo do fogo — e todo exilado depois deles. Vive de lanternas lunares e de favores.</p>
-        <p class="reino-segredo" data-i18n="kg.noctS">O Regente usa um véu. Dizem que ele <i>escuta</i> alguma coisa lá embaixo.</p>
-      </div>
-    </article>
-  </div>
-  <p class="reinos-juramento" data-i18n="kg.oath">No nível 20 você jura a um dos dois. Dá para trocar uma vez só — e trocar tem nome: <b>traição</b>.</p>
-</section>
-
-<!-- ===================== JOGABILIDADE ===================== -->
-<section class="secao luz" id="jogo" aria-labelledby="jogo-titulo">
+<!-- ===================== 4. COMBATE, PROGRESSÃO & MUNDO (LUZ ALT) ===================== -->
+<section class="secao luz alt" id="jogo" aria-labelledby="jogo-titulo">
   <div class="caixa">
-    <p class="capitulo-num" data-i18n="gp.kicker">Jogabilidade</p>
-    <h2 id="jogo-titulo" data-i18n="gp.title">Escolha como lutar</h2>
-    <p class="lead" data-i18n="gp.lead">Combate de ação em visão isométrica: combo de três golpes, esquiva perfeita, ultimate e cada golpe validado no servidor. Cada classe tem a própria esquiva.</p>
+    <p class="capitulo-num" data-i18n="gp.kicker">Combate &amp; Progressão</p>
+    <h2 id="jogo-titulo" data-i18n="gp.title">Estilos de luta e a jornada do herói</h2>
+    <p class="lead" data-i18n="gp.lead">Combate de ação em visão isométrica: combo de três golpes, esquiva perfeita, maestria por arma e cada golpe validado no servidor. Qualquer herói pode equipar armas seguindo vocação, nível e atributo.</p>
+
+    <!-- Trilha da nova progressão de classes (desenho do Dinho — transparente sobre o que está chegando) -->
+    <div class="jornada-classes" aria-labelledby="jc-titulo">
+      <div class="jc-topo">
+        <h3 id="jc-titulo" data-i18n="jc.title">Evolução da jornada de classes</h3>
+        <span class="jc-selo" data-i18n="jc.badge">Em desenvolvimento · parte já no ar</span>
+      </div>
+      <p class="jc-lead" data-i18n="jc.lead">Hoje as 5 classes já são jogáveis com esquiva e passiva próprias. Na nova progressão em desenvolvimento, todo herói passará a evoluir a classe durante a aventura:</p>
+      <ol class="jc-passos">
+        <li>
+          <span class="jc-nv" data-i18n="jc.s1n">Nv. 1–10</span>
+          <strong data-i18n="jc.s1t">Aprendiz</strong>
+          <span data-i18n="jc.s1p">Começa sem classe fixa e testa as armas iniciais na ilha e nos primeiros mapas.</span>
+        </li>
+        <li>
+          <span class="jc-nv" data-i18n="jc.s2n">Nv. 10</span>
+          <strong data-i18n="jc.s2t">Escolha da Classe</strong>
+          <span data-i18n="jc.s2p">Fala com o Mestre de Armas na Vila do Poço e libera vocação, esquiva, passiva e árvore de habilidades.</span>
+        </li>
+        <li>
+          <span class="jc-nv" data-i18n="jc.s3n">Nv. 50</span>
+          <strong data-i18n="jc.s3t">Subclasse</strong>
+          <span data-i18n="jc.s3p">Vence a Provação do 50 e escolhe 1 entre 2 especializações que mudam regras reais de combate.</span>
+        </li>
+      </ol>
+    </div>
 
     <div class="classes">
       <div class="classes-abas" role="tablist" aria-label="Classes">
@@ -280,183 +234,317 @@
         <div>
           <h3 id="classe-nome">Cavaleiro</h3>
           <p id="classe-desc"></p>
+          <p class="classe-subs" id="classe-subs"></p>
           <dl class="classe-dados">
             <div><dt data-i18n="cls.dodge">Esquiva</dt><dd id="classe-esquiva"></dd></div>
-            <div><dt data-i18n="cls.weapon">Arma inicial</dt><dd id="classe-arma"></dd></div>
+            <div><dt data-i18n="cls.weapon">Vocação</dt><dd id="classe-arma"></dd></div>
             <div><dt data-i18n="cls.passive">Passiva</dt><dd id="classe-passiva"></dd></div>
           </dl>
         </div>
       </div>
     </div>
 
-    <ul class="recursos">
-      <li><strong data-i18n="ft.world">12 regiões</strong><span data-i18n="ft.worldP">Campo, deserto, geada, cinzas, vulcão, pântanos, necrópole… do nível 1 ao 100, e o herói vai até o 500.</span></li>
-      <li><strong data-i18n="ft.bosses">Chefes com fases</strong><span data-i18n="ft.bossesP">Investidas, ajudantes, sala de recompensa e uma Gruta gerada para ser explorada.</span></li>
-      <li><strong data-i18n="ft.econ">Economia por cidade</strong><span data-i18n="ft.econP">Cada cidade tem caixa, imposto e preço que sobe e desce. Forja, conserto, encantamento e alquimia.</span></li>
-      <li><strong data-i18n="ft.guild">Guildas e lore</strong><span data-i18n="ft.guildP">Três guildas, livros para ler no jogo, pedras rúnicas e ecos antigos que fortalecem a ultimate.</span></li>
-    </ul>
+    <!-- Mundo em imagens + Mapa em névoa em abas (evita criar outra seção gigante isolada) -->
+    <div class="mundo-bloco" id="mapa-secao">
+      <div class="mundo-topo">
+        <h3 data-i18n="world.title">Explore o mundo aberto</h3>
+        <div class="filtros" id="mundo-abas" role="tablist" aria-label="Visões do mundo" data-i18n-attr="aria-label:world.aria">
+          <button type="button" role="tab" aria-selected="true" aria-controls="mundo-painel-mapa" id="aba-mundo-mapa" data-mundo="mapa" data-i18n="world.tabMap">Mapa em névoa</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="mundo-painel-galeria" id="aba-mundo-galeria" tabindex="-1" data-mundo="galeria" data-i18n="world.tabGallery">Regiões &amp; Galeria</button>
+        </div>
+      </div>
 
-    <div class="galeria">
-      <figure><img src="img/ilha-arena.webp" alt="Arena dos esqueletos na ilha do tutorial" data-i18n-attr="alt:gal.arena" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.arenaC">Ilha do Mestre de Armas</figcaption></figure>
-      <figure><img src="img/ilha-boss.webp" alt="Arena do Guardião na ilha do tutorial" data-i18n-attr="alt:gal.boss" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.bossC">A arena do primeiro chefe</figcaption></figure>
-      <figure><img src="img/mundo-oasis.webp" alt="Oásis Rubro, cidade do deserto" data-i18n-attr="alt:gal.oasis" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.oasisC">Oásis Rubro, no deserto</figcaption></figure>
+      <div id="mundo-painel-mapa" role="tabpanel" aria-labelledby="aba-mundo-mapa">
+        <p class="mundo-dica" data-i18n="map.lead">Passe o dedo ou o mouse para afastar a névoa de algumas regiões. O mapa inteiro só aparece andando.</p>
+        <div class="mapa" id="mapa">
+          <img src="img/mapa.webp" alt="Mapa do mundo dividido em biomas" data-i18n-attr="alt:map.alt" loading="lazy" width="1400" height="897">
+          <div class="nevoa" id="nevoa" aria-hidden="true"></div>
+          <p class="mapa-contador" id="mapa-contador" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div id="mundo-painel-galeria" role="tabpanel" aria-labelledby="aba-mundo-galeria" hidden>
+        <ul class="recursos">
+          <li><strong data-i18n="ft.world">12 regiões</strong><span data-i18n="ft.worldP">Campo, deserto, geada, cinzas, vulcão, pântanos, necrópole… do nível 1 ao 100, e o herói vai até o 500.</span></li>
+          <li><strong data-i18n="ft.bosses">Chefes com fases</strong><span data-i18n="ft.bossesP">Investidas, ajudantes, sala de recompensa e uma Gruta gerada para ser explorada.</span></li>
+          <li><strong data-i18n="ft.econ">Economia por cidade</strong><span data-i18n="ft.econP">Cada cidade tem caixa, imposto e preço que sobe e desce. Forja, conserto, encantamento e alquimia.</span></li>
+          <li><strong data-i18n="ft.guild">Guildas e lore</strong><span data-i18n="ft.guildP">Três guildas, livros para ler no jogo, pedras rúnicas e ecos antigos que fortalecem a ultimate.</span></li>
+        </ul>
+        <div class="galeria">
+          <figure><img src="img/ilha-arena.webp" alt="Arena dos esqueletos na ilha do tutorial" data-i18n-attr="alt:gal.arena" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.arenaC">Ilha do Mestre de Armas</figcaption></figure>
+          <figure><img src="img/ilha-boss.webp" alt="Arena do Guardião na ilha do tutorial" data-i18n-attr="alt:gal.boss" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.bossC">A arena do primeiro chefe</figcaption></figure>
+          <figure><img src="img/mundo-oasis.webp" alt="Oásis Rubro, cidade do deserto" data-i18n-attr="alt:gal.oasis" loading="lazy" width="1280" height="720"><figcaption data-i18n="gal.oasisC">Oásis Rubro, no deserto</figcaption></figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== MAPA EM NÉVOA ===================== -->
-<section class="secao sombra mapa-secao" aria-labelledby="mapa-titulo">
+<!-- ===================== 5. AS CRÔNICAS DO POÇO (HISTÓRIA + REINOS EM CAPÍTULOS) ===================== -->
+<section class="secao sombra cronicas" id="historia" aria-labelledby="cronicas-titulo">
+  <!-- Âncoras preservadas para links antigos -->
+  <span id="o-que-dorme" class="ancora-oculta" aria-hidden="true"></span>
+  <span id="reinos" class="ancora-oculta" aria-hidden="true"></span>
   <div class="caixa">
-    <h2 id="mapa-titulo" data-i18n="map.title">O mapa que você ainda não andou</h2>
-    <p class="lead" data-i18n="map.lead">Passe o dedo ou o mouse para afastar a névoa de algumas regiões. O mapa inteiro só aparece andando.</p>
-    <div class="mapa" id="mapa">
-      <img src="img/mapa.webp" alt="Mapa do mundo dividido em biomas" data-i18n-attr="alt:map.alt" loading="lazy" width="1400" height="897">
-      <div class="nevoa" id="nevoa" aria-hidden="true"></div>
-      <p class="mapa-contador" id="mapa-contador" aria-live="polite"></p>
+    <div class="cabeca-secao">
+      <div>
+        <p class="capitulo-num" data-i18n="cr.kicker">História sem spoiler</p>
+        <h2 id="cronicas-titulo" data-i18n="cr.title">As Crônicas do Poço</h2>
+        <p class="lead" data-i18n="cr.lead">Folheie os capítulos do passado antes de descer. O resto da história, só jogando.</p>
+      </div>
+      <div class="filtros" id="cronicas-abas" role="tablist" aria-label="Capítulos da história" data-i18n-attr="aria-label:cr.aria">
+        <button type="button" role="tab" aria-selected="true" aria-controls="cr-cap1" data-cr="cap1" data-i18n="cr.tab1">Cap. I · Asas</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="cr-cap2" tabindex="-1" data-cr="cap2" data-i18n="cr.tab2">Cap. II · A Vila</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="cr-cap3" tabindex="-1" data-cr="cap3" data-i18n="cr.tab3">Cap. III · O que dorme</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="cr-reinos" tabindex="-1" data-cr="reinos" data-i18n="cr.tab4">Dois Reinos</button>
+      </div>
+    </div>
+
+    <!-- Cap. I — A Idade das Asas -->
+    <div class="cr-painel" id="cr-cap1" role="tabpanel">
+      <div class="duas-colunas cr-grid">
+        <div>
+          <p class="capitulo-num" data-i18n="ch1.num">Capítulo I</p>
+          <h3 class="cr-subtitulo" data-i18n="ch1.title">A Idade das Asas</h3>
+          <p data-i18n="ch1.p1">Antes dos reinos, o céu tinha donos. Os <b>Senhores do Alto</b> pousavam e a pedra virava vidro. Os povos pagavam tributo em gado, em ouro e, nos anos ruins, em gente.</p>
+          <p data-i18n="ch1.p2">Os <b>Antigos</b> se recusaram a pagar. Não eram mais fortes. Eram mais pacientes. Descobriram que um Senhor do Alto não se mata — o fogo só muda de lugar. Mas tudo o que vive também dorme.</p>
+          <p data-i18n="ch1.p3">Então escreveram uma canção de ninar. Cada palavra, guardada nos <b>Grimórios</b>, cobrou de quem escreveu um pedaço do corpo: anos, a cor dos olhos, a mão. A magia deste mundo nunca foi de graça.</p>
+        </div>
+        <!-- Bardo × Livro -->
+        <div class="duas-versoes" id="versoes">
+          <div class="versoes-abas" role="tablist" aria-label="Duas versões da mesma história">
+            <button role="tab" id="aba-bardo" aria-controls="painel-bardo" aria-selected="true" data-i18n="ch1.bardTab">Como canta o bardo</button>
+            <button role="tab" id="aba-livro" aria-controls="painel-livro" aria-selected="false" tabindex="-1" data-i18n="ch1.bookTab">Como conta o livro</button>
+          </div>
+          <div class="versao versao-bardo" role="tabpanel" id="painel-bardo" aria-labelledby="aba-bardo">
+            <p class="versao-fonte" data-i18n="ch1.bardSrc"><i>A Balada dos Mil Antigos</i> — cantada nas tavernas de Aurora</p>
+            <blockquote class="quadra" data-i18n="ch1.bard">Eram mil os velhos bravos,<br>mil escudos, mil canções,<br>e o céu, que ardia em asas,<br>viu cair os seus dragões.<br><br>Ergue o copo aos mil Antigos,<br>que o bardo não sabe mentir!<br>(E quem diz que eram só poucos<br>paga a rodada e vai dormir.)</blockquote>
+          </div>
+          <div class="versao versao-livro" role="tabpanel" id="painel-livro" aria-labelledby="aba-livro" hidden>
+            <p class="versao-fonte" data-i18n="ch1.bookSrc">Dos livros da Vila do Poço</p>
+            <p data-i18n="ch1.book">Os Antigos eram poucos e pacientes, e não mataram dragão nenhum. Fizeram eles dormirem — e pagaram com o próprio corpo.</p>
+            <p class="versao-dica" data-i18n="ch1.bookHint">No jogo, cada balada tem um livro par. Quem junta os dois descobre o que realmente aconteceu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cap. II — A Vila do Poço -->
+    <div class="cr-painel" id="cr-cap2" role="tabpanel" hidden>
+      <div class="duas-colunas cr-grid">
+        <div>
+          <p class="capitulo-num" data-i18n="ch2.num">Capítulo II</p>
+          <h3 class="cr-subtitulo" data-i18n="ch2.title">A Vila do Poço</h3>
+          <p data-i18n="ch2.p1">Toda história começa numa vila pequena com um poço no meio. As crianças brincam na praça, a Capitã da Guarda conta as lanças, os moradores puxam água como se fosse um dia qualquer.</p>
+          <p data-i18n="ch2.p2">Ninguém lembra quem cavou o poço. Os velhos dizem que ele não foi cavado: foi <i>deixado</i>, como uma porta que alguém esqueceu aberta ao ir embora.</p>
+          <p data-i18n="ch2.p3">E há a <b>Lúmen</b>, uma luz pequena que mora numa lanterna e não gosta do escuro de lá de baixo. Dizem que a lua mandou ela para vigiar alguma coisa.</p>
+          <p class="gancho" data-i18n="ch2.hook">Mas, de uns tempos para cá, os acampamentos ao redor da vila voltaram a se mover à noite…</p>
+        </div>
+        <div class="cr-vila-lado">
+          <figure class="moldura">
+            <img src="img/mundo-vila.webp" alt="A Vila do Poço ao entardecer, com casas de madeira e o poço no centro" data-i18n-attr="alt:ch2.imgAlt" loading="lazy" width="1280" height="720">
+            <figcaption data-i18n="ch2.cap">A Vila do Poço, ponto de partida do mundo aberto.</figcaption>
+          </figure>
+          <div class="cancao-box" aria-labelledby="cancao-titulo">
+            <h4 id="cancao-titulo" class="titulo-pequeno" data-i18n="song.title">A canção de puxar balde</h4>
+            <ol class="versos-compacto">
+              <li data-i18n="song.v1">Desce a corda, desce a luz,</li>
+              <li data-i18n="song.v2">desce o nome que ninguém diz;</li>
+              <li data-i18n="song.v3">quem lá embaixo acende a lua</li>
+              <li data-i18n="song.v4">volta sem sombra — e mais feliz.</li>
+              <li class="verso-cortado" aria-label="O resto da canção está apagado" data-i18n-attr="aria-label:song.cutLabel"><span aria-hidden="true">▮▮▮▮ ▮ ▮▮▮▮▮▮, ▮▮▮▮ ▮ ▮▮▮…</span></li>
+            </ol>
+            <p class="cancao-fim" data-i18n="song.end">Ela dizia que a canção acabava ali. Mentia. Quem quiser ouvir o resto, que desça com luz própria.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cap. III — O que dorme (escuro interativo com lanterna, tarja e grimório) -->
+    <div class="cr-painel cap-dorme" id="cr-cap3" role="tabpanel" hidden>
+      <div class="escuro-lanterna" aria-hidden="true"></div>
+      <div class="ossos-fundo" aria-hidden="true">
+        <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice"><use href="#ossos"/></svg>
+      </div>
+      <div class="cap-dorme-txt">
+        <p class="capitulo-num" data-i18n="ch3.num">Capítulo III</p>
+        <h3 class="cr-subtitulo" data-i18n="ch3.title">O que dorme</h3>
+        <p data-i18n="ch3.p1">Os esqueletos dos acampamentos não andam como mortos comuns. Andam num ritmo, como se alguém os estivesse <i>sonhando</i> em movimento.</p>
+        <p class="frase-ossos" data-i18n="ch3.phrase">“Dorme, e os ossos obedecem.”</p>
+        <p data-i18n="ch3.p2">É o que repete quem sobreviveu. Ninguém sabe o que dorme. Quem sabe não diz o nome — porque dizer em voz alta é o que acorda.</p>
+        <p class="nome-proibido">
+          <span data-i18n="ch3.nameLabel">O nome:</span>
+          <button type="button" class="tarja" id="tarja" aria-describedby="tarja-aviso" data-i18n-attr="aria-label:ch3.nameBtn" aria-label="Nome apagado. Tentar ler">▮▮▮▮▮▮▮▮</button>
+        </p>
+        <p class="tarja-aviso" id="tarja-aviso" aria-live="polite"></p>
+
+        <div class="grimorio" id="grimorio">
+          <button type="button" class="btn btn-grimorio" id="btn-grimorio" aria-expanded="false" aria-controls="grimorio-pagina">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5zM4 21.5A2.5 2.5 0 0 0 6.5 24H20"/></svg>
+            <span data-i18n="ch3.grimoire">Abrir o Grimório</span>
+          </button>
+          <p class="grimorio-preco" data-i18n="ch3.price">Toda magia cobra. Esta cobra um ano.</p>
+          <div class="grimorio-pagina" id="grimorio-pagina" hidden>
+            <p data-i18n="ch3.page">No fundo da Gruta das Raízes, um <b>Guardião de pedra</b> vigia um Grimório fechado. Ele não é a ameaça. Ele é a <b>tranca</b>.</p>
+            <p class="grimorio-conta" id="grimorio-conta" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="cap-dorme-fim" data-i18n="ch3.end">O que acontece quando a tranca cai, os livros não contam. Você vai ter que descer.</p>
+        <button type="button" class="btn-link" id="btn-acender" data-i18n="ch3.light">Acender a lanterna (mostrar tudo)</button>
+      </div>
+    </div>
+
+    <!-- Cap. IV — Dois Reinos -->
+    <div class="cr-painel" id="cr-reinos" role="tabpanel" hidden>
+      <div class="reinos-lados">
+        <article class="reino reino-aurora" tabindex="0">
+          <img src="img/capital-aurora.webp" alt="" loading="lazy" width="1280" height="720">
+          <div class="reino-txt">
+            <p class="reino-lema" data-i18n="kg.auroraTag">A superfície · a Coroa</p>
+            <h3 data-i18n="kg.aurora">Coroa de Aurora</h3>
+            <p data-i18n="kg.auroraP">Os que ficaram em cima ergueram uma muralha branca com bestas de ferro e cobraram o <b>Dízimo do Céu</b> para que ela nunca caísse. O dragão sumiu. O dízimo ficou.</p>
+            <p class="reino-segredo" data-i18n="kg.auroraS">O Rei quer a guerra. Acha que Nocturna esconde alguma coisa.</p>
+          </div>
+        </article>
+        <article class="reino reino-nocturna" tabindex="0">
+          <div class="lanternas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="reino-txt">
+            <p class="reino-lema" data-i18n="kg.noctTag">O subterrâneo · a Cidade Velada</p>
+            <h3 data-i18n="kg.noct">Nocturna</h3>
+            <p data-i18n="kg.noctP">Os que desceram para a caverna gigante fugindo do fogo — e todo exilado depois deles. Vive de lanternas lunares e de favores.</p>
+            <p class="reino-segredo" data-i18n="kg.noctS">O Regente usa um véu. Dizem que ele <i>escuta</i> alguma coisa lá embaixo.</p>
+          </div>
+        </article>
+      </div>
+      <p class="reinos-juramento" data-i18n="kg.oath">No nível 20 você jura a um dos dois no Acampamento da Estepe. Dá para trocar uma vez só — e trocar tem nome: <b>traição</b>.</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== TUTORIAIS ===================== -->
-<section class="secao luz" id="tutoriais" aria-labelledby="tut-titulo">
+<!-- ===================== 6. CENTRAL DO AVENTUREIRO (RANKING · NOVIDADES · TUTORIAIS · WIKI) ===================== -->
+<section class="secao luz" id="comunidade" aria-labelledby="com-titulo">
+  <!-- Âncoras preservadas para links antigos e Fragmentos do Grimório -->
+  <span id="ranking" class="ancora-oculta" aria-hidden="true"></span>
+  <span id="novidades" class="ancora-oculta" aria-hidden="true"></span>
+  <span id="tutoriais" class="ancora-oculta" aria-hidden="true"></span>
+  <span id="wiki" class="ancora-oculta" aria-hidden="true"></span>
+
   <div class="caixa">
-    <p class="capitulo-num" data-i18n="tut.kicker">Primeiros passos</p>
-    <h2 id="tut-titulo" data-i18n="tut.title">Tutoriais</h2>
-    <p class="lead" data-i18n="tut.lead">O jogo ensina tudo na Ilha do Mestre de Armas, sem travar ninguém. Aqui vai o resumo para quem quer chegar sabendo.</p>
-    <div class="tutoriais">
-      <details class="tutorial" open>
-        <summary><span class="tut-num">1</span><span data-i18n="t1.t">A Ilha do Mestre de Armas</span></summary>
-        <ol>
-          <li data-i18n="t1.a">Siga os anéis no chão: eles mostram o próximo passo.</li>
-          <li data-i18n="t1.b">Abra o baú, enfrente a arena dos esqueletos e compre a primeira arma.</li>
-          <li data-i18n="t1.c">Derrote o Guardião da ilha. Já sabe jogar? Dá para pular o tutorial desde o começo.</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">2</span><span data-i18n="t2.t">Combate e esquiva</span></summary>
-        <ol>
-          <li data-i18n="t2.a">Ataque em sequência para o combo de três golpes. Dá para atacar andando.</li>
-          <li data-i18n="t2.b">Esquive no último instante: a esquiva perfeita abre espaço para o contra-ataque.</li>
-          <li data-i18n="t2.c">Encha a barra de Fúria, Foco ou Mana e solte a ultimate.</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">3</span><span data-i18n="t3.t">Mochila e equipamento</span></summary>
-        <ol>
-          <li data-i18n="t3.a">Tecla <kbd>I</kbd> (ou o botão da mochila) abre o inventário.</li>
-          <li data-i18n="t3.b">Vista peças de cabeça, peito, mãos, pés, anel e amuleto. O tier muda a cor da peça.</li>
-          <li data-i18n="t3.c">Coloque arma ou poção na barra de atalhos (teclas <kbd>1</kbd>–<kbd>4</kbd>).</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">4</span><span data-i18n="t4.t">Mercado e bancada</span></summary>
-        <ol>
-          <li data-i18n="t4.a">Cada cidade tem preço próprio: compre barato num hub e venda em outro.</li>
-          <li data-i18n="t4.b">Na bancada: forjar, consertar, encantar, desencantar e fazer alquimia.</li>
-          <li data-i18n="t4.c">O imposto vai para o tesouro da cidade — e o tesouro acaba.</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">5</span><span data-i18n="t5.t">Mapa e Teleportador</span></summary>
-        <ol>
-          <li data-i18n="t5.a">Chegue perto de um hub para liberá-lo no mapa.</li>
-          <li data-i18n="t5.b">Fale com o Teleportador para viajar entre hubs liberados.</li>
-          <li data-i18n="t5.c">Dentro da zona segura, os monstros não miram você.</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">6</span><span data-i18n="t6.t">Grupo e missões</span></summary>
-        <ol>
-          <li data-i18n="t6.a">Comece pela Capitã da Guarda, na Vila do Poço.</li>
-          <li data-i18n="t6.b">O diário de missões e o “próximo objetivo” na tela mostram para onde ir.</li>
-          <li data-i18n="t6.c">Monte um grupo para dividir a caçada (online).</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">7</span><span data-i18n="t7.t">Reinos e reputação</span></summary>
-        <ol>
-          <li data-i18n="t7.a">No nível 20, jure a Aurora ou a Nocturna.</li>
-          <li data-i18n="t7.b">Contratos diários sobem a reputação e abrem portas da capital.</li>
-          <li data-i18n="t7.c">A guerra de reinos pelas fortalezas ainda não começou: vem aí.</li>
-        </ol>
-      </details>
-      <details class="tutorial">
-        <summary><span class="tut-num">8</span><span data-i18n="t8.t">Constelações e progresso</span></summary>
-        <ol>
-          <li data-i18n="t8.a">Abra o botão Céu para investir atributos nas constelações.</li>
-          <li data-i18n="t8.b">Morrer custa XP — as bênçãos amenizam.</li>
-          <li data-i18n="t8.c">Fora do jogo, o herói descansa e ganha XP descansado.</li>
-        </ol>
-      </details>
+    <div class="cabeca-secao">
+      <div>
+        <p class="capitulo-num" data-i18n="com.kicker">Comunidade &amp; Guias</p>
+        <h2 id="com-titulo" data-i18n="com.title">Central do Aventureiro</h2>
+      </div>
+      <div class="filtros" id="hub-abas" role="tablist" aria-label="Central do Aventureiro" data-i18n-attr="aria-label:com.aria">
+        <button type="button" role="tab" aria-selected="true" aria-controls="hub-ranking" data-hub="ranking" data-i18n="nav.ranking">Ranking</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="hub-novidades" tabindex="-1" data-hub="novidades" data-i18n="nv.kicker">Novidades</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="hub-tutoriais" tabindex="-1" data-hub="tutoriais" data-i18n="nav.tutorials">Primeiros passos</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="hub-wiki" tabindex="-1" data-hub="wiki" id="aba-wiki" data-i18n="wk.kicker" hidden>Wiki</button>
+      </div>
+    </div>
+
+    <!-- Aba 1: Ranking -->
+    <div class="hub-painel" id="hub-ranking" role="tabpanel">
+      <p class="lead" data-i18n="rk.lead">Os heróis mais fortes do servidor, por nível. Mesmo ranking de dentro do jogo, sem contas da equipe.</p>
+      <div class="rk-podio" id="rk-podio" hidden></div>
+      <div class="rk-moldura">
+        <table class="rk-tabela" id="rk-tabela" hidden>
+          <thead><tr><th scope="col">#</th><th scope="col" data-i18n="rk.hero">Herói</th><th scope="col" data-i18n="rk.class">Classe</th><th scope="col" data-i18n="rk.level">Nível</th></tr></thead>
+          <tbody id="rk-corpo"></tbody>
+        </table>
+        <p class="rk-vazio" id="rk-vazio" hidden></p>
+      </div>
+      <p class="rk-nota" id="rk-nota"></p>
+    </div>
+
+    <!-- Aba 2: Novidades -->
+    <div class="hub-painel" id="hub-novidades" role="tabpanel" hidden>
+      <p class="lead" data-i18n="nv.lead">Avisos do time e as mudanças mais recentes do jogo.</p>
+      <ol class="nv-lista" id="nv-lista"></ol>
+      <p class="vt-erro" id="nv-erro" hidden></p>
+    </div>
+
+    <!-- Aba 3: Tutoriais -->
+    <div class="hub-painel" id="hub-tutoriais" role="tabpanel" hidden>
+      <p class="lead" data-i18n="tut.lead">O jogo ensina tudo na Ilha do Mestre de Armas, sem travar ninguém. Aqui vai o resumo para quem quer chegar sabendo.</p>
+      <div class="tutoriais">
+        <details class="tutorial" open>
+          <summary><span class="tut-num">1</span><span data-i18n="t1.t">A Ilha do Mestre de Armas</span></summary>
+          <ol>
+            <li data-i18n="t1.a">Siga os anéis no chão: eles mostram o próximo passo.</li>
+            <li data-i18n="t1.b">Abra o baú, enfrente a arena dos esqueletos e compre a primeira arma.</li>
+            <li data-i18n="t1.c">Derrote o Guardião da ilha. Já sabe jogar? Dá para pular o tutorial desde o começo.</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">2</span><span data-i18n="t2.t">Combate e esquiva</span></summary>
+          <ol>
+            <li data-i18n="t2.a">Ataque em sequência para o combo de três golpes. Dá para atacar andando.</li>
+            <li data-i18n="t2.b">Esquive no último instante: a esquiva perfeita abre espaço para o contra-ataque.</li>
+            <li data-i18n="t2.c">Encha a barra de Fúria, Foco ou Mana e solte a ultimate.</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">3</span><span data-i18n="t3.t">Mochila e equipamento</span></summary>
+          <ol>
+            <li data-i18n="t3.a">Tecla <kbd>I</kbd> (ou o botão da mochila) abre o inventário.</li>
+            <li data-i18n="t3.b">Vista peças de cabeça, peito, mãos, pés, anel e amuleto. O tier muda a cor da peça.</li>
+            <li data-i18n="t3.c">Coloque arma ou poção na barra de atalhos (teclas <kbd>1</kbd>–<kbd>4</kbd>).</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">4</span><span data-i18n="t4.t">Mercado e bancada</span></summary>
+          <ol>
+            <li data-i18n="t4.a">Cada cidade tem preço próprio: compre barato num hub e venda em outro.</li>
+            <li data-i18n="t4.b">Na bancada: forjar, consertar, encantar, desencantar e fazer alquimia.</li>
+            <li data-i18n="t4.c">O imposto vai para o tesouro da cidade — e o tesouro acaba.</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">5</span><span data-i18n="t5.t">Mapa e Teleportador</span></summary>
+          <ol>
+            <li data-i18n="t5.a">Chegue perto de um hub para liberá-lo no mapa.</li>
+            <li data-i18n="t5.b">Fale com o Teleportador para viajar entre hubs liberados.</li>
+            <li data-i18n="t5.c">Dentro da zona segura, os monstros não miram você.</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">6</span><span data-i18n="t6.t">Grupo e missões</span></summary>
+          <ol>
+            <li data-i18n="t6.a">Comece pela Capitã da Guarda, na Vila do Poço.</li>
+            <li data-i18n="t6.b">O diário de missões e o “próximo objetivo” na tela mostram para onde ir.</li>
+            <li data-i18n="t6.c">Monte um grupo para dividir a caçada (online).</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">7</span><span data-i18n="t7.t">Reinos, contratos e portões</span></summary>
+          <ol>
+            <li data-i18n="t7.a">No nível 20, jure a Aurora (Sir Corwin) ou Nocturna (Vesna) no Acampamento da Estepe.</li>
+            <li data-i18n="t7.b">Na capital, faça contratos diários (Marechal da Coroa / Mestre dos Sussurros) e doe materiais no Tesoureiro para subir de Honrado até Exaltado.</li>
+            <li data-i18n="t7.c">A cidade baixa já traz bênção, refazer atributos e compra de casa (Honrado). A guerra pelas fortalezas vem aí.</li>
+          </ol>
+        </details>
+        <details class="tutorial">
+          <summary><span class="tut-num">8</span><span data-i18n="t8.t">Constelações e progresso</span></summary>
+          <ol>
+            <li data-i18n="t8.a">Abra o botão Céu para investir atributos nas constelações.</li>
+            <li data-i18n="t8.b">Morrer custa XP — as bênçãos amenizam.</li>
+            <li data-i18n="t8.c">Fora do jogo, o herói descansa e ganha XP descansado.</li>
+          </ol>
+        </details>
+      </div>
+    </div>
+
+    <!-- Aba 4: Wiki (GET /wiki; só aparece quando a API responde) -->
+    <div class="hub-painel" id="hub-wiki" role="tabpanel" hidden>
+      <p class="lead" data-i18n="wk.lead">O que se conta nas tavernas sobre este mundo. Toque num capítulo para ler.</p>
+      <div class="wk-lista" id="wk-lista"></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== NOVIDADES (GET /news do AccountService, publicadas pelo painel; sem api.url ou fora do ar: site/data/novidades.json, gerado do CHANGELOG) ===================== -->
-<section class="secao luz alt" id="novidades" aria-labelledby="nv-titulo">
-  <div class="caixa">
-    <p class="capitulo-num" data-i18n="nv.kicker">Novidades</p>
-    <h2 id="nv-titulo" data-i18n="nv.title">O que mudou</h2>
-    <p class="lead" data-i18n="nv.lead">Avisos do time e as mudanças mais recentes do jogo.</p>
-    <ol class="nv-lista" id="nv-lista"></ol>
-    <p class="vt-erro" id="nv-erro" hidden></p>
-  </div>
-</section>
-
-<!-- ===================== WIKI (GET /wiki do AccountService, editada pelo painel → Conteúdo do site; sem api.url a seção fica oculta) ===================== -->
-<section class="secao luz" id="wiki" aria-labelledby="wk-titulo" hidden>
-  <div class="caixa">
-    <p class="capitulo-num" data-i18n="wk.kicker">Wiki</p>
-    <h2 id="wk-titulo" data-i18n="wk.title">O livro do aventureiro</h2>
-    <p class="lead" data-i18n="wk.lead">O que se conta nas tavernas sobre este mundo. Toque num capítulo para ler.</p>
-    <div class="wk-lista" id="wk-lista"></div>
-  </div>
-</section>
-
-<!-- ===================== RANKING DO PLAYTEST (site/data/ranking.json, gerado por tools/gerar-ranking-site.ps1) ===================== -->
-<section class="secao luz" id="ranking" aria-labelledby="rk-titulo">
-  <div class="caixa">
-    <p class="capitulo-num" data-i18n="rk.kicker">Playtest</p>
-    <h2 id="rk-titulo" data-i18n="rk.title">Ranking do playtest</h2>
-    <p class="lead" data-i18n="rk.lead">Os heróis mais fortes do servidor de teste, por nível. Mesmo ranking do jogo, sem contas de teste do time.</p>
-    <div class="rk-moldura">
-      <table class="rk-tabela" id="rk-tabela" hidden>
-        <thead><tr><th scope="col">#</th><th scope="col" data-i18n="rk.hero">Herói</th><th scope="col" data-i18n="rk.class">Classe</th><th scope="col" data-i18n="rk.level">Nível</th></tr></thead>
-        <tbody id="rk-corpo"></tbody>
-      </table>
-      <p class="rk-vazio" id="rk-vazio" hidden></p>
-    </div>
-    <p class="rk-nota" id="rk-nota"></p>
-  </div>
-</section>
-
-<!-- ===================== O DESPERTAR (SOMBRA) ===================== -->
-<section class="secao sombra despertar" id="despertar" aria-labelledby="desp-titulo">
-  <div class="caixa duas-colunas">
-    <div>
-      <p class="capitulo-num" data-i18n="aw.kicker">Evento de servidor</p>
-      <h2 id="desp-titulo" data-i18n="aw.title">O Despertar</h2>
-      <p class="tremor-aviso" id="tremor-aviso" data-i18n="aw.tremor">A terra treme sob a Vila do Poço.</p>
-      <p data-i18n="aw.p">De tempos em tempos, o que dorme se mexe. O servidor inteiro é avisado. Os esqueletos do mundo se levantam mais fortes. E os heróis descem juntos.</p>
-      <ol class="fases">
-        <li><b data-i18n="aw.f1">Tremor</b><span data-i18n="aw.f1p">o aviso corre o mundo</span></li>
-        <li><b data-i18n="aw.f2">Despertar</b><span data-i18n="aw.f2p">os ossos obedecem</span></li>
-        <li><b data-i18n="aw.f3">A luta</b><span data-i18n="aw.f3p">todos na mesma arena</span></li>
-        <li class="fase-oculta"><b>▮▮▮▮▮▮</b><span data-i18n="aw.f4p">só quem desceu sabe</span></li>
-      </ol>
-      <p class="proximo" id="proximo-despertar" data-i18n="aw.next">Próximo Despertar: a anunciar.</p>
-    </div>
-    <figure class="moldura video">
-      <video id="video-despertar" controls preload="none" playsinline poster="img/despertar-poster.webp" width="960" height="540" aria-label="Trailer do Despertar">
-        <source src="img/despertar.mp4" type="video/mp4">
-      </video>
-      <figcaption data-i18n="aw.cap">Trailer do Despertar (10 s).</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ===================== DOWNLOADS (LUZ) ===================== -->
-<section class="secao luz" id="baixar" aria-labelledby="dl-titulo">
+<!-- ===================== 7. DOWNLOADS + AVISO DE DESENVOLVIMENTO ===================== -->
+<section class="secao luz alt" id="baixar" aria-labelledby="dl-titulo">
   <div class="caixa">
     <p class="capitulo-num" data-i18n="dl.kicker">Downloads</p>
     <h2 id="dl-titulo" data-i18n="dl.title">Desça com luz própria</h2>
@@ -482,15 +570,19 @@
         <a class="btn btn-ouro" id="dl-ios" href="#contato" aria-disabled="true" data-i18n="dl.soon">Em breve</a>
       </article>
     </div>
-    <p class="aviso" data-i18n="dl.note"><b>Multiplayer em playtest fechado.</b> Qualquer um pode jogar o modo offline. O acesso online, por enquanto, é só para quem está no playtest — quer entrar? Escreva para nós.</p>
+
+    <div class="aviso-dev-caixa" id="aviso-dev-dl">
+      <h3 data-i18n="dl.devTitle">Jogo em desenvolvimento ativo</h3>
+      <p data-i18n="dl.note">Este projeto é feito por uma equipe indie pequena e recebe mudanças frequentes. Por isso, <b>podem ocorrer bugs, reinícios de servidor, ajustes de balanceamento ou pequenos imprevistos sem aviso prévio</b>. O modo offline funciona mesmo sem conexão — e se encontrar algo fora do lugar, mande pelo botão de <b>Feedback</b> dentro do jogo.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===================== CONTATO ===================== -->
+<!-- ===================== 8. CONTATO ===================== -->
 <section class="secao sombra contato" id="contato" aria-labelledby="ct-titulo">
   <div class="caixa estreita centro">
     <h2 id="ct-titulo" data-i18n="ct.title">Mande um corvo</h2>
-    <p class="lead" data-i18n="ct.lead">Dúvida, bug, vontade de entrar no playtest ou só dizer o que achou da história? Escreva para a gente.</p>
+    <p class="lead" data-i18n="ct.lead">Dúvida, bug, sugestão ou só contar o que achou da história? Escreva para a gente — ou use o botão de Feedback dentro do jogo.</p>
     <a class="btn btn-ouro btn-email" id="btn-email" href="#contato" aria-disabled="true">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg>
       <span id="email-txt" data-i18n="ct.soon">E-mail do jogo em breve</span>
@@ -505,12 +597,31 @@
 
 </main>
 
-<!-- ===================== FAIXA FIXA: TOP 5 + BAIXAR (GET /ranking; sem api.url: data/ranking.json) ===================== -->
+<!-- ===================== MODAL DE GUIA COMPLETO (corpo de docs/MINIGUIAS/*.md) ===================== -->
+<div class="guia-modal-fundo" id="guia-modal" role="dialog" aria-modal="true" aria-labelledby="gm-titulo" hidden>
+  <div class="guia-modal" role="document">
+    <div class="gm-topo">
+      <div>
+        <div class="gm-selos">
+          <span class="vt-selo" id="gm-nivel"></span>
+          <span class="gm-cat" id="gm-cat"></span>
+        </div>
+        <h3 id="gm-titulo"></h3>
+        <p class="gm-gancho" id="gm-gancho"></p>
+      </div>
+      <button type="button" class="gm-fechar" id="gm-fechar" aria-label="Fechar guia" data-i18n-attr="aria-label:gm.close">✕</button>
+    </div>
+    <div class="gm-meta" id="gm-meta"></div>
+    <div class="gm-corpo" id="gm-corpo"></div>
+  </div>
+</div>
+
+<!-- ===================== FAIXA FIXA COMPACTA: TOP 5 + BAIXAR ===================== -->
 <aside class="flutuante" id="flutuante" aria-label="Ranking e download" data-i18n-attr="aria-label:fl.label">
-  <div class="fl-ranking" id="fl-ranking" hidden>
+  <div class="fl-ranking recolhido" id="fl-ranking" hidden>
     <button class="fl-ranking-abrir" id="fl-abrir" type="button" aria-expanded="false" aria-controls="fl-lista">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a3 3 0 0 0 4 2.8M19 5h2v2a3 3 0 0 1-4 2.8M12 13v4M8 21h8M9 17h6"/></svg>
-      <span class="fl-titulo" data-i18n="fl.title">Top 5 do reino</span>
+      <span class="fl-titulo" data-i18n="fl.title">Top 5</span>
       <span class="fl-lider" id="fl-lider"></span>
     </button>
     <div class="fl-corpo" id="fl-lista">
@@ -522,8 +633,7 @@
   <a class="btn btn-ouro fl-baixar" id="fl-baixar" href="#baixar" data-i18n="hero.cta">Baixar o jogo</a>
 </aside>
 
-<!-- Fragmentos do Grimório: progresso de leitura que revela trechos da história ao rolar (sem conta, guardado no aparelho) -->
-<div class="fragmentos" id="fragmentos" aria-hidden="true"><span class="fragmentos-barra" id="fragmentos-barra"></span></div>
+<!-- Toast dos Fragmentos do Grimório -->
 <div class="fragmento-aviso" id="fragmento-aviso" role="status" aria-live="polite" hidden>
   <span class="fragmento-conta" id="fragmento-conta"></span>
   <p class="fragmento-texto" id="fragmento-texto"></p>
@@ -561,7 +671,7 @@
   </defs>
 </svg>
 
-<script src="js/i18n.js?v=20261105n"></script>
-<script src="js/main.js?v=20261105n"></script>
+<script src="js/i18n.js?v=20261123a"></script>
+<script src="js/main.js?v=20261123a"></script>
 </body>
 </html>

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="pt-BR" data-modo="sombra">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki — MMORPG 3D</title>
+<meta name="description" content="Wiki oficial do MMORPG 3D: 12 regiões com níveis e chefes, capitais de Aurora e Nocturna, reputação, guildas, armas, forja, coleta, horta e guias práticos.">
+<meta name="theme-color" content="#14121c">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20261123a">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('tema');
+      if (t === 'luz' || t === 'sombra') document.documentElement.dataset.modo = t;
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body class="wiki-page">
+<a class="pular" href="#wiki-conteudo">Pular para o conteúdo</a>
+<div class="lanterna-global" aria-hidden="true"></div>
+
+<div class="topo-wrap">
+  <header class="topo">
+    <a class="marca" href="index.html" aria-label="Voltar para o site">
+      <svg class="marca-icone" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M21 22.5A9 9 0 0 1 13.5 7a9 9 0 1 0 7.5 15.5z" fill="currentColor"/></svg>
+      <span>MMORPG <b>3D</b> · <em class="wiki-marca-tag">Wiki</em></span>
+    </a>
+
+    <div class="wiki-busca-wrap">
+      <input type="search" id="wiki-busca" class="wiki-busca" placeholder="Buscar: Tesoureiro, Rei-Múmia, Horta, Espada, Honrado…" aria-label="Buscar na Wiki" autocomplete="off">
+      <span class="wiki-busca-conta" id="wiki-busca-conta" hidden></span>
+    </div>
+
+    <div class="controles">
+      <a class="btn-icone wiki-voltar" href="index.html">← Site</a>
+      <a class="btn btn-ouro btn-topo-dl" href="index.html#baixar">Baixar</a>
+      <button class="btn-icone" id="btn-tema" type="button" aria-pressed="false" aria-label="Alternar Luz e Sombra">
+        <svg class="ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+        <svg class="ico-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <span class="btn-tema-txt">Sombra</span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<div class="caixa wiki-layout" id="wiki-conteudo">
+  <aside class="wiki-sidebar" aria-label="Categorias da Wiki">
+    <p class="capitulo-num">Enciclopédia</p>
+    <nav class="wiki-nav" id="wiki-nav" role="tablist" aria-orientation="vertical">
+      <button type="button" role="tab" aria-selected="true" data-sec="regioes">Mapa &amp; 12 Regiões</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="reinos">Reinos, Capitais &amp; Guildas</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="armas">Armas, Forja &amp; Drops</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="oficios">Coleta, Horta &amp; Produção</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="chefes">Chefes, Masmorras &amp; Provações</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="interface">Interface, Social &amp; Classes</button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1" data-sec="lore">Contos das Tavernas</button>
+    </nav>
+    <div class="wiki-nota-lado">
+      <p><strong>Sem spoilers.</strong> Números gerados direto dos arquivos oficiais do jogo. Jogo em desenvolvimento ativo — valores podem evoluir com o balanceamento.</p>
+    </div>
+  </aside>
+
+  <main class="wiki-main">
+    <!-- Resultados da busca instantânea -->
+    <section class="wiki-sec" id="wiki-resultados" hidden aria-live="polite"></section>
+
+    <!-- 1. MAPA & 12 REGIÕES -->
+    <section class="wiki-sec" id="sec-regioes" data-sec="regioes">
+      <p class="capitulo-num">Exploração</p>
+      <h1>Mapa &amp; As 12 Regiões</h1>
+      <p class="lead">Nível médio, faixa de monstros, áreas de caça (hunts), cidades de apoio e chefes de cada região. No mapa do jogo, o selo indica o preparo do seu herói: <b>✓ confortável</b> (até +2 níveis), <b>▲ desafiadora</b> (+3 a +7 níveis) e <b>!! perigosa</b> (+8 níveis ou equipamento atrasado).</p>
+
+      <div class="gm-tabela-wrap">
+        <table class="gm-tabela">
+          <thead>
+            <tr>
+              <th>Região</th>
+              <th>Nv. médio</th>
+              <th>Faixa</th>
+              <th>Hunts</th>
+              <th>Cidade / Hub</th>
+              <th>Chefes no mapa</th>
+            </tr>
+          </thead>
+          <tbody id="wk-regioes"></tbody>
+        </table>
+      </div>
+
+      <h2 class="wiki-h2">Eventos recorrentes na Vila do Poço</h2>
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <span class="vt-selo">Vila do Poço · Nv. 8</span>
+          <h3>Ronda da Sentinela</h3>
+          <p>Três inimigos de elite rondam um dos lados da paliçada por 8 minutos em janelas periódicas. Quem ajuda a derrubar ganha <b>osso lascado</b> (forja e conserto) e chance de equipamento inicial. Acompanhe pelo botão <b>Eventos do mundo</b> no menu do jogo.</p>
+        </article>
+        <article class="wiki-card">
+          <span class="vt-selo">Estrada do Bosque · Nv. 5+</span>
+          <h3>Caravana do Mercador</h3>
+          <p>Um Mercador viajante para logo depois da paliçada da Vila do Poço por poucos minutos vendendo <b>1 peça Mágica</b> ajustada ao seu nível (uma compra por herói em cada parada). Basta chegar perto dele e conversar para comprar.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2. REINOS, CAPITAIS & GUILDAS -->
+    <section class="wiki-sec" id="sec-reinos" data-sec="reinos" hidden>
+      <p class="capitulo-num">Nível 20+</p>
+      <h1>Reinos, Capitais, Reputação &amp; Guildas</h1>
+      <p class="lead">Onde jurar lealdade, quais NPCs vivem na Cidade Baixa, como ganhar reputação/honra nos contratos diários e o que cada portão libera.</p>
+
+      <div class="wiki-destaque">
+        <h3>1. Como entrar na Capital (Juramento — Nível 20)</h3>
+        <p>No nível 20, vá ao <b>Acampamento da Estepe</b> (ao lado do Teleportador) e fale com <b>Sir Corwin</b> (Coroa de Aurora, capa azul) ou <b>Vesna</b> (Nocturna, capa roxa). Nada é jurado sem confirmação. A escolha vale por herói e só pode ser trocada <b>uma única vez</b> — trocar zera toda a reputação.</p>
+      </div>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <h3>Capital de Aurora — NPCs e serviços</h3>
+          <ul class="wiki-lista">
+            <li><b>Sacerdote</b> (Cidade Baixa): bênçãos para o herói.</li>
+            <li><b>Mestre de Armas</b> (Cidade Baixa): refazer pontos de atributos.</li>
+            <li><b>Tesoureiro</b> (Cidade Baixa): <b>doar materiais ao esforço de guerra → ganha reputação</b>.</li>
+            <li><b>Intendente</b> (Cidade Baixa): comprar sua <b>casa na capital</b> (pede patente Honrado).</li>
+            <li><b>Marechal da Coroa</b> (Pátio): <b>contratos diários</b> (derrotar inimigos do seu nível em qualquer lugar → paga reputação e XP).</li>
+            <li><b>Rei Aldric e Rainha Solenne</b> (Salão do Trono · Exaltado): audiência final e título do reino.</li>
+          </ul>
+          <h4>Portões de Aurora</h4>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Patente</th><th>O que libera</th></tr></thead><tbody id="wk-portoes-aurora"></tbody></table></div>
+        </article>
+
+        <article class="wiki-card">
+          <h3>Capital de Nocturna — NPCs e serviços</h3>
+          <ul class="wiki-lista">
+            <li><b>Guardiã das Chaves</b> (Cidade Baixa): bênçãos para o herói.</li>
+            <li><b>Mestre de Armas</b> (Cidade Baixa): refazer pontos de atributos.</li>
+            <li><b>Tesoureiro</b> (Cidade Baixa): <b>doar materiais ao esforço de guerra → ganha reputação</b>.</li>
+            <li><b>Intendente</b> (Cidade Baixa): comprar sua <b>casa na cidade subterrânea</b> (pede patente Honrado).</li>
+            <li><b>Mestre dos Sussurros</b> (Pátio): <b>contratos diários</b> (derrotar inimigos do seu nível em qualquer lugar → paga reputação e XP).</li>
+            <li><b>Senhora Morgaine e Regente Velado</b> (Salão do Trono · Exaltado): trono lunar e título do reino.</li>
+          </ul>
+          <h4>Portões de Nocturna</h4>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Patente</th><th>O que libera</th></tr></thead><tbody id="wk-portoes-nocturna"></tbody></table></div>
+        </article>
+      </div>
+
+      <h2 class="wiki-h2">As Três Guildas (abertas a qualquer reino · Nv. 20+)</h2>
+      <p>Os três mestres ficam no <b>Acampamento da Estepe</b>, ao redor do Teleportador. A cadeia de missões só começa depois de conversar com o mestre.</p>
+      <div class="gm-tabela-wrap">
+        <table class="gm-tabela">
+          <thead><tr><th>Guilda</th><th>Mestre</th><th>Título final</th></tr></thead>
+          <tbody id="wk-guildas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. ARMAS, FORJA & DROPS -->
+    <section class="wiki-sec" id="sec-armas" data-sec="armas" hidden>
+      <p class="capitulo-num">Equipamentos</p>
+      <h1>Armas, Forja na Bancada &amp; Drops</h1>
+      <p class="lead">Tiers por faixa de nível: <b>T1 (1–25)</b>, <b>T2 (26–50)</b>, <b>T3 (51–75)</b> e <b>T4 (76–100)</b>. Na bancada saem itens <b>Comum</b> e <b>Mágico</b>; raridades <b>Raro, Épico e Lendário</b> caem apenas de monstros, chefes, baús, expedições e eventos.</p>
+
+      <div class="gm-tabela-wrap">
+        <table class="gm-tabela">
+          <thead>
+            <tr>
+              <th>Arma</th>
+              <th>Recurso</th>
+              <th>Loja T1 (+10% imp.)</th>
+              <th>Ossos / forja</th>
+              <th>Taxa T1</th>
+              <th>Taxa T2</th>
+              <th>Taxa T3</th>
+              <th>Taxa T4</th>
+            </tr>
+          </thead>
+          <tbody id="wk-armas"></tbody>
+        </table>
+      </div>
+      <p class="wiki-nota">Ossos por tier: <b>Lascado (T1)</b>, <b>Íntegro (T2)</b>, <b>Rúnico (T3)</b> e <b>Antigo (T4)</b>. Do T2 em diante soma minério do tier abaixo. Subir a maestria da arma reduz a taxa de forja em até 80%.</p>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <h3>Chance base de drop &amp; Poções</h3>
+          <ul class="wiki-lista">
+            <li><b>Equipamentos por abate:</b> 2% em lacaios, 3% em guerreiros/arqueiros, 4% em conjuradores e <b>50% em chefes</b> (multiplicado pela raridade do inimigo).</li>
+            <li><b>Poções de vida:</b> sem limite fixo na mochila, com <b>recarga de 5 segundos</b> entre goles (mesma duração da cura) e cota de compra no Mercador (10 em rajada + 1/min).</li>
+          </ul>
+        </article>
+        <article class="wiki-card wiki-card-breve">
+          <span class="vt-selo vt-selo-breve">Em desenvolvimento</span>
+          <h3>O que vem por aí em armas</h3>
+          <p>Armas de origem de chefe forjadas por Estilhaços/Núcleos (Guardião da Gruta, Rei-Múmia, Senhor das Cinzas e Eclipse Faminto), drops Únicos raros com efeito próprio e novos tipos (Maça, Varinha, Escudo, Égide e Orbe).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. COLETA, HORTA & PRODUÇÃO -->
+    <section class="wiki-sec" id="sec-oficios" data-sec="oficios" hidden>
+      <p class="capitulo-num">Ofícios</p>
+      <h1>Coleta, Horta da Vila &amp; Produção</h1>
+      <p class="lead">Regras e tabelas oficiais verificadas direto contra o código do jogo.</p>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <h3>Nós de Coleta (Ervas &amp; Minérios)</h3>
+          <p>Aproxime-se do arbusto ou pedra e segure o botão <b>Colher</b> (tecla <kbd>E</kbd> no PC) por <b>2 segundos</b>. O grupo a até <b>20 metros</b> também recebe o XP de Coleta. Limite folgado de 120 colheitas/hora.</p>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Tier</th><th>Materiais</th><th>Volta em</th><th>Coleta Nv.</th><th>XP</th></tr></thead><tbody id="wk-coleta"></tbody></table></div>
+        </article>
+
+        <article class="wiki-card">
+          <h3>Horta da Vila (Hortelão)</h3>
+          <p>Fica na <b>Vila do Poço</b>, atrás do Teleportador. Começa com <b>4 parcelas</b> e abre mais uma nos níveis de Coleta <b>5, 10, 25 e 50</b> (até 8). As plantas crescem mesmo com o jogo fechado.</p>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Tier</th><th>Semente</th><th>Cresce em</th><th>Colheita</th></tr></thead><tbody id="wk-horta"></tbody></table></div>
+        </article>
+      </div>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <h3>Caderno do Hortelão (ouro garantido)</h3>
+          <p>Quatro páginas únicas por herói, pagas na hora em ouro ao cumprir cada marco:</p>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Página</th><th>Ouro</th></tr></thead><tbody id="wk-caderno"></tbody></table></div>
+        </article>
+
+        <article class="wiki-card">
+          <h3>Produção nas Bancadas</h3>
+          <p>Cada nível de Produção acima do 1 soma <b>+0,2 de qualidade</b> (até +10) nos itens forjados. O grau máximo da bancada segue 3 travas em ordem: <b>1) nível do herói</b> (25 níveis por grau), <b>2) teto da região</b> e <b>3) grau da cidade</b>.</p>
+          <div class="gm-tabela-wrap"><table class="gm-tabela"><thead><tr><th>Ação na bancada</th><th>XP de Produção</th></tr></thead><tbody id="wk-prod-xp"></tbody></table></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. CHEFES, MASMORRAS & PROVAÇÕES -->
+    <section class="wiki-sec" id="sec-chefes" data-sec="chefes" hidden>
+      <p class="capitulo-num">Desafios PvE</p>
+      <h1>Chefes, Masmorras &amp; Provações</h1>
+      <p class="lead">Onde encontrar cada grande desafio, qual nível exige e como destravar (sem spoilers da história).</p>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <span class="vt-selo">Tutorial · Nv. 1</span>
+          <h3>Guardião de Ossos</h3>
+          <p>Espera no fim da <b>Ilha do Mestre de Armas</b> com cena e música próprias. Ao vencer, você batiza o herói e segue para a Vila do Poço (quem já conhece pode pular o tutorial).</p>
+        </article>
+
+        <article class="wiki-card">
+          <span class="vt-selo">Nv. 15–18</span>
+          <h3>Gruta das Raízes &amp; Guardião da Gruta</h3>
+          <p><b>Como liberar:</b> termine a cadeia da <b>Oda</b> no Refúgio das Corujas; a Capitã da Guarda abre o portal no fim do Bosque (solo ou grupo). Tem puzzle opcional de <b>3 pilares de runa</b> (Coruja, Lua, Raiz, Osso) com inscrição na pedra e o Guardião de pedra no fundo.</p>
+        </article>
+
+        <article class="wiki-card">
+          <span class="vt-selo">Nv. 50 e 100</span>
+          <h3>As Provações (Arena Solo)</h3>
+          <p>Fale com a <b>Guardiã das Provações</b> na praça da Vila do Poço. O nível para no 50 e no 100 até vencer, mas <b>todo XP continua sendo guardado</b> e cair na arena <b>não perde XP</b>. Vencer solta o XP acumulado, dá +1 nível bônus e abre novos andares do Poço sem Fundo.</p>
+        </article>
+
+        <article class="wiki-card">
+          <span class="vt-selo">Nv. 60–100 · Chefe Nv. 70</span>
+          <h3>Subterrâneo &amp; Guardião do Lago Escuro</h3>
+          <p>Entrada pela boca do poço levando luz (Tocha ou Lanterna da Lua). Inimigos fora da sua luz somem da tela e do radar, mas continuam atacando. No extremo norte espera o <b>Guardião do Lago Escuro (Nv. 70)</b>: vencê-lo evolui a Lanterna da Lua de todo o grupo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. INTERFACE, SOCIAL & CLASSES (SEM COMANDOS / DE CHAT!) -->
+    <section class="wiki-sec" id="sec-interface" data-sec="interface" hidden>
+      <p class="capitulo-num">Jogando sem complicação</p>
+      <h1>Interface, Social, Constelações &amp; Classes</h1>
+      <p class="lead">Tudo o que você precisa controlar pelas telas e botões do jogo (PC e celular), sem decorar comandos de texto.</p>
+
+      <div class="wiki-cards-2">
+        <article class="wiki-card">
+          <h3>Telas e interações sociais</h3>
+          <ul class="wiki-lista">
+            <li><b>Menu do herói (toque em outro jogador):</b> Adicionar amigo, Sussurrar, Convidar para grupo, Desafiar para duelo (sem perder nada), Silenciar, Bloquear ou Denunciar.</li>
+            <li><b>Escrivão do Mercado (ao lado do Teleportador):</b> abas <i>Comprar</i> (mais baratos primeiro), <i>Vender</i> (valor líquido já sem taxa) e <i>Minhas</i> (retirar ouro/itens ou cancelar).</li>
+            <li><b>Menu lateral:</b> botões dedicados para <b>Amigos</b>, <b>Procurar grupo</b> e <b>Eventos do mundo</b> (Ronda da Sentinela e Caravana).</li>
+            <li><b>Reviver em grupo:</b> encoste no aliado caído e segure o botão <b>Reviver</b> (apanhar interrompe o progresso).</li>
+          </ul>
+        </article>
+
+        <article class="wiki-card">
+          <h3>Atalhos no PC &amp; Constelações</h3>
+          <ul class="wiki-lista">
+            <li><kbd>I</kbd> abre a Mochila e equipamento (cabeça, peito, mãos, pés, anel e amuleto).</li>
+            <li><kbd>1</kbd>–<kbd>4</kbd> barra de atalhos para armas e poções.</li>
+            <li><kbd>E</kbd> segurar para colher ervas e minérios no mapa.</li>
+            <li><b>Botão Céu (no painel de atributos):</b> invista pontos nas 5 constelações — <b>O Touro</b>, <b>A Raposa</b>, <b>A Coruja</b>, <b>A Montanha</b> e <b>A Lanterna</b>. O Mestre de Armas refaz atributos por ouro.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="wiki-destaque">
+        <h3>Progressão de Classes (em evolução)</h3>
+        <p>Hoje as 5 classes (<b>Cavaleiro</b>, <b>Patrulheiro</b>, <b>Mago</b>, <b>Bárbaro</b> e <b>Ladino</b>) já estão jogáveis com esquiva e passiva próprias. Na nova jornada de progressão em desenvolvimento, o herói começará como <b>Aprendiz (Nv. 1–10)</b> experimentando armas iniciais, escolherá sua <b>Classe no Nv. 10</b> com o Mestre de Armas na Vila do Poço (com árvore de habilidades) e escolherá uma <b>Subclasse no Nv. 50</b> após vencer a Provação.</p>
+      </div>
+    </section>
+
+    <!-- 7. CONTOS DAS TAVERNAS (GET /wiki ao vivo do painel admin) -->
+    <section class="wiki-sec" id="sec-lore" data-sec="lore" hidden>
+      <p class="capitulo-num">Lore · Atualizado pelo painel</p>
+      <h1>Contos das Tavernas</h1>
+      <p class="lead">Relatos sobre a história antiga deste mundo que se escutam nas tavernas de Aurora e nos corredores de Nocturna — sem spoilers do desfecho.</p>
+      <div class="wk-lista" id="wk-lore-lista">
+        <p class="wiki-nota" id="wk-lore-status">Carregando relatos das tavernas…</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="rodape">
+  <div class="caixa">
+    <p class="rodape-marca">MMORPG <b>3D</b> · Wiki Oficial · Project-Games505</p>
+    <p class="rodape-pe"><a href="index.html">Voltar à página inicial</a> · <a href="index.html#baixar">Baixar o jogo</a> · <a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos de uso</a></p>
+  </div>
+</footer>
+
+<script src="js/wiki.js?v=20261123a"></script>
+</body>
+</html>

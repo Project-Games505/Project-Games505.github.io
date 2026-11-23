@@ -15,7 +15,37 @@
       "foto": "heroi-retrato.webp",
       "fotoFalta": null,
       "fotoNota": "ilustrativa: retrato do Arqueiro, não mostra combate",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "h",
+          "texto": "Combo"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Espada: corte diagonal, corte de volta e estocada que empurra. Arco: tiro, tiro e tiro carregado que atravessa um inimigo.",
+            "No PC, aperte de novo logo depois de a arma ficar pronta para encadear. No celular, segurar o ATACAR faz o combo sozinho.",
+            "O servidor confere o ritmo: golpe fora do tempo sai como o primeiro."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Recurso por arma"
+        },
+        {
+          "tipo": "p",
+          "texto": "Fúria (Espada, Machado, Adaga, Punho), Foco (Arco, Besta) e Mana (Cajado, Grimório). As habilidades gastam recurso além da recarga."
+        },
+        {
+          "tipo": "h",
+          "texto": "Esquiva e ultimate"
+        },
+        {
+          "tipo": "p",
+          "texto": "A esquiva cancela golpe, combo e habilidade no meio. Esquivar no último instante antes do golpe acertar é a esquiva perfeita: brilho dourado, \"ESQUIVA PERFEITA\" e carga extra no medidor da ultimate. A ultimate só sai com o medidor cheio."
+        }
+      ]
     },
     {
       "id": "guardiao-de-ossos",
@@ -32,7 +62,17 @@
       "foto": "retrato-guardiao-de-ossos.webp",
       "fotoFalta": null,
       "fotoNota": "retrato do modelo",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "O tutorial acontece numa ilha própria, a Ilha do Mestre de Armas. Siga os anéis no chão, abra o baú, enfrente a arena dos esqueletos e compre a primeira arma. O fim é o chefe Guardião de Ossos, com cutscene e música."
+        },
+        {
+          "tipo": "p",
+          "texto": "Ao terminar, você batiza o herói e cria a conta (ou entra): o boneco do tutorial vira o progresso inicial da conta. Já sabe jogar? Dá para pular o tutorial desde o começo."
+        }
+      ]
     },
     {
       "id": "coleta",
@@ -49,7 +89,91 @@
       "foto": "retrato-coleta.webp",
       "fotoFalta": null,
       "fotoNota": "retrato do modelo",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Pelos campos do mapa há arbustos de erva e pedras de minério. Não precisa lutar para juntar material: basta chegar perto."
+        },
+        {
+          "tipo": "h",
+          "texto": "Como colher"
+        },
+        {
+          "tipo": "ol",
+          "itens": [
+            "Chegue perto de um arbusto ou de uma pedra de recurso. Aparece o botão \"Segure: colher\" (no PC, a tecla E).",
+            "Segure por 2 segundos. A barra enche e o material vai direto para a mochila.",
+            "Soltou antes? Cancela sem custo. Nada se perde."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "O ponto colhido fica apagado e mais baixo, e volta depois de um tempo. Quanto mais gente explora a mesma região, mais demora para voltar."
+        },
+        {
+          "tipo": "h",
+          "texto": "O que cada nível rende"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Tier",
+            "Material",
+            "Volta em",
+            "Nível de Coleta",
+            "XP por colheita"
+          ],
+          "linhas": [
+            [
+              "T1",
+              "Erva do Campo, Minério de Cobre",
+              "1 min 30 s",
+              "1",
+              "10"
+            ],
+            [
+              "T2",
+              "Erva Prateada, Minério de Ferro",
+              "3 min",
+              "5",
+              "12"
+            ],
+            [
+              "T3",
+              "Erva Lunar, Minério de Prata",
+              "4 min",
+              "25",
+              "15"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Cada região tem pontos do tier dela: quanto mais longe da vila, melhor o material e mais nível de Coleta ele pede."
+        },
+        {
+          "tipo": "h",
+          "texto": "Regras que valem para todo mundo"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Quem chega primeiro leva o material. Quem estiver no seu grupo a até 20 metros ganha só a experiência de Coleta.",
+            "O limite é de 120 colheitas por hora por herói. É folga de sobra para quem joga normal.",
+            "Colher o mesmo ponto várias vezes seguidas rende cada vez menos experiência.",
+            "Mochila cheia? Abra espaço antes: o servidor não deixa colher sem lugar para guardar."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "E depois?"
+        },
+        {
+          "tipo": "p",
+          "texto": "O material serve para forjar, encantar, consertar e fazer poções nas bancadas. Para plantar o seu próprio, veja o miniguia da Horta da vila."
+        }
+      ]
     },
     {
       "id": "horta",
@@ -66,7 +190,120 @@
       "foto": "horta.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Na Vila do Poço, atrás do Teleportador, o Hortelão cuida de uma horta que é só sua: ninguém colhe as suas parcelas e você não colhe as dos outros. Ele aprendeu o ofício com a Tila, a Ervanária da Mata Ancestral."
+        },
+        {
+          "tipo": "h",
+          "texto": "Como plantar"
+        },
+        {
+          "tipo": "ol",
+          "itens": [
+            "Chegue perto da horta. Aparece o botão \"Horta\".",
+            "Escolha uma parcela vazia e a semente que o seu nível de Coleta permite.",
+            "A semente é paga na hora, em ouro.",
+            "Volte quando a parcela estiver pronta e toque em Colher."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "A colheita rende de 2 a 4 ervas do tier da semente, mais experiência de Coleta. A parcela volta a ficar vazia."
+        },
+        {
+          "tipo": "h",
+          "texto": "Sementes e tempo"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Tier",
+            "Semente",
+            "Cresce em",
+            "Colheita"
+          ],
+          "linhas": [
+            [
+              "T1",
+              "5 g",
+              "20 min",
+              "2 a 4"
+            ],
+            [
+              "T2",
+              "11 g",
+              "2 h",
+              "2 a 4"
+            ],
+            [
+              "T3",
+              "27 g",
+              "6 h",
+              "2 a 4"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "A planta cresce mesmo com o jogo fechado. Cada parcela guarda uma colheita só: não adianta esperar um mês, ela não acumula. Só plantar de novo."
+        },
+        {
+          "tipo": "h",
+          "texto": "Quantas parcelas"
+        },
+        {
+          "tipo": "p",
+          "texto": "Você começa com 4 parcelas. Cada marco de Coleta abre mais uma: níveis 5, 10, 25 e 50, até 8 parcelas."
+        },
+        {
+          "tipo": "h",
+          "texto": "Caderno do Hortelão"
+        },
+        {
+          "tipo": "p",
+          "texto": "O Hortelão guarda um caderno de quatro páginas. Cada uma que você cumpre, ele paga uma vez, em ouro."
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Página",
+            "Ouro"
+          ],
+          "linhas": [
+            [
+              "Colha uma erva ou um minério no mapa",
+              "15 g"
+            ],
+            [
+              "Plante sua primeira semente na horta",
+              "20 g"
+            ],
+            [
+              "Colha sua primeira parcela da horta",
+              "30 g"
+            ],
+            [
+              "Chegue ao nível 5 de Coleta",
+              "50 g"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Fale com ele para saber qual página vem agora. Quando o caderno estiver cheio, ele indica a Tila, na Mata Ancestral, onde crescem as ervas raras."
+        },
+        {
+          "tipo": "h",
+          "texto": "Dica"
+        },
+        {
+          "tipo": "p",
+          "texto": "Plantar vale a pena porque a semente custa metade do que a cidade paga pela colheita. Mas o ouro de verdade está nas bancadas: use a erva para fazer poções, encantar e forjar."
+        }
+      ]
     },
     {
       "id": "mercado",
@@ -78,12 +315,30 @@
         "Aba Minhas para cancelar e retirar o que comprou ou vendeu"
       ],
       "onde": "Fale com o Escrivão do Mercado, ao lado de qualquer Teleportador.",
-      "quando": "Em qualquer hub com Teleportador. Online: o multiplayer está em playtest fechado.",
+      "quando": "Em qualquer hub com Teleportador, no modo online (conta gratuita).",
       "nivel": 1,
       "foto": null,
       "fotoFalta": "tela do mercado aberta no Escrivão, com as ofertas listadas",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Fale com o Escrivão do Mercado, ao lado de qualquer Teleportador."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Comprar: as ofertas mais baratas primeiro.",
+            "Vender: você escolhe preço e quantidade e vê o que recebe já sem a taxa, ou quanto a cidade paga.",
+            "Minhas: cancelar e retirar o que comprou ou vendeu."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Os comandos de chat (/vender, /comprar) continuam valendo."
+        }
+      ]
     },
     {
       "id": "areas-de-caca",
@@ -100,7 +355,22 @@
       "foto": "areas-de-caca.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "No lugar de dois ou três bichos soltos por ponto, cada região tem áreas de caça de verdade."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Placa na entrada com nome e nível.",
+            "Chefe no fundo, com afixos de elite.",
+            "No Bosque: a Clareira dos Ossos, o Acampamento das Caçadoras e o Túmulo das Corujas. Na Estepe: a Pedreira e a Fortaleza dos Saqueadores. Há mais nas Colinas, no Charco, nas Dunas, nos Ermos de Cinza, na Necrópole e na Mata Ancestral.",
+            "O Varek manda você à Pedreira e ao fundo da Fortaleza, onde está o Chefe Saqueador."
+          ]
+        }
+      ]
     },
     {
       "id": "chefoes",
@@ -117,7 +387,28 @@
       "foto": "chefoes.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Os chefes do jogo hoje, por lugar:"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Tutorial, Ilha do Mestre de Armas: o Guardião de Ossos, com cutscene e música.",
+            "Gruta das Raízes: o Guardião da Gruta. Investe, arremessa pedra e muda de fase. Depois dele começa a missão principal.",
+            "Subterrâneo: o Guardião do Lago Escuro. Chama Sonhados e, ao cair, sobe a Lanterna da Lua do grupo que lutou.",
+            "Estepe dos Saqueadores: o Chefe Saqueador, elite do meio da Estepe e alvo da cadeia do Varek.",
+            "Labirinto de Pedra: o Golem de Pedra, elite da região. É também a prova final da Irmandade da Lâmina. Não há um chefe só do Labirinto além dele.",
+            "Cada área de caça: um chefe no fundo, com afixos de elite (Bosque, Estepe, Colinas, Charco, Dunas, Ermos de Cinza, Necrópole e Mata Ancestral têm as suas)."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Os chefes das regiões (Rei-Múmia, Colosso de Gelo e os outros) ainda não têm luta: veja os chefes das regiões."
+        }
+      ]
     },
     {
       "id": "amigos-e-sussurro",
@@ -129,12 +420,25 @@
         "Bloquear tira a pessoa da lista e corta sussurro e pedido"
       ],
       "onde": "Toque num herói e escolha Adicionar amigo, ou abra Menu > Amigos.",
-      "quando": "Online: o multiplayer está em playtest fechado.",
+      "quando": "No modo online (conta gratuita), em qualquer nível.",
       "nivel": 1,
       "foto": "vila-praca.webp",
       "fotoFalta": null,
       "fotoNota": "ilustrativa: a praça da Vila do Poço",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Toque num herói e escolha Adicionar amigo, ou abra Menu › Amigos e escreva o nome. Ele recebe um cartão com Aceitar ou Recusar."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Sussurro: /s Nome mensagem (ou /w) no chat, ou Sussurrar no menu do herói ou na lista. Só a pessoa recebe, em roxo. /r mensagem responde a quem sussurrou por último. Nome com espaço vai entre aspas.",
+            "Bloquear (na lista ou com /bloquear Nome) tira a pessoa da lista, e ela não te sussurra nem pede amizade. /desbloquear Nome desfaz."
+          ]
+        }
+      ]
     },
     {
       "id": "duelo",
@@ -146,12 +450,26 @@
         "Vitórias valem conquistas e um título"
       ],
       "onde": "Toque num herói, abra o menu dele e escolha Desafiar pra duelo.",
-      "quando": "Em qualquer nível e em qualquer lugar do mundo aberto. Online: playtest fechado.",
+      "quando": "Em qualquer nível e em qualquer lugar do mundo aberto, no modo online.",
       "nivel": 1,
       "foto": null,
       "fotoFalta": "dois heróis dentro do círculo do duelo, com a contagem na tela",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Toque num herói, abra o menu dele e escolha Desafiar pra duelo. Se ele aceitar, um círculo aparece no chão e, depois da contagem regressiva, a luta vale até alguém ficar com a vida no mínimo."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Ninguém morre e nada se perde. Vale em qualquer nível e em qualquer lugar do mundo aberto, sem marca de PvP.",
+            "Sair do círculo por alguns segundos ou tocar em Desistir dá a vitória ao outro. Se demorar demais, é empate, e a revanche com o mesmo herói espera um pouco.",
+            "Na aba Conquistas, a categoria Duelo tem Primeira Vitória no Círculo, Lâmina Respeitada e Campeão do Círculo, que libera o título."
+          ]
+        }
+      ]
     },
     {
       "id": "reviver-em-grupo",
@@ -163,12 +481,25 @@
         "Quem está revivendo e apanha perde o progresso"
       ],
       "onde": "Jogue em grupo: o aliado caído é levantado por quem chega perto e toca em Reviver.",
-      "quando": "Só em grupo, online (playtest fechado).",
+      "quando": "Jogando em grupo no modo online.",
       "nivel": 1,
       "foto": null,
       "fotoFalta": "aliado revivendo outro herói caído, com a barra de progresso",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Caiu jogando em grupo? Por um tempo, um aliado pode te reviver ali mesmo: ele chega perto, toca em Reviver e segura. Você volta com parte da vida."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "A tela de morte mostra quanto tempo o grupo ainda tem. Passou disso, é o \"Reviver na vila\" de sempre.",
+            "Quem está revivendo e apanha perde o progresso: proteja quem levanta o amigo."
+          ]
+        }
+      ]
     },
     {
       "id": "constelacoes",
@@ -185,7 +516,17 @@
       "foto": null,
       "fotoFalta": "tela do Céu com as cinco constelações e algumas estrelas acesas",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "No painel de atributos, o botão Céu transforma os cinco atributos em constelações: O Touro (força), A Raposa (destreza), A Coruja (inteligência), A Montanha (constituição) e A Lanterna (sabedoria)."
+        },
+        {
+          "tipo": "p",
+          "texto": "Cada grupo de pontos investidos acende uma estrela, e as linhas acendem quando as duas pontas estão acesas. Cada constelação mostra quantas estrelas estão acesas, quanto falta para a próxima e o custo do próximo ponto. Tocar nela investe um ponto: é o mesmo pedido do \"+\", e o servidor confere o custo, que cresce."
+        }
+      ]
     },
     {
       "id": "gruta-das-raizes",
@@ -202,7 +543,36 @@
       "foto": "gruta-pilares.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "A Gruta das Raízes é o fim do Bosque. Antes dela, a Capitã da Guarda manda você ao Refúgio das Corujas: a cadeia de missões da Oda é o caminho até lá, e depois a Capitã libera a Gruta."
+        },
+        {
+          "tipo": "h",
+          "texto": "Por dentro"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Salas com bando, uma depois da outra, antes da ala do guardião.",
+            "Armadilhas de espinhos nos corredores: as pontas aparecem e tremem antes do golpe, a esquiva escapa e o dano é baixo. Sempre há janela para passar."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "O quebra-cabeça"
+        },
+        {
+          "tipo": "p",
+          "texto": "Numa das salas há três pilares de runa que giram pelos símbolos Coruja, Lua, Raiz e Osso (pelo botão \"Girar o pilar\"), uma inscrição na pedra com a combinação e um baú que abre quando os três batem. Cada variante da Gruta tem a sua combinação. Paga ouro e uma poção, uma vez por herói; nas visitas seguintes o baú abre vazio. Nada trava: é opcional."
+        },
+        {
+          "tipo": "p",
+          "texto": "No fim da Gruta está o Guardião."
+        }
+      ]
     },
     {
       "id": "instancias",
@@ -219,7 +589,25 @@
       "foto": "instancias.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Algumas partes do jogo não acontecem no mundo aberto, e sim numa cópia feita para você:"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Gruta das Raízes: entra-se por um portal, sozinho ou com o grupo. A cada visita a Gruta é uma cópia nova (o quebra-cabeça das runas recomeça).",
+            "Provações: a arena é solo, uma cópia por jogador, e cair lá não custa XP.",
+            "Tutorial: a Ilha do Mestre de Armas é um lugar próprio, antes do mundo aberto."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Masmorras curtas para repetir estão no plano: veja as mini-instâncias."
+        }
+      ]
     },
     {
       "id": "guardiao-da-gruta",
@@ -236,7 +624,25 @@
       "foto": "chefoes.webp",
       "fotoFalta": null,
       "fotoNota": "provisória",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "No fim da Gruta das Raízes, a ala do guardião e a arena ficam separadas por parede: a porta da arena abre quando você derruba os guardiões da ala."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "O Guardião da Gruta investe, arremessa pedra e muda de fase.",
+            "Em grupo, derrubá-lo vale para todos.",
+            "Depois dele, o Grimório da Gruta começa a escrever a missão principal, que começa pelo Prólogo."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Ele também é o adversário das Provações."
+        }
+      ]
     },
     {
       "id": "juramento",
@@ -253,7 +659,26 @@
       "foto": "juramento.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "No Acampamento da Estepe, ao lado do Teleportador, há dois emissários: Sir Corwin, Arauto da Aurora (capa azul), e Vesna, Voz do Véu (capa roxa)."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Antes do nível 20 eles explicam e mandam você voltar.",
+            "No nível 20 oferecem o juramento. Aurora cobra o Dízimo do Céu; Nocturna diz \"nada agora, um favor um dia\".",
+            "Nada é jurado sem confirmar. Ao fechar a conversa aparece a pergunta: Jurar no estandarte, Beber da água do poço lunar ou Ainda não.",
+            "A escolha vale para aquele herói e só pode ser trocada uma vez, o que zera a reputação."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Jurou? A capa ganha a cor do reino, e todos os jogadores veem. Depois disso, veja a Reputação e portões."
+        }
+      ]
     },
     {
       "id": "capital-aurora",
@@ -270,7 +695,67 @@
       "foto": "aurora-salao-do-trono.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Aurora é o reino da superfície. O salão do trono da capital é grande e tem corte: o Rei Aldric e a Rainha Solenne esperam de pé diante dos dois tronos de sol. Há tapete azul, estrado, colunas com tochas, estandartes, a mesa de guerra e a estátua do rei."
+        },
+        {
+          "tipo": "h",
+          "texto": "Quem entra"
+        },
+        {
+          "tipo": "p",
+          "texto": "Só quem jurou a Aurora (com Sir Corwin, no Acampamento da Estepe, a partir do nível 20) entra na capital. Veja o Juramento."
+        },
+        {
+          "tipo": "h",
+          "texto": "Serviços na cidade baixa (aberta após jurar)"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Sacerdote: concede bênçãos para o herói.",
+            "Mestre de Armas: permite refazer seus pontos de atributos.",
+            "Tesoureiro: aceita doações de materiais ao esforço de guerra — rende reputação com Aurora.",
+            "Intendente: vende sua casa na capital assim que você atingir a patente Honrado."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Como subir reputação (honra) e abrir os portões"
+        },
+        {
+          "tipo": "p",
+          "texto": "No pátio, fale com o Marechal da Coroa: ele oferece contratos diários (derrotar inimigos do seu nível em qualquer região) que pagam reputação e experiência, com limite por dia. Doar materiais no Tesoureiro também sobe reputação."
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Patente",
+            "O que libera em Aurora"
+          ],
+          "linhas": [
+            [
+              "Honrado",
+              "Abre o pátio dos contratos (Marechal da Coroa) e libera a compra de casa no Intendente"
+            ],
+            [
+              "Reverenciado",
+              "Abre a porta do salão da capital"
+            ],
+            [
+              "Exaltado",
+              "Abre o salão do trono (Rei Aldric e Rainha Solenne) e concede o título do reino"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Veja mais detalhes em Reputação e portões."
+        }
+      ]
     },
     {
       "id": "capital-nocturna",
@@ -287,7 +772,67 @@
       "foto": "capital-nocturna.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Nocturna, a Cidade Velada, é o reino do subterrâneo. O salão do trono é do tamanho do de Aurora e tem corte: a Senhora Morgaine espera diante do trono de lua crescente, e o Regente Velado, de véu e olhos brilhando, fica ao lado dela. Há tapete violeta, colunas com lanternas lunares, a coleira de dragão que ela quer usar e o Poço Lunar do Regente."
+        },
+        {
+          "tipo": "h",
+          "texto": "Quem entra"
+        },
+        {
+          "tipo": "p",
+          "texto": "Só quem jurou a Nocturna (com Vesna, no Acampamento da Estepe, a partir do nível 20) entra na Cidade Velada. Veja o Juramento."
+        },
+        {
+          "tipo": "h",
+          "texto": "Serviços na cidade baixa (aberta após jurar)"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Guardiã das Chaves: concede bênçãos para o herói.",
+            "Mestre de Armas: permite refazer seus pontos de atributos.",
+            "Tesoureiro: aceita doações de materiais ao esforço de guerra — rende reputação com Nocturna.",
+            "Intendente: vende sua casa na cidade subterrânea assim que você atingir a patente Honrado."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Como subir reputação (honra) e abrir os portões"
+        },
+        {
+          "tipo": "p",
+          "texto": "No pátio, fale com o Mestre dos Sussurros: ele oferece contratos diários (derrotar inimigos do seu nível em qualquer região) que pagam reputação e experiência, com limite por dia. Doar materiais no Tesoureiro também sobe reputação."
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Patente",
+            "O que libera em Nocturna"
+          ],
+          "linhas": [
+            [
+              "Honrado",
+              "Abre o pátio dos contratos (Mestre dos Sussurros) e libera a compra de casa no Intendente"
+            ],
+            [
+              "Reverenciado",
+              "Abre a porta do salão da capital"
+            ],
+            [
+              "Exaltado",
+              "Abre o salão do trono (Senhora Morgaine, Regente Velado e o Poço Lunar) e concede o título do reino"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Veja mais detalhes em Reputação e portões."
+        }
+      ]
     },
     {
       "id": "reputacao-e-portoes",
@@ -304,7 +849,32 @@
       "foto": "aurora-casal-real.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Depois do juramento, a reputação com o reino decide até onde você chega na capital."
+        },
+        {
+          "tipo": "h",
+          "texto": "Como subir"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "No pátio, o Marechal da Coroa (Aurora) ou o Mestre dos Sussurros (Nocturna) dá um contrato por vez: derrotar inimigos do seu nível, em qualquer lugar. Paga reputação e um pouco de experiência, com limite por dia.",
+            "Na cidade baixa, aberta a todos, a corte tem quatro serviços: o Sacerdote ou a Guardiã das Chaves (bênção), o Mestre de Armas (refazer atributos), o Tesoureiro (doar material ao esforço de guerra, que rende reputação) e o Intendente (comprar a casa, para quem já é Honrado)."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Os portões"
+        },
+        {
+          "tipo": "p",
+          "texto": "O pátio pede ser Honrado; a porta do salão, Reverenciado; a do trono, Exaltado. No fim da linha de cada reino estão o casal do trono e um título. Veja a capital em Aurora ou Nocturna."
+        }
+      ]
     },
     {
       "id": "guildas",
@@ -321,7 +891,42 @@
       "foto": null,
       "fotoFalta": "os três mestres de guilda no Acampamento da Estepe",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "As três guildas são abertas a qualquer reino. Os mestres ficam no Acampamento da Estepe, cada um num canto do Teleportador."
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Guilda",
+            "Mestre",
+            "Título no fim"
+          ],
+          "linhas": [
+            [
+              "Irmandade da Lâmina",
+              "Brenna, a Primeira Lâmina",
+              "Lâmina Jurada"
+            ],
+            [
+              "Mão Velada",
+              "Ivra, a Mão Esquerda",
+              "Sombra Velada"
+            ],
+            [
+              "Círculo Arcano",
+              "Mestre Aldren",
+              "Arcanista do Círculo"
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Guilda é convite: a missão só aparece depois de falar com o mestre, e o título aparece no diário."
+        }
+      ]
     },
     {
       "id": "provacoes",
@@ -338,7 +943,26 @@
       "foto": null,
       "fotoFalta": "arena da Provação com o Guardião e a barra de \"XP guardado\" na tela",
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Em certos níveis o herói para até vencer uma Provação. O XP não se perde: fica guardado, e a barra mostra \"XP guardado — vença a Provação\"."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "A Guardiã das Provações fica na praça da Vila do Poço, ao lado do Teleportador. Antes do primeiro marco ela explica; com a Provação pendente, manda você entrar.",
+            "A arena é solo: cada jogador tem a sua cópia. É o Guardião da Gruta, com investida, pedra e fases, no nível da Provação.",
+            "Cair não custa XP e as tentativas são ilimitadas. O Reviver tira você da arena.",
+            "Vencer solta o XP guardado e dá um nível inteiro de bônus. O \"Próximo objetivo\" aponta a Guardiã enquanto houver Provação pendente."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "O Poço sem Fundo passa a pedir a Provação vencida."
+        }
+      ]
     },
     {
       "id": "subterraneo",
@@ -355,7 +979,25 @@
       "foto": "subterraneo.webp",
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "O Subterrâneo é quase todo escuro. Quem ilumina é a luz que o herói carrega, as lanternas roxas das paredes e os santuários acesos."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Luz é visão, não proteção: o inimigo fora da sua luz some da tela (corpo e nome) e do radar. Ele ataca igual.",
+            "Sem lanterna, o herói entra com a tocha comum. A Lanterna da Lua clareia mais e cresce de nível ao vencer chefes.",
+            "A Lúmen presa dá luz maior e mais forte; libertada, dá luz menor."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "O primeiro chefe de lá é o Guardião do Lago Escuro."
+        }
+      ]
     },
     {
       "id": "guardiao-do-lago",
@@ -372,7 +1014,21 @@
       "foto": "retrato-guardiao-do-lago.webp",
       "fotoFalta": null,
       "fotoNota": "retrato do modelo",
-      "estado": "completo"
+      "estado": "completo",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "No fundo norte do Subterrâneo espera o Guardião do Lago Escuro: um dos Antigos, o cantor que ficou acordado na água parada. É chefe do mundo, de quem estiver lá."
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Quando a vida dele cai, ele chama Sonhados, inimigos que só existem na luz da lua. Sem lanterna o grupo nem os vê (nem apanha deles); com ela, vira briga de verdade.",
+            "Derrubá-lo sobe a Lanterna da Lua um nível, para todo o grupo que estava na luta, como o XP.",
+            "Ele volta depois de um tempo e dá loot de chefe."
+          ]
+        }
+      ]
     },
     {
       "id": "chefe-do-poco",
@@ -389,7 +1045,13 @@
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "em breve"
+      "estado": "em breve",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Ainda não está pronto. O Poço sem Fundo tem um chefe com modelo e nível, mas sem luta própria. Os andares do Poço já abrem conforme você vence as Provações."
+        }
+      ]
     },
     {
       "id": "chefes-de-regiao",
@@ -406,7 +1068,13 @@
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "em breve"
+      "estado": "em breve",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Ainda não está pronto. Rei-Múmia, Colosso de Gelo, Senhor das Cinzas, Titã de Magma e Lich já existem como modelo e nível, mas ainda não têm uma luta própria nas regiões."
+        }
+      ]
     },
     {
       "id": "guerra-de-reinos",
@@ -423,7 +1091,13 @@
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "em breve"
+      "estado": "em breve",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Ainda não está pronto. A disputa de fortalezas entre Aurora e Nocturna só existe como base no código; ainda não há guerra jogável. Enquanto isso, veja o Juramento."
+        }
+      ]
     },
     {
       "id": "mini-instancias",
@@ -440,7 +1114,75 @@
       "foto": null,
       "fotoFalta": null,
       "fotoNota": null,
-      "estado": "em breve"
+      "estado": "em breve",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Ainda não está pronto. As mini-instâncias (masmorras curtas e repetíveis, para uma sessão rápida no celular) foram planejadas e aprovadas, mas o trabalho ainda não começou. Enquanto isso, veja as instâncias que já existem."
+        }
+      ]
+    },
+    {
+      "id": "eventos-do-mundo",
+      "titulo": "Ronda da Sentinela e Caravana do Mercador",
+      "gancho": "De tempos em tempos a Vila do Poço recebe visita: feras de elite na cerca e um mercador na estrada.",
+      "topicos": [
+        "A Ronda da Sentinela: três feras de elite rondam a cerca da vila",
+        "A Caravana do Mercador: uma peça Mágica à venda, uma por herói",
+        "O comando /eventos mostra quanto falta para o próximo"
+      ],
+      "onde": "Na Vila do Poço e na estrada do Bosque, logo depois da paliçada.",
+      "quando": "Em horários que se repetem; o chat avisa quando começa e quando acaba.",
+      "nivel": 5,
+      "foto": "heroi-retrato.webp",
+      "fotoFalta": null,
+      "fotoNota": "ilustrativa",
+      "estado": "em breve",
+      "guia": [
+        {
+          "tipo": "p",
+          "texto": "Dois eventos acontecem sozinhos, em horários fixos, para todos os jogadores do servidor ao mesmo tempo. Quando um deles começa ou termina, aparece uma linha no chat. Para saber quanto falta, escreva /eventos no chat."
+        },
+        {
+          "tipo": "h",
+          "texto": "Ronda da Sentinela"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "O que é: a Sentinela da Vila avisa que três feras de elite estão rondando um lado da cerca da Vila do Poço (o aviso diz qual lado).",
+            "O que fazer: vá até a cerca e ajude a derrubar as feras, sozinho ou em grupo. Quem participa conta para a recompensa.",
+            "Recompensa: osso lascado (material de forja e conserto) caído no chão, só para você, e uma chance de uma peça de equipamento de começo de jogo. Há um limite de prêmios por dia para cada herói.",
+            "Se ninguém derrubar: as feras somem no mato quando o tempo acaba, e a Sentinela chama de novo na próxima Ronda.",
+            "Para quem é: heróis do começo do jogo. As feras acompanham o nível dos heróis que estão por perto."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Caravana do Mercador"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "O que é: um Mercador viajante para na estrada do Bosque, logo depois da paliçada da Vila do Poço, por poucos minutos, e depois segue viagem.",
+            "O que ele vende: uma peça de equipamento Mágica, com o nível ajustado ao seu herói (até o começo do jogo).",
+            "Como comprar: fique perto do Mercador e escreva /caravana comprar no chat. Dá para comprar uma vez por visita. É preciso ter nível 5 ou mais e ouro suficiente. A peça cai no chão ao seu lado.",
+            "/caravana (sem \"comprar\") mostra o preço e quanto tempo ele ainda fica."
+          ]
+        },
+        {
+          "tipo": "h",
+          "texto": "Dúvidas comuns"
+        },
+        {
+          "tipo": "ul",
+          "itens": [
+            "Perdi o aviso no chat: escreva /eventos.",
+            "Não vejo o Mercador: ele só aparece na vila enquanto a Caravana está na estrada.",
+            "O comprar não funciona longe dele: é preciso estar perto do Mercador."
+          ]
+        }
+      ]
     }
   ]
 }
