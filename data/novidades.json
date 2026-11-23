@@ -1,6 +1,18 @@
 {
   "novidades": [
     {
+      "titulo": "Vila do Poço renovada, Crisol da Guardiã e magia com combos elementais",
+      "resumo": "A Vila do Poço ganhou praça desamontoada com avenidas abertas, cisterna medieval, bancada de forja com brasa viva, bonecos de treino, porta…"
+    },
+    {
+      "titulo": "Palácios das capitais com fachada de verdade",
+      "resumo": "Quem chega à cidade baixa de Aurora ou de Nocturna agora vê a frente do palácio: o portão fica entre duas torres (Aurora) ou dois pilares a…"
+    },
+    {
+      "titulo": "Combate com som e peso, Maestria de Bestiário e progresso mais seguro",
+      "resumo": "Os golpes, esquivas, impactos e subidas de nível ganharam efeitos sonoros próprios por família de arma, além de aviso no chão e sonoro ante…"
+    },
+    {
       "titulo": "Celular mais leve, minério no chão e chefe que volta para casa",
       "resumo": "No celular o terreno simples vem ligado de fábrica: no Galaxy A34 o jogo passou de 46 para 82 quadros por segundo"
     },
@@ -19,18 +31,6 @@
     {
       "titulo": "Bancada mostra o nível que sai e a forja pode caprichar",
       "resumo": "A Bancada mostra o nível que o item vai ter (\"Grau 2 · nível ~34 · 14% de sair acima\") e o próximo degrau de verdade (\"sobe com você até o…"
-    },
-    {
-      "titulo": "Nível certo para equipar e o \"E\" que não reabre a conversa",
-      "resumo": "O cartão do item, a mochila e o botão Equipar agora mostram o nível que o servidor exige de verdade: uma peça de Grau 2 pede pelo menos o n…"
-    },
-    {
-      "titulo": "Gruta: a porta do chefe pede a Gruta limpa, e os espinhos doem",
-      "resumo": "A porta da arena do Guardião agora mostra \"Selada — restam N\" e só abre quando você limpa todos os salões da Gruta (corredor, as quatro sal…"
-    },
-    {
-      "titulo": "A seta segue o que vale agora, e a missão principal avisa quando libera",
-      "resumo": "A seta de objetivo, o ponto do radar, a bússola e o mapa deixaram de apontar sempre para a missão principal: quem manda é a missão aceita,…"
     }
   ]
 }
